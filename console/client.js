@@ -120,7 +120,7 @@ const createProblem = function createProblem(options) {
  * @param {Object} options.args Update problem arguments.
  * @returns {Promise} A promise that handles the REST call response. Will include update problem MVDM response.
  */
-const updateProblem = function createProblem(options) {
+const updateProblem = function updateProblem(options) {
     return new Promise((resolve, reject) => {
         request({
             method: 'PUT',
