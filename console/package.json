@@ -1,0 +1,26 @@
+{
+  "name": "consoleClient",
+  "description": "Console Client",
+  "main": "index.js",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/vistadataproject/nodeVISTAClients",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "es6-error": "^4.0.2",
+    "http-status": "^1.0.1",
+    "jsonwebtoken": "^7.2.1",
+    "request": "^2.79.0",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "eslint": "^3.14.1",
+    "eslint-config-airbnb-base": "^11.0.1",
+    "eslint-plugin-import": "^2.2.0"
+  }
+}
