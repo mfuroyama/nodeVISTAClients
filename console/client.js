@@ -88,7 +88,7 @@ const patientSelect = function patientSelect(accessToken, patientId) {
  * @param {String} options.accessToken. JWT access token.
  * @param {String} options.patientToken JWT patient token.
  * @param {Object} options.args Create problem arguments.
- * @returns {Promise} A promise that handles the REST call response. Will include new problem.
+ * @returns {Promise} A promise that handles the REST call response. Will include create problem MVDM response.
  */
 const createProblem = function createProblem(options) {
     return new Promise((resolve, reject) => {
@@ -105,6 +105,36 @@ const createProblem = function createProblem(options) {
                 reject(err);
             } else if (res.statusCode !== HttpStatus.CREATED) {
                 throw new Error(`There was issue with the create problem request: ${res.body}`);
+            } else {
+                resolve(res);
+            }
+        });
+    });
+};
+
+/**
+ * Invokes the clinical service update problem action.
+ * @param {Object} options Update problem options.
+ * @param {String} options.accessToken. JWT access token.
+ * @param {String} options.patientToken JWT patient token.
+ * @param {Object} options.args Update problem arguments.
+ * @returns {Promise} A promise that handles the REST call response. Will include update problem MVDM response.
+ */
+const updateProblem = function createProblem(options) {
+    return new Promise((resolve, reject) => {
+        request({
+            method: 'PUT',
+            uri: `${serverURL}/problem`,
+            headers: {
+                Authorization: `Bearer ${options.accessToken}`,
+                'x-patient-token': options.patientToken,
+            },
+            json: options.args,
+        }, (err, res, body) => {
+            if (err) {
+                reject(err);
+            } else if (res.statusCode !== HttpStatus.OK) {
+                throw new Error(`There was issue with the update problem request: ${res.body}`);
             } else {
                 resolve(res);
             }
@@ -157,6 +187,21 @@ function runCalls() {
     }).then((res) => {
         console.log('New problem successfully created!\n\n');
         problem = res.body.created;
+        console.log(JSON.stringify(problem, null, 2));
+
+        const updateProbOptions = {
+            accessToken,
+            patientToken,
+            args: {
+                id: problem.id,
+                problemStatus: 'INACTIVE',
+            },
+        };
+
+        return updateProblem(updateProbOptions);
+    }).then((res) => {
+        console.log('Problem successfully updated!\n\n');
+        problem = res.body.updated;
         console.log(JSON.stringify(problem, null, 2));
     }).catch((err) => {
         console.log(err);
