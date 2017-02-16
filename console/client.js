@@ -21,7 +21,7 @@ const serverURL = config.serverURL;
 /**
  * Invokes the clinical service authentication action.
  * @param {String} userId User identifier.
- * @param {String" facilityId facilityId
+ * @param {String} facilityId facilityId
  * @returns {Promise} A promise that handles the REST call response.
  *                  A successful response will return JWT access and refresh tokens.
  */
