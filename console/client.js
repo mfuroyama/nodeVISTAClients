@@ -142,6 +142,65 @@ const updateProblem = function updateProblem(options) {
     });
 };
 
+/**
+ * Invokes the clinical service list problems action.
+ * @param {Object} options Update problem options.
+ * @param {String} options.accessToken. JWT access token.
+ * @param {String} options.patientToken JWT patient token.
+ * @param {String=} options.filter Problem list status filter. Possible values: active, inactive, both, removed. Defaults to all.
+ * @returns {Promise} A promise that handles the REST call response. Will include problem list.
+ */
+const listProblems = function listProblems(options) {
+    return new Promise((resolve, reject) => {
+        request({
+            method: 'GET',
+            uri: `${serverURL}/problem`,
+            headers: {
+                Authorization: `Bearer ${options.accessToken}`,
+                'x-patient-token': options.patientToken,
+            },
+            qs: { filter: options.filter },
+        }, (err, res, body) => {
+            if (err) {
+                reject(err);
+            } else if (res.statusCode !== HttpStatus.OK) {
+                throw new Error(`There was issue with the list problems request: ${res.body}`);
+            } else {
+                resolve(res);
+            }
+        });
+    });
+};
+
+/**
+ * Invokes the clinical service describe problem action.
+ * @param {Object} options Update problem options.
+ * @param {String} options.accessToken. JWT access token.
+ * @param {String} options.patientToken JWT patient token.
+ * @param {String} options.problemId Problem identifier to describe.
+ * @returns {Promise} A promise that handles the REST call response. Will include problem list.
+ */
+const describeProblem = function describeProblems(options) {
+    return new Promise((resolve, reject) => {
+        request({
+            method: 'GET',
+            uri: `${serverURL}/problem/${options.problemId}`,
+            headers: {
+                Authorization: `Bearer ${options.accessToken}`,
+                'x-patient-token': options.patientToken,
+            },
+        }, (err, res, body) => {
+            if (err) {
+                reject(err);
+            } else if (res.statusCode !== HttpStatus.OK) {
+                throw new Error(`There was issue with the list problems request: ${res.body}`);
+            } else {
+                resolve(res);
+            }
+        });
+    });
+};
+
 // new problem arguments
 const createProbDiabetesArgs = {
     diagnosis: '80-521774',
@@ -187,7 +246,7 @@ function runCalls() {
     }).then((res) => {
         console.log('New problem successfully created!\n\n');
         problem = res.body.created;
-        console.log(JSON.stringify(problem, null, 2));
+        console.log(`${JSON.stringify(problem, null, 2)}\n\n`);
 
         const updateProbOptions = {
             accessToken,
@@ -202,7 +261,27 @@ function runCalls() {
     }).then((res) => {
         console.log('Problem successfully updated!\n\n');
         problem = res.body.updated;
-        console.log(JSON.stringify(problem, null, 2));
+        console.log(`${JSON.stringify(problem, null, 2)}\n\n`);
+
+        return listProblems({
+            accessToken,
+            patientToken,
+            filter: 'inactive',
+        });
+    }).then((res) => {
+        console.log('List problems success!\n\n');
+        const problems = JSON.parse(res.body).results;
+        console.log(`${JSON.stringify(problems, null, 2)}\n\n`);
+
+        return describeProblem({
+            accessToken,
+            patientToken,
+            problemId: problem.id,
+        });
+    }).then((res) => {
+        console.log('Describe problem success!\n\n');
+        const problem = JSON.parse(res.body).result;
+        console.log(`${JSON.stringify(problem, null, 2)}\n\n`);
     }).catch((err) => {
         console.log(err);
     });
