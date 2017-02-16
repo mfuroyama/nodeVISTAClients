@@ -214,7 +214,7 @@ const createProbDiabetesArgs = {
 };
 
 /**
- * Run service calls: authenticate -> patientSelect -> createProblem
+ * Run service calls: authenticate -> patientSelect -> createProblem -> updateProblem -> listProblems -> describeProblem
  */
 function runCalls() {
     let accessToken;
