@@ -3,7 +3,9 @@
 'use strict';
 
 /**
- * This module demonstrates how to make REST calls to the nodeVISTA clinical service interface.
+ * A node.js client using promises that demonstrates how to make REST calls to the nodeVISTA clinical service interface.
+ *
+ * A web client would typically follow an ajax pattern using XMLHttpRequests.
  *
  * The first call is to the authentication action to retrieve a JWT accessToken.
  *
