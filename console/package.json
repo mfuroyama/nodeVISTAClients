@@ -1,9 +1,9 @@
 {
   "name": "consoleClient",
   "description": "Console Client",
-  "main": "index.js",
+  "main": "console.js",
   "license": "Apache-2.0",
-  "homepage": "https://github.com/vistadataproject/nodeVISTAClients",
+  "homepage": "https://github.com/vistadataproject/nodeVISTAClients/console",
   "private": true,
   "ignore": [
     "**/.*",
