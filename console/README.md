@@ -28,7 +28,7 @@ $ node index.js
 
 ### Execute the console script
 ```text
-node serviceClient.js
+node console.js
 
 Authentication success! Received the access and refresh JWT tokens!
 
