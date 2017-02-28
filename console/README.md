@@ -19,7 +19,7 @@ No authorization token was found
 SSH into the nodeVISTA virtual machine
 ```text
 $ vdp -l vdp
-$ cd nodeVISTA/clincalService
+$ cd nodeVISTA/clinicalService
 $ npm install
 $ node index.js
 {"name":"clinicalService","hostname":"addgene-ubuntu-1604-vbox","pid":17213,"level":30,
