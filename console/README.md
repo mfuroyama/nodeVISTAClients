@@ -2,22 +2,27 @@
 
 An example node.js client using es6 promises that interacts with the nodeVISTA clinical REST service interface.
 
+The Console client will be executed on your __host__ machine (__not__ the nodeVISTA VM).
+
 ### Install Dependencies
+Open up a terminal on your host machine.
+
 ```text
-$ npm install
+$nodeVISTAClients/console npm install
 ```
 
-### Ensure that the clinicalService is up and running
+### Ensure that the clinicalService is up and running 
 
 ```text
-curl http://10.2.2.100:9030
+$nodeVISTAClients/console curl http://10.2.2.100:9030
 No authorization token was found
 ```
 ...or run the server manually
 
 
-SSH into the nodeVISTA virtual machine
+SSH into the __nodeVISTA__ virtual machine
 ```text
+$ ssh vagrant@10.2.2.100
 $ vdp -l vdp
 $ cd nodeVISTA/clinicalService
 $ npm install
@@ -26,9 +31,9 @@ $ node index.js
     "msg":"Clinical Service listening on port 9030","time":"2017-02-27T20:22:47.506Z","v":0}
 ```
 
-### Execute the console script
+### Execute the console script from your host machine
 ```text
-node console.js
+$nodeVISTAClients/console node console.js
 
 Authentication success! Received the access and refresh JWT tokens!
 
