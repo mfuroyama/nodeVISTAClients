@@ -25,8 +25,12 @@ No authorization token was found
 SSH into the __nodeVISTA__ virtual machine
 ```text
 $ ssh vagrant@10.2.2.100
-$ vdp -l vdp
-$ cd nodeVISTA/clinicalService
+$ password: vagrant
+$ su vdp -l
+$ Password: vdp
+$ cd nodevista
+$ git pull
+$ cd clinicalService
 $ npm install
 $ node index.js
 {"name":"clinicalService","hostname":"addgene-ubuntu-1604-vbox","pid":17213,"level":30,
