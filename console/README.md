@@ -8,13 +8,15 @@ The Console client will be executed on your __host__ machine (__not__ the nodeVI
 Open up a terminal on your host machine.
 
 ```text
-$nodeVISTAClients/console npm install
+$ cd nodeVISTAClients/console
+$ npm install
 ```
 
 ### Ensure that the clinicalService is up and running 
 
 ```text
-$nodeVISTAClients/console curl http://10.2.2.100:9030
+$ cd nodeVISTAClients/console <--- change to console directory if you are not there already
+$ curl http://10.2.2.100:9030
 No authorization token was found
 ```
 ...or run the server manually
@@ -33,7 +35,8 @@ $ node index.js
 
 ### Execute the console script from your host machine
 ```text
-$nodeVISTAClients/console node console.js
+$ cd nodeVISTAClients/console <--- change to console directory if you are not there already
+$ node console.js
 
 Authentication success! Received the access and refresh JWT tokens!
 
