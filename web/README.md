@@ -1,14 +1,15 @@
-### Web clients
+### nodeVISTA Web Clients
 
 
 
 * Web terminal:  https://github.com/shellinabox
 
-Within the VM:
+In the guest VM:
 ```
-sudo apt-get install shellinabox
+  sudo apt-get install shellinabox
 ```
-In the host:
+At the host:
 ```
-open https://10.2.2.100:4200
+  ssh vagrant@10.2.2.100   (pass: vagrant)
+  open https://10.2.2.100:4200
 ```
