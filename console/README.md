@@ -5,7 +5,7 @@ An example node.js client using es6 promises that interacts with the nodeVISTA c
 The Console client will be executed on your __host__ machine (__not__ the nodeVISTA VM).
 
 ### Install Dependencies
-Open up a terminal on your host machine.
+Open a terminal on your host machine.
 
 ```text
 $ cd nodeVISTAClients/console
@@ -36,9 +36,8 @@ $ curl http://10.2.2.100:9030
 No authorization token was found  <-- This is the correct response and verifies service is available
 ```
 
-
-### Execute the console script from your host machine
-
+### Execute the console script
+On the host terminal:
 ```text
 $ cd nodeVISTAClients/console
 $ node console.js
