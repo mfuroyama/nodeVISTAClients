@@ -12,17 +12,8 @@ $ cd nodeVISTAClients/console
 $ npm install
 ```
 
-### Ensure that the clinicalService is up and running 
-
-```text
-$ cd nodeVISTAClients/console <--- change to console directory if you are not there already
-$ curl http://10.2.2.100:9030
-No authorization token was found
-```
-...or run the server manually
-
-
-SSH into the __nodeVISTA__ virtual machine
+### Start  the clinicalService
+SSH into the __nodeVISTA__ guest virtual machine
 ```text
 $ ssh vagrant@10.2.2.100
 $ password: vagrant
@@ -37,11 +28,24 @@ $ node index.js
     "msg":"Clinical Service listening on port 9030","time":"2017-02-27T20:22:47.506Z","v":0}
 ```
 
-### Execute the console script from your host machine
+### Ensure the clinicalService is running 
+On the host terminal:
 ```text
-$ cd nodeVISTAClients/console <--- change to console directory if you are not there already
-$ node console.js
+$ cd nodeVISTAClients/console
+$ curl http://10.2.2.100:9030
+No authorization token was found  <-- This is the correct response and verifies service is available
+```
 
+
+### Execute the console script from your host machine
+
+```text
+$ cd nodeVISTAClients/console
+$ node console.js
+```
+The resulting response should be:
+
+```text
 Authentication success! Received the access and refresh JWT tokens!
 
 
