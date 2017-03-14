@@ -1,0 +1,19 @@
+{
+  "name": "nodevista-testclientframework",
+  "description": "Test Client for nodevista",
+  "version": "0.0.1",
+  "license": "Apache-2.0",
+  "private": true,
+  "dependencies": {
+    "net": "latest",
+    "promise": "latest",
+    "async": "latest",
+    "nodevista-rpcparser": "file:../../nodeVISTA/lib/rpcParser"
+  },
+  "devDependencies": {
+    "eslint": "^3.14.1",
+    "eslint-config-airbnb-base": "^11.0.1",
+    "eslint-plugin-import": "^2.2.0",
+    "jasmine": "^2.4.1"
+  }
+}
