@@ -84,19 +84,39 @@ function CallRPCs() {
 
         .then(function (response) {
             console.log(response);
+            // select a patient
             if (response !== undefined && response.length > 3) {
-                return Client.sendRpc(dtRpc);
-            } else Client.throwError('ORWU DT', response);
+                var rpcName = "ORWPT SELECT";
+                var rpcArgs = [rpcFormatter.buildLiteralParamString("3")];
+                var rpc = rpcFormatter.buildRpcString(rpcName, rpcArgs);
+                return Client.sendRpc(rpc);
+            } else Client.throwError('ORWPT SELECT', response);
         })
+
+        .then(function (response) {
+            console.log(response);
+            // get patient allergy data
+            if (response !== undefined && response.length > 3) {
+                var rpcName = "ORQQAL DETAIL";
+                var rpcArgs = [
+                    rpcFormatter.buildLiteralParamString("3"),
+                    rpcFormatter.buildLiteralParamString("1"), 
+                    rpcFormatter.buildLiteralParamString("2"),
+                ];
+                var rpc = rpcFormatter.buildRpcString(rpcName, rpcArgs);
+                return Client.sendRpc(rpc);
+            } else Client.throwError('ORWPT SELECT', response);
+        })
+
 
         .then(function (response) {
             console.log(response);
             if (response !== undefined && response.length > 3) {
 
                 endTime = new Date().getTime();
-                console.log("\n\nExecution time of ORWU DT: %j ms\n\n", endTime - startTime);
+                console.log("\n\nExecution time: %j ms\n\n", endTime - startTime);
 
-                console.log('ORWU DT OK: %j, trying #BYE#', response);
+                console.log('OK: %j, trying #BYE#', response);
 
                 return Client.sendRpc(rpcFormatter.buildRpcSignOffString());
             } else Client.throwError('ORWU DT', response);
@@ -119,7 +139,7 @@ function CallRPCs() {
 
 
 function success(testName) {
-    console.log('\n\n' + testName + ' SUCESS!!!\n\n');
+    console.log('\n\n' + testName + ' SUCCESS!!!\n\n');
 }
 
 Client.setClientTest(CallRPCs);
