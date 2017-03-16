@@ -1,4 +1,4 @@
-# Console Client
+# Services Client
 
 An example node.js client using es6 promises that interacts with the nodeVISTA clinical REST service interface.
 
@@ -8,7 +8,7 @@ The Console client will be executed on your __host__ machine (__not__ the nodeVI
 Open a terminal on your host machine.
 
 ```text
-$ cd nodeVISTAClients/console
+$ cd nodeVISTAClients/services
 $ npm install
 ```
 
@@ -31,16 +31,16 @@ $ node index.js
 ### Ensure the clinicalService is running 
 On the host terminal:
 ```text
-$ cd nodeVISTAClients/console
+$ cd nodeVISTAClients/services
 $ curl http://10.2.2.100:9030
 No authorization token was found  <-- This is the correct response and verifies service is available
 ```
 
-### Execute the console script
+### Execute the servicesProblems.js script
 On the host terminal:
 ```text
-$ cd nodeVISTAClients/console
-$ node console.js
+$ cd nodeVISTAClients/services
+$ node servicesProblems.js
 ```
 The resulting response should be:
 
