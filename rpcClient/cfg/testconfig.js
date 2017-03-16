@@ -19,6 +19,8 @@ config.maryIEN = '62';
 config.maryAccess = 'fakenurse1';
 config.maryVerify = '1Nur!@#$';
 
+config.patientId = '2';
+
 try {
     module.exports = config;
 }
