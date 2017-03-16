@@ -26,35 +26,57 @@ const dtRpc = rpcFormatter.buildRpcString(dtRpcName, dtRpcArgs);
 const CPRS_CONTEXT = 'OR CPRS GUI CHART';
 
 
+// new problem arguments
+const createProbDiabetesArgs = CONFIG.problemStomachUlcer;
+let probParams = [];
+
+for (var key in createProbDiabetesArgs) {
+  if (createProbDiabetesArgs.hasOwnProperty(key)) {
+    probParams.push({
+        key,
+        value: createProbDiabetesArgs[key]
+    })
+  }
+}
+
+console.log(probParams);
+console.log(rpcFormatter.buildListParamString(probParams));
+
+const rpcGreeting = function rpcGreeting(msg) {
+    return Client.sendRpc(rpcFormatter.buildRpcGreetingString(
+        Client.getClient().localAddress, 
+        msg));
+}
+
+const setupSignon = function setupSignon() {
+    const rpcName = 'XUS SIGNON SETUP';
+    const rpc = rpcFormatter.buildRpcString(rpcName);
+
+    // send the rpc and wait on the promise of the response
+    return Client.sendRpc(rpc);
+}
+
 function CallRPCs() {
-    Client.sendRpc(rpcFormatter.buildRpcGreetingString(Client.getClient().localAddress, 'testClient'))
-        .then((response) => {
-            if (response === rpcFormatter.encapsulate('accept')) {
-                console.log('TCPConnect OK, trying XUS SIGNON SETUP');
+    rpcGreeting('hello').then((response) => {
+        if (response === rpcFormatter.encapsulate('accept')) {
+            console.log('TCPConnect OK, trying XUS SIGNON SETUP');
+            return setupSignon();
+        } Client.throwError('TCPConnect', response);
+    }).then((response) => {
+        const signonSetupResponseArray = response.split(NEW_LINE);
 
-                // build next rpc
-                const rpcName = 'XUS SIGNON SETUP';
-                const rpc = rpcFormatter.buildRpcString(rpcName);
+        if (signonSetupResponseArray.length > 7 && signonSetupResponseArray[5] == 0) {
+            console.log('XUS SIGNON SETUP OK, trying XWB CREATE CONTEXT DVBA CAPRI GUI');
 
-                // send the rpc and wait on the promise of the response
-                return Client.sendRpc(rpc);
-            } Client.throwError('TCPConnect', response);
-        })
-        .then((response) => {
-            const signonSetupResponseArray = response.split(NEW_LINE);
+            // build next rpc
+            const rpcName = 'XUS AV CODE';
+            const rpcArgs = [rpcFormatter.buildEncryptedParamString(`${robertAccess};${robertVerify}`)];
+            const rpc = rpcFormatter.buildRpcString(rpcName, rpcArgs);
 
-            if (signonSetupResponseArray.length > 7 && signonSetupResponseArray[5] == 0) {
-                console.log('XUS SIGNON SETUP OK, trying XWB CREATE CONTEXT DVBA CAPRI GUI');
-
-                // build next rpc
-                const rpcName = 'XUS AV CODE';
-                const rpcArgs = [rpcFormatter.buildEncryptedParamString(`${robertAccess};${robertVerify}`)];
-                const rpc = rpcFormatter.buildRpcString(rpcName, rpcArgs);
-
-                // send the rpc and wait on the promise of the response
-                return Client.sendRpc(rpc);
-            } Client.throwError('XUS SIGNON SETUP', response);
-        })
+            // send the rpc and wait on the promise of the response
+            return Client.sendRpc(rpc);
+        } Client.throwError('XUS SIGNON SETUP', response);
+    })
        .then((response) => {
            const responseArray = rpcFormatter.stripMarkers(response).split(NEW_LINE);
            const context = CPRS_CONTEXT;
@@ -99,11 +121,11 @@ function CallRPCs() {
             // create a problem
             if (response !== undefined && response.length > 3) {
                 const rpcName = 'ORQQPL ADD SAVE';
-                const rpcArgs = [
-                    rpcFormatter.buildLiteralParamString('3'),
-                    rpcFormatter.buildLiteralParamString('1'),
-                    rpcFormatter.buildLiteralParamString('2'),
-                ];
+                const rpcArgs = [rpcFormatter.buildLiteralParamString('25^CARTER,DAVID^0113^'),
+                                 rpcFormatter.buildReferenceParamString('62'),
+                                 rpcFormatter.buildReferenceParamString('2957'),
+                                 rpcFormatter.buildListParamString(probParams),
+                               rpcFormatter.buildLiteralParamString('stomach ulcer')];
                 const rpc = rpcFormatter.buildRpcString(rpcName, rpcArgs);
                 return Client.sendRpc(rpc);
             } Client.throwError('ORWPT SELECT', response);
