@@ -49,21 +49,29 @@ function Client(port, host) {
 Client.prototype = {
     constructor: Client,
 
-    sendRpc(rpc) {
+    sendRpc(rpc, callback) {
         const self = this;
         self.chunk = '';
 
         return new Promise((fulfill, reject) => {
             function errorFunction(error) {
-                console.log('error....');
-                reject(error);
+                if (callback) {
+                    callback(error, undefined, fulfill, reject);
+                } else {
+                    reject(error);
+                }
             }
 
             function dataFunction(data) {
                 // clean up the 'data' and 'error' listeners for the next step through
                 self.client.removeListener('data', dataFunction);
                 self.client.removeListener('error', errorFunction);
-                fulfill(receiveData(self.chunk, data));
+                var res = receiveData(self.chunk, data);
+                if (callback) {
+                    callback(undefined,res, fulfill, reject);
+                } else {
+                    fulfill(res);
+                }
             }
             self.client.on('data', dataFunction);
             self.client.on('error', errorFunction);

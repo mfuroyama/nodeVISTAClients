@@ -37,17 +37,37 @@ console.log(probParams);
 console.log(rpcFormatter.buildListParamString(probParams));
 
 const rpcGreeting = function rpcGreeting(msg) {
+    const callback = function callback(err, res, fulfill, reject) {
+        if (err) {
+            reject(err);
+        } else if (res === rpcFormatter.encapsulate('accept')) {
+            fulfill(res);
+        } else {
+            reject(new Error("get greeting error"));
+        }
+    }
     return Client.sendRpc(rpcFormatter.buildRpcGreetingString(
         Client.getClient().localAddress,
-        msg));
+        msg), callback);
 };
 
 const setupSignon = function setupSignon() {
     const rpcName = 'XUS SIGNON SETUP';
     const rpc = rpcFormatter.buildRpcString(rpcName);
 
-    // send the rpc and wait on the promise of the response
-    return Client.sendRpc(rpc);
+    const callback = function callback(err, res, fulfill, reject) {
+            const signonSetupResponseArray = res.split(NEW_LINE);
+
+            if (err) {
+                reject(err);
+            } else if (signonSetupResponseArray.length > 7 && signonSetupResponseArray[5] == 0) {
+                fulfill(res);
+            } else {
+                reject(new Error("Signon setup error"));
+            }
+        }
+        // send the rpc and wait on the promise of the response
+    return Client.sendRpc(rpc, callback);
 };
 
 const authenticate = function authenticate() {
@@ -68,14 +88,6 @@ const createContext = function createContext() {
 
     // send the rpc and wait on the promise of the response
     return Client.sendRpc(rpc);
-};
-
-const getTimeNow = function getTimeNow() {
-    // build ORWU DT RPC
-    const dtRpcName = 'ORWU DT';
-    const dtRpcArgs = [rpcFormatter.buildLiteralParamString('NOW')];
-    const dtRpc = rpcFormatter.buildRpcString(dtRpcName, dtRpcArgs);
-    return Client.sendRpc(dtRpc);
 };
 
 const selectPatient = function selectPatient() {
@@ -114,19 +126,15 @@ const signOff = function signOff() {
 
 function CallRPCs() {
     rpcGreeting('hello').then((response) => {
-        if (response === rpcFormatter.encapsulate('accept')) {
-            console.log('TCPConnect OK, trying XUS SIGNON SETUP');
-            return setupSignon();
-        }
-        Client.throwError('TCPConnect', response);
-    }).then((response) => {
-        const signonSetupResponseArray = response.split(NEW_LINE);
 
-        if (signonSetupResponseArray.length > 7 && signonSetupResponseArray[5] == 0) {
-            console.log('XUS SIGNON SETUP OK, trying XWB CREATE CONTEXT DVBA CAPRI GUI');
-            return authenticate();
-        }
-        Client.throwError('XUS SIGNON SETUP', response);
+        console.log('TCPConnect OK, trying XUS SIGNON SETUP');
+        return setupSignon();
+
+    }).then((response) => {
+
+        console.log('XUS SIGNON SETUP OK, trying XWB CREATE CONTEXT DVBA CAPRI GUI');
+        return authenticate();
+
     }).then((response) => {
         const responseArray = rpcFormatter.stripMarkers(response).split(NEW_LINE);
 
@@ -136,17 +144,9 @@ function CallRPCs() {
         }
         Client.throwError('XUS AV CODE', response);
     }).then((response) => {
-        if (response === rpcFormatter.encapsulate('1')) {
-            console.log('XWB CREATE CONTEXT OK, running  ORWU DT');
-            // send the rpc and wait on the promise of the response
-            startTime = new Date().getTime();
-            return getTimeNow();
-        }
-        Client.throwError('XWB CREATE CONTEXT', response);
-    }).then((response) => {
         console.log(response);
         // select a patient
-        if (response !== undefined && response.length > 3) {
+        if (response === rpcFormatter.encapsulate('1')) {
             return selectPatient();
         }
         Client.throwError('ORWPT SELECT', response);
@@ -159,7 +159,7 @@ function CallRPCs() {
         Client.throwError('ORWPT SELECT', response);
     }).then((response) => {
         console.log(response);
-        // get patient allergy data
+        // get patient problem data
         if (response !== undefined && response.length > 3) {
             return getProblemDetail();
         }
