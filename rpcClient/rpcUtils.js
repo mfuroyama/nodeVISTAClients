@@ -1,14 +1,14 @@
 'use strict';
 
-var net = require('net');
-var CONFIG = require('./cfg/testconfig.js');
+const net = require('net');
+const CONFIG = require('./cfg/testconfig.js');
 
-var Promise = require('promise');
+const Promise = require('promise');
 
-var NUL = '\u0000';
-var SOH = '\u0001';
-var EOT = '\u0004';
-var ENQ = '\u0005';
+const NUL = '\u0000';
+const SOH = '\u0001';
+const EOT = '\u0004';
+const ENQ = '\u0005';
 
 function Client(port, host) {
     if (!(this instanceof Client)) {
@@ -17,8 +17,8 @@ function Client(port, host) {
 
     this.client = new net.Socket();
     this.chunk = '';
-    var self = this;
-    this.client.on('error', function(error) {
+    const self = this;
+    this.client.on('error', (error) => {
         console.log('ERROR in client', error);
         self.client.end();
     });
@@ -49,63 +49,68 @@ function Client(port, host) {
 Client.prototype = {
     constructor: Client,
 
-    sendRpc: function (rpc) {
-        var self = this;
+    sendRpc(rpc, callback) {
+        const self = this;
         self.chunk = '';
 
-        return new Promise(function (fulfill, reject) {
-
+        return new Promise((fulfill, reject) => {
             function errorFunction(error) {
-                console.log('error....');
-                reject(error);
+                if (callback) {
+                    callback(error, undefined, fulfill, reject);
+                } else {
+                    reject(error);
+                }
             }
 
             function dataFunction(data) {
-                // console.log('data', data);
                 // clean up the 'data' and 'error' listeners for the next step through
                 self.client.removeListener('data', dataFunction);
                 self.client.removeListener('error', errorFunction);
-                // console.log('fullfill...');
-                fulfill(receiveData(self.chunk, data));
+                var res = receiveData(self.chunk, data);
+                if (callback) {
+                    callback(undefined,res, fulfill, reject);
+                } else {
+                    fulfill(res);
+                }
             }
             self.client.on('data', dataFunction);
             self.client.on('error', errorFunction);
 
-            var rpcBuffer = new Buffer(rpc, 'binary');
+            const rpcBuffer = new Buffer(rpc, 'binary');
             self.client.write(rpcBuffer);
         });
     },
 
-    startClient: function() {
+    startClient() {
         this.client.connect(this.serverPort, this.serverHost);
     },
 
-    setClientTest: function(testFunction) {
+    setClientTest(testFunction) {
         this.client.on('connect', testFunction);
     },
 
-    closeClient: function() {
+    closeClient() {
         this.client.end();
     },
 
-    throwError: function (rpcName, response) {
-        throw new Error(rpcName + " Error: " + response);
+    throwError(rpcName, response) {
+        throw new Error(`${rpcName} Error: ${response}`);
     },
 
-    getClient: function() {
+    getClient() {
         return this.client;
-    }
+    },
 
-}
+};
 
 function receiveData(chunk, data) {
     chunk += data;
     // find the end of a RPC packet
-    var eotIndex = chunk.indexOf(EOT);
+    let eotIndex = chunk.indexOf(EOT);
 
     // loop for each packet in the data chunk
     while (eotIndex > -1) {
-        var response = '';
+        const response = '';
 
         // get a packet from the chunk (without the EOT)
         var recievedPacket = chunk.substr(0, eotIndex + 1);
@@ -116,7 +121,6 @@ function receiveData(chunk, data) {
     }
 
     return recievedPacket;
-
 }
 
 module.exports.Client = Client;

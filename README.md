@@ -1,7 +1,6 @@
-# nodeVISTAClients
+# nodeVISTA Clients
 
-## [Services](https://github.com/vistadataproject/nodeVISTAClients/tree/master/services)
-An example node.js client using es6 promises that interacts with the nodeVISTA clinical REST service interface. 
+a series of clients that show how to use the different _nodeVISTA_ interfaces.
 
 ```
                  _    __     _____ ____ _____  _
