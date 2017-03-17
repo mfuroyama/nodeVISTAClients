@@ -1,4 +1,4 @@
-# nodeVISTAClients
+# nodeVISTA Clients
 
 ```
                  _    __     _____ ____ _____  _
