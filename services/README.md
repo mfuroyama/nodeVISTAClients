@@ -1,4 +1,4 @@
-# Services Clients
+# Service Interface Clients
 
 Example node.js clients that show how to use the nodeVISTA clinical REST service interface.
 
