@@ -1,5 +1,7 @@
 # nodeVISTA Clients
 
+a series of clients that show how to use the different _nodeVISTA_ interfaces.
+
 ```
                  _    __     _____ ____ _____  _
  _ __   ___   __| | __\ \   / /_ _/ ___|_   _|/ \
