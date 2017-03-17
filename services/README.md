@@ -2,9 +2,12 @@
 
 An example node.js client using es6 promises that interacts with the nodeVISTA clinical REST service interface.
 
-The Console client will be executed on your __host__ machine (__not__ the nodeVISTA VM).
+The Services client will be executed on your __host__ machine (__not__ the nodeVISTA VM).
 
-### Install Dependencies
+### Install Module Dependencies
+
+__Note__: We assume that both _node_ and _npm_ are installed on your Machine.
+
 Open a terminal on your host machine.
 
 ```text
