@@ -43,7 +43,7 @@ const rpcGreeting = function rpcGreeting(msg) {
         } else if (res === rpcFormatter.encapsulate('accept')) {
             fulfill(res);
         } else {
-            reject(new Error("get greeting error"));
+            reject(new Error("Greeting error (TCP Connect)"));
         }
     }
     return Client.sendRpc(rpcFormatter.buildRpcGreetingString(
@@ -63,7 +63,7 @@ const setupSignon = function setupSignon() {
             } else if (signonSetupResponseArray.length > 7 && signonSetupResponseArray[5] == 0) {
                 fulfill(res);
             } else {
-                reject(new Error("Signon setup error"));
+                reject(new Error("Signon setup error(XUS SIGNON SETUP)"));
             }
         }
         // send the rpc and wait on the promise of the response
@@ -75,8 +75,17 @@ const authenticate = function authenticate() {
     const rpcArgs = [rpcFormatter.buildEncryptedParamString(`${robertAccess};${robertVerify}`)];
     const rpc = rpcFormatter.buildRpcString(rpcName, rpcArgs);
 
-    // send the rpc and wait on the promise of the response
-    return Client.sendRpc(rpc);
+    const callback = function callback(err, res, fulfill, reject) {
+        const responseArray = rpcFormatter.stripMarkers(res).split(NEW_LINE); //not used
+        if (err) {
+            reject(err);
+        } else if (res.match(/Good/)) {
+            fulfill(res);
+        } else {
+            reject(new Error("Authenticate error(XUS AV CODE)"));
+        }
+    }
+    return Client.sendRpc(rpc, callback);
 };
 
 const createContext = function createContext() {
@@ -86,7 +95,16 @@ const createContext = function createContext() {
     const rpcArgs = [rpcFormatter.buildEncryptedParamString(context)];
     const rpc = rpcFormatter.buildRpcString(rpcName, rpcArgs);
 
-    // send the rpc and wait on the promise of the response
+    const callback = function callback(err, res, fulfill, reject) {
+        const responseArray = rpcFormatter.stripMarkers(res).split(NEW_LINE);
+        if (err) {
+            reject(err);
+        } else if (res === rpcFormatter.encapsulate('1')) {
+            fulfill(res);
+        } else {
+            reject(new Error("Context error(XWB CREATE CONTEXT)"));
+        }
+    }
     return Client.sendRpc(rpc);
 };
 
@@ -94,6 +112,16 @@ const selectPatient = function selectPatient() {
     const rpcName = 'ORWPT SELECT';
     const rpcArgs = [rpcFormatter.buildLiteralParamString(patientId)];
     const rpc = rpcFormatter.buildRpcString(rpcName, rpcArgs);
+    const callback = function callback(err, res, fulfill, reject) {
+        if (err) {
+            reject(err);
+        } else if (res !== undefined && res.length > 3) {
+
+            fulfill(res);
+        } else {
+            reject(new Error("Select error(ORWPT SELECT)"));
+        }
+    }
     return Client.sendRpc(rpc);
 };
 
@@ -106,6 +134,17 @@ const createProblem = function createProblem() {
         rpcFormatter.buildLiteralParamString('stomach ulcer'),
     ];
     const rpc = rpcFormatter.buildRpcString(rpcName, rpcArgs);
+    const callback = function callback(err, res, fulfill, reject) {
+        if (err) {
+            reject(err);
+        } else if (res !== undefined && res.length > 3) {
+
+            fulfill(res);
+        } else {
+            reject(new Error("Select error(ORWPT SELECT)"));
+        }
+    }
+
     return Client.sendRpc(rpc);
 };
 
@@ -117,10 +156,29 @@ const getProblemDetail = function getProblemDetail() {
         rpcFormatter.buildLiteralParamString('2'),
     ];
     const rpc = rpcFormatter.buildRpcString(rpcName, rpcArgs);
+    const callback = function callback(err, res, fulfill, reject) {
+        if (err) {
+            reject(err);
+        } else if (res !== undefined && res.length > 3) {
+
+            fulfill(res);
+        } else {
+            reject(new Error("Select error(ORWPT SELECT)"));
+        }
+    }
     return Client.sendRpc(rpc);
 };
 
 const signOff = function signOff() {
+    const callback = function callback(err, res, fulfill, reject) {
+        if (err) {
+            reject(err);
+        } else if (response === rpcFormatter.encapsulate('#BYE#')) {
+            fulfill(res);
+        } else {
+            reject(new Error("Signoff error(BYE)"));
+        }
+    }
     return Client.sendRpc(rpcFormatter.buildRpcSignOffString());
 };
 
@@ -136,49 +194,34 @@ function CallRPCs() {
         return authenticate();
 
     }).then((response) => {
-        const responseArray = rpcFormatter.stripMarkers(response).split(NEW_LINE);
+        console.log('XUS AV CODE OK: %j, trying XWB CREATE CONTEXT: %j', response, 'OR CPRS GUI CHART');
+        startTime = new Date().getTime();
+        return createContext();
 
-        if (response.match(/Good/)) {
-            console.log('XUS AV CODE OK: %j, trying XWB CREATE CONTEXT: %j', response, 'OR CPRS GUI CHART');
-            return createContext();
-        }
-        Client.throwError('XUS AV CODE', response);
     }).then((response) => {
         console.log(response);
         // select a patient
-        if (response === rpcFormatter.encapsulate('1')) {
-            return selectPatient();
-        }
-        Client.throwError('ORWPT SELECT', response);
+        return selectPatient();
     }).then((response) => {
         console.log(response);
         // create a problem
-        if (response !== undefined && response.length > 3) {
-            return createProblem();
-        }
-        Client.throwError('ORWPT SELECT', response);
+        return createProblem();
     }).then((response) => {
         console.log(response);
         // get patient problem data
-        if (response !== undefined && response.length > 3) {
             return getProblemDetail();
-        }
-        Client.throwError('ORWPT SELECT', response);
     }).then((response) => {
         console.log(response);
-        if (response !== undefined && response.length > 3) {
             endTime = new Date().getTime();
             console.log('\n\nExecution time: %j ms\n\n', endTime - startTime);
             console.log('OK: %j, trying #BYE#', response);
             return signOff();
-        }
-        Client.throwError('ORWU DT', response);
     }).then((response) => {
         if (response === rpcFormatter.encapsulate('#BYE#')) {
             console.log('#BYE#');
             success('test1');
             // reconnectClientForNewTest(client, test2);
-            Client.closeClient();
+            Client.closeClient();   //Need a function?
         } else Client.throwError('#BYE#', response);
     }).catch((error) => {
         console.log(error);
