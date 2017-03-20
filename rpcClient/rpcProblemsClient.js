@@ -21,7 +21,7 @@ let startTime,
 
 
 // new problem arguments
-const createProbDiabetesArgs = CONFIG.problemStomachUlcer;
+const createProbDiabetesArgs = CONFIG.diabetes;
 const probParams = [];
 
 for (const key in createProbDiabetesArgs) {
