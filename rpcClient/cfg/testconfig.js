@@ -19,7 +19,7 @@ config.maryIEN = '62';
 config.maryAccess = 'fakenurse1';
 config.maryVerify = '1Nur!@#$';
 
-config.patientId = '2';
+config.patientId = '3';
 
 config.diabetes = { 
     '1': 'GMPFLD(.01)="521774^R69."',

@@ -33,9 +33,6 @@ for (const key in createProbDiabetesArgs) {
     }
 }
 
-console.log(probParams);
-console.log(rpcFormatter.buildListParamString(probParams));
-
 const rpcGreeting = function rpcGreeting(msg) {
     const callback = function callback(err, res, fulfill, reject) {
         if (err) {
@@ -91,7 +88,6 @@ const authenticate = function authenticate() {
 const createContext = function createContext() {
     const context = 'OR CPRS GUI CHART';
     const rpcName = 'XWB CREATE CONTEXT';
-    // console.log("arg: %j", rpcFormatter.buildEncryptedParamString(context));
     const rpcArgs = [rpcFormatter.buildEncryptedParamString(context)];
     const rpc = rpcFormatter.buildRpcString(rpcName, rpcArgs);
 
@@ -105,7 +101,7 @@ const createContext = function createContext() {
             reject(new Error("Context error(XWB CREATE CONTEXT)"));
         }
     }
-    return Client.sendRpc(rpc);
+    return Client.sendRpc(rpc, callback);
 };
 
 const selectPatient = function selectPatient() {
@@ -119,10 +115,10 @@ const selectPatient = function selectPatient() {
 
             fulfill(res);
         } else {
-            reject(new Error("Select error(ORWPT SELECT)"));
+            reject(new Error("Select patient error(ORWPT SELECT)"));
         }
     }
-    return Client.sendRpc(rpc);
+    return Client.sendRpc(rpc, callback);
 };
 
 const createProblem = function createProblem() {
@@ -131,7 +127,7 @@ const createProblem = function createProblem() {
         rpcFormatter.buildReferenceParamString('62'),
         rpcFormatter.buildReferenceParamString('2957'),
         rpcFormatter.buildListParamString(probParams),
-        rpcFormatter.buildLiteralParamString('stomach ulcer'),
+        rpcFormatter.buildLiteralParamString('Diabetes mellitus'),
     ];
     const rpc = rpcFormatter.buildRpcString(rpcName, rpcArgs);
     const callback = function callback(err, res, fulfill, reject) {
@@ -141,11 +137,35 @@ const createProblem = function createProblem() {
 
             fulfill(res);
         } else {
-            reject(new Error("Select error(ORWPT SELECT)"));
+            reject(new Error("Create problem error(ORQQPL ADD SAVE)"));
         }
     }
 
-    return Client.sendRpc(rpc);
+    return Client.sendRpc(rpc, callback);
+};
+
+const updateProblem = function updateProblem() {
+    const rpcName = 'ORQQPL EDIT SAVE';
+    const rpcArgs = [rpcFormatter.buildLiteralParamString('1'),
+        rpcFormatter.buildReferenceParamString('62'),
+        rpcFormatter.buildReferenceParamString('2957'),
+        rpcFormatter.buildLiteralParamString('1'),
+        rpcFormatter.buildListParamString(probParams),
+        rpcFormatter.buildLiteralParamString('Diabetes mellitus'),
+    ];
+    const rpc = rpcFormatter.buildRpcString(rpcName, rpcArgs);
+    const callback = function callback(err, res, fulfill, reject) {
+        if (err) {
+            reject(err);
+        } else if (res !== undefined && res.length > 3) {
+
+            fulfill(res);
+        } else {
+            reject(new Error("Create problem error(ORQQPL EDIT SAVE)"));
+        }
+    }
+
+    return Client.sendRpc(rpc, callback);
 };
 
 const getProblemDetail = function getProblemDetail() {
@@ -160,26 +180,47 @@ const getProblemDetail = function getProblemDetail() {
         if (err) {
             reject(err);
         } else if (res !== undefined && res.length > 3) {
-
+            console.log('get problem detail: ', res);
             fulfill(res);
         } else {
-            reject(new Error("Select error(ORWPT SELECT)"));
+            reject(new Error("Get problem detail error(ORQQPL DETAIL)"));
         }
     }
-    return Client.sendRpc(rpc);
+    return Client.sendRpc(rpc, callback);
+};
+
+const listProblems = function listProblems() {
+    const rpcName = 'ORQQPL PROBLEM LIST';
+    const rpcArgs = [
+        rpcFormatter.buildLiteralParamString('3'),
+        rpcFormatter.buildLiteralParamString('B'), //active problems
+        rpcFormatter.buildLiteralParamString('0')
+    ];
+    const rpc = rpcFormatter.buildRpcString(rpcName, rpcArgs);
+    const callback = function callback(err, res, fulfill, reject) {
+        console.log('list problems: ', res);
+        if (err) {
+            reject(err);
+        } else if (res !== undefined) {
+            fulfill(res);
+        } else {
+            reject(new Error("Get problem list error(ORQQPL PROBLEM LIST)"));
+        }
+    }
+    return Client.sendRpc(rpc, callback);
 };
 
 const signOff = function signOff() {
     const callback = function callback(err, res, fulfill, reject) {
         if (err) {
             reject(err);
-        } else if (response === rpcFormatter.encapsulate('#BYE#')) {
+        } else if (res === rpcFormatter.encapsulate('#BYE#')) {
             fulfill(res);
         } else {
             reject(new Error("Signoff error(BYE)"));
         }
     }
-    return Client.sendRpc(rpcFormatter.buildRpcSignOffString());
+    return Client.sendRpc(rpcFormatter.buildRpcSignOffString(), callback);
 };
 
 function CallRPCs() {
@@ -209,19 +250,27 @@ function CallRPCs() {
     }).then((response) => {
         console.log(response);
         // get patient problem data
-            return getProblemDetail();
+        return getProblemDetail();
     }).then((response) => {
         console.log(response);
-            endTime = new Date().getTime();
-            console.log('\n\nExecution time: %j ms\n\n', endTime - startTime);
-            console.log('OK: %j, trying #BYE#', response);
-            return signOff();
+        //update problem
+        return updateProblem();
+    }).then((response) => {
+        // list problems
+        console.log(response);
+        return listProblems();
+    }).then((response) => {
+        console.log(response);
+        endTime = new Date().getTime();
+        console.log('\n\nExecution time: %j ms\n\n', endTime - startTime);
+        console.log('OK: %j, trying #BYE#', response);
+        return signOff();
     }).then((response) => {
         if (response === rpcFormatter.encapsulate('#BYE#')) {
             console.log('#BYE#');
             success('test1');
             // reconnectClientForNewTest(client, test2);
-            Client.closeClient();   //Need a function?
+            Client.closeClient(); //Need a function?
         } else Client.throwError('#BYE#', response);
     }).catch((error) => {
         console.log(error);
