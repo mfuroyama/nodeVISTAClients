@@ -1,8 +1,10 @@
 # RPC Interface Clients
 
-Example rpcProblemsClient.js clients that show how to use the nodeVISTA problem RPC service interface.
+Example clients that show how to use the nodeVISTA RPC interface.
 
 These clients run on your __host__ machine (__not__ the nodeVISTA VM) and use _ES6 Promises_.
+
+The first example client is _rpcProblemClient.js_.
 
 ### Install Module Dependencies
 
