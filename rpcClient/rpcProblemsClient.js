@@ -16,10 +16,6 @@ const robertVerify = CONFIG.robertVerify;
 
 const patientId = CONFIG.patientId;
 
-let startTime,
-    endTime;
-
-
 // new problem arguments
 const createProbDiabetesArgs = CONFIG.diabetes;
 const probParams = [];
@@ -180,7 +176,6 @@ const getProblemDetail = function getProblemDetail() {
         if (err) {
             reject(err);
         } else if (res !== undefined && res.length > 3) {
-            console.log('get problem detail: ', res);
             fulfill(res);
         } else {
             reject(new Error("Get problem detail error(ORQQPL DETAIL)"));
@@ -198,7 +193,6 @@ const listProblems = function listProblems() {
     ];
     const rpc = rpcFormatter.buildRpcString(rpcName, rpcArgs);
     const callback = function callback(err, res, fulfill, reject) {
-        console.log('list problems: ', res);
         if (err) {
             reject(err);
         } else if (res !== undefined) {
@@ -225,20 +219,11 @@ const signOff = function signOff() {
 
 function CallRPCs() {
     rpcGreeting('hello').then((response) => {
-
-        console.log('TCPConnect OK, trying XUS SIGNON SETUP');
         return setupSignon();
-
     }).then((response) => {
-
-        console.log('XUS SIGNON SETUP OK, trying XWB CREATE CONTEXT DVBA CAPRI GUI');
         return authenticate();
-
     }).then((response) => {
-        console.log('XUS AV CODE OK: %j, trying XWB CREATE CONTEXT: %j', response, 'OR CPRS GUI CHART');
-        startTime = new Date().getTime();
         return createContext();
-
     }).then((response) => {
         console.log(response);
         // select a patient
@@ -261,15 +246,12 @@ function CallRPCs() {
         return listProblems();
     }).then((response) => {
         console.log(response);
-        endTime = new Date().getTime();
-        console.log('\n\nExecution time: %j ms\n\n', endTime - startTime);
         console.log('OK: %j, trying #BYE#', response);
         return signOff();
     }).then((response) => {
         if (response === rpcFormatter.encapsulate('#BYE#')) {
             console.log('#BYE#');
             success('test1');
-            // reconnectClientForNewTest(client, test2);
             Client.closeClient(); //Need a function?
         } else Client.throwError('#BYE#', response);
     }).catch((error) => {
