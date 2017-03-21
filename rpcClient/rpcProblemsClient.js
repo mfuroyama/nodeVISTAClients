@@ -20,15 +20,6 @@ const patientId = CONFIG.patientId;
 const createProbDiabetesArgs = CONFIG.diabetes;
 const probParams = [];
 
-for (const key in createProbDiabetesArgs) {
-    if (createProbDiabetesArgs.hasOwnProperty(key)) {
-        probParams.push({
-            key,
-            value: createProbDiabetesArgs[key],
-        });
-    }
-}
-
 const rpcGreeting = function rpcGreeting(msg) {
     const callback = function callback(err, res, fulfill, reject) {
         if (err) {
@@ -122,7 +113,39 @@ const createProblem = function createProblem() {
     const rpcArgs = [rpcFormatter.buildLiteralParamString('25^CARTER,DAVID^0113^'),
         rpcFormatter.buildReferenceParamString('62'),
         rpcFormatter.buildReferenceParamString('2957'),
-        rpcFormatter.buildListParamString(probParams),
+        rpcFormatter.buildListParamString([
+            { key: '1', value: 'GMPFLD(.01)="521774^R69."' },
+            { key: '2', value: 'GMPFLD(.03)="0^"' },
+            { key: '3', value: 'GMPFLD(.05)="^Diabetes mellitus"' },
+            { key: '4', value: 'GMPFLD(.08)="3170316"' },
+            { key: '5', value: 'GMPFLD(.12)="A^ACTIVE"' },
+            { key: '6', value: 'GMPFLD(.13)="^"' },
+            { key: '7', value: 'GMPFLD(1.01)="7130783^"' },
+            { key: '8', value: 'GMPFLD(1.02)="P"' },
+            { key: '9', value: 'GMPFLD(1.03)="62^Alexander,Robert"' },
+            { key: '10', value: 'GMPFLD(1.04)="62^Alexander,Robert"' },
+            { key: '11', value: 'GMPFLD(1.05)="62^Alexander,Robert"' },
+            { key: '12', value: 'GMPFLD(1.06)="^"' },
+            { key: '13', value: 'GMPFLD(1.07)="^"' },
+            { key: '14', value: 'GMPFLD(1.08)="8^Clinicd"' },
+            { key: '15', value: 'GMPFLD(1.09)="3170316"' },
+            { key: '16', value: 'GMPFLD(1.1)="^Unknown"' },
+            { key: '17', value: 'GMPFLD(1.11)="0^NO"' },
+            { key: '18', value: 'GMPFLD(1.12)="0^NO"' },
+            { key: '19', value: 'GMPFLD(1.13)="0^NO"' },
+            { key: '20', value: 'GMPFLD(1.14)="@^"' },
+            { key: '21', value: 'GMPFLD(1.15)="0^NO"' },
+            { key: '22', value: 'GMPFLD(1.16)="0^NO"' },
+            { key: '23', value: 'GMPFLD(1.17)="0^NO"' },
+            { key: '24', value: 'GMPFLD(1.18)="0^NO"' },
+            { key: '25', value: 'GMPFLD(80001)="73211009"' },
+            { key: '26', value: 'GMPFLD(80002)="121589010"' },
+            { key: '27', value: 'GMPFLD(80101)="^"' },
+            { key: '28', value: 'GMPFLD(80102)="^"' },
+            { key: '29', value: 'GMPFLD(80201)="3170316"' },
+            { key: '30', value: 'GMPFLD(80202)="10D^ICD-10-CM"' },
+            { key: '31', value: 'GMPFLD(10,0)="0"' }
+        ]),
         rpcFormatter.buildLiteralParamString('Diabetes mellitus'),
     ];
     const rpc = rpcFormatter.buildRpcString(rpcName, rpcArgs);
@@ -146,7 +169,39 @@ const updateProblem = function updateProblem() {
         rpcFormatter.buildReferenceParamString('62'),
         rpcFormatter.buildReferenceParamString('2957'),
         rpcFormatter.buildLiteralParamString('1'),
-        rpcFormatter.buildListParamString(probParams),
+        rpcFormatter.buildListParamString([
+            { key: '1', value: 'GMPFLD(.01)="521774^R69."' },
+            { key: '2', value: 'GMPFLD(.03)="0^"' },
+            { key: '3', value: 'GMPFLD(.05)="^Diabetes mellitus"' },
+            { key: '4', value: 'GMPFLD(.08)="3170316"' },
+            { key: '5', value: 'GMPFLD(.12)="A^ACTIVE"' },
+            { key: '6', value: 'GMPFLD(.13)="^"' },
+            { key: '7', value: 'GMPFLD(1.01)="7130783^"' },
+            { key: '8', value: 'GMPFLD(1.02)="P"' },
+            { key: '9', value: 'GMPFLD(1.03)="62^Alexander,Robert"' },
+            { key: '10', value: 'GMPFLD(1.04)="62^Alexander,Robert"' },
+            { key: '11', value: 'GMPFLD(1.05)="62^Alexander,Robert"' },
+            { key: '12', value: 'GMPFLD(1.06)="^"' },
+            { key: '13', value: 'GMPFLD(1.07)="^"' },
+            { key: '14', value: 'GMPFLD(1.08)="8^Clinicd"' },
+            { key: '15', value: 'GMPFLD(1.09)="3170316"' },
+            { key: '16', value: 'GMPFLD(1.1)="^Unknown"' },
+            { key: '17', value: 'GMPFLD(1.11)="0^NO"' },
+            { key: '18', value: 'GMPFLD(1.12)="0^NO"' },
+            { key: '19', value: 'GMPFLD(1.13)="0^NO"' },
+            { key: '20', value: 'GMPFLD(1.14)="@^"' },
+            { key: '21', value: 'GMPFLD(1.15)="0^NO"' },
+            { key: '22', value: 'GMPFLD(1.16)="0^NO"' },
+            { key: '23', value: 'GMPFLD(1.17)="0^NO"' },
+            { key: '24', value: 'GMPFLD(1.18)="0^NO"' },
+            { key: '25', value: 'GMPFLD(80001)="73211009"' },
+            { key: '26', value: 'GMPFLD(80002)="121589010"' },
+            { key: '27', value: 'GMPFLD(80101)="^"' },
+            { key: '28', value: 'GMPFLD(80102)="^"' },
+            { key: '29', value: 'GMPFLD(80201)="3170316"' },
+            { key: '30', value: 'GMPFLD(80202)="10D^ICD-10-CM"' },
+            { key: '31', value: 'GMPFLD(10,0)="0"' }
+        ]),
         rpcFormatter.buildLiteralParamString('Diabetes mellitus'),
     ];
     const rpc = rpcFormatter.buildRpcString(rpcName, rpcArgs);
