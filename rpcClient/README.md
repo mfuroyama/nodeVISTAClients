@@ -17,11 +17,10 @@ $ cd nodeVISTAClients/rpcClient
 $ npm install
 ```
 
-### Ensure the RPC Server is running (to be edited)
-
+### Ensure the RPC Server is running
+Please refer to https://github.com/vistadataproject/nodeVISTA/tree/master/rpcServer
 ```text
 $ curl http://10.2.2.100:9010
-No authorization token was found  <-- This is the correct response and verifies that the RPC Interface is available
 ```
 
 ### Execute the rpcProblemsClient.js script
