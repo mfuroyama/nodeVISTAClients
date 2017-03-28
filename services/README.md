@@ -1,8 +1,8 @@
-# Services Client
+# Service Interface Clients
 
-An example node.js client using es6 promises that interacts with the nodeVISTA clinical REST service interface.
+Example node.js clients that show how to use the nodeVISTA clinical REST service interface.
 
-The Services client will be executed on your __host__ machine (__not__ the nodeVISTA VM).
+These clients run on your __host__ machine (__not__ the nodeVISTA VM) and use _ES6 Promises_.
 
 ### Install Module Dependencies
 

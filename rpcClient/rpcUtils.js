@@ -122,5 +122,4 @@ function receiveData(chunk, data) {
 
     return recievedPacket;
 }
-
 module.exports.Client = Client;

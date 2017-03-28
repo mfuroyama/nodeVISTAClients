@@ -8,7 +8,8 @@
     "net": "latest",
     "promise": "latest",
     "async": "latest",
-    "nodevista-rpcparser": "file:../../nodeVISTA/lib/rpcParser"
+    "nodevista-rpcparser": "file:../../nodeVISTA/lib/rpcParser",
+    "lodash": "latest"
   },
   "devDependencies": {
     "eslint": "^3.14.1",

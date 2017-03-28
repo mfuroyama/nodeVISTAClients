@@ -16,25 +16,9 @@ const robertVerify = CONFIG.robertVerify;
 
 const patientId = CONFIG.patientId;
 
-let startTime,
-    endTime;
-
-
 // new problem arguments
-const createProbDiabetesArgs = CONFIG.problemStomachUlcer;
+const createProbDiabetesArgs = CONFIG.diabetes;
 const probParams = [];
-
-for (const key in createProbDiabetesArgs) {
-    if (createProbDiabetesArgs.hasOwnProperty(key)) {
-        probParams.push({
-            key,
-            value: createProbDiabetesArgs[key],
-        });
-    }
-}
-
-console.log(probParams);
-console.log(rpcFormatter.buildListParamString(probParams));
 
 const rpcGreeting = function rpcGreeting(msg) {
     const callback = function callback(err, res, fulfill, reject) {
@@ -43,7 +27,7 @@ const rpcGreeting = function rpcGreeting(msg) {
         } else if (res === rpcFormatter.encapsulate('accept')) {
             fulfill(res);
         } else {
-            reject(new Error("get greeting error"));
+            reject(new Error("Greeting error (TCP Connect)"));
         }
     }
     return Client.sendRpc(rpcFormatter.buildRpcGreetingString(
@@ -63,7 +47,7 @@ const setupSignon = function setupSignon() {
             } else if (signonSetupResponseArray.length > 7 && signonSetupResponseArray[5] == 0) {
                 fulfill(res);
             } else {
-                reject(new Error("Signon setup error"));
+                reject(new Error("Signon setup error(XUS SIGNON SETUP)"));
             }
         }
         // send the rpc and wait on the promise of the response
@@ -75,26 +59,53 @@ const authenticate = function authenticate() {
     const rpcArgs = [rpcFormatter.buildEncryptedParamString(`${robertAccess};${robertVerify}`)];
     const rpc = rpcFormatter.buildRpcString(rpcName, rpcArgs);
 
-    // send the rpc and wait on the promise of the response
-    return Client.sendRpc(rpc);
+    const callback = function callback(err, res, fulfill, reject) {
+        const responseArray = rpcFormatter.stripMarkers(res).split(NEW_LINE); //not used
+        if (err) {
+            reject(err);
+        } else if (res.match(/Good/)) {
+            fulfill(res);
+        } else {
+            reject(new Error("Authenticate error(XUS AV CODE)"));
+        }
+    }
+    return Client.sendRpc(rpc, callback);
 };
 
 const createContext = function createContext() {
     const context = 'OR CPRS GUI CHART';
     const rpcName = 'XWB CREATE CONTEXT';
-    // console.log("arg: %j", rpcFormatter.buildEncryptedParamString(context));
     const rpcArgs = [rpcFormatter.buildEncryptedParamString(context)];
     const rpc = rpcFormatter.buildRpcString(rpcName, rpcArgs);
 
-    // send the rpc and wait on the promise of the response
-    return Client.sendRpc(rpc);
+    const callback = function callback(err, res, fulfill, reject) {
+        const responseArray = rpcFormatter.stripMarkers(res).split(NEW_LINE);
+        if (err) {
+            reject(err);
+        } else if (res === rpcFormatter.encapsulate('1')) {
+            fulfill(res);
+        } else {
+            reject(new Error("Context error(XWB CREATE CONTEXT)"));
+        }
+    }
+    return Client.sendRpc(rpc, callback);
 };
 
 const selectPatient = function selectPatient() {
     const rpcName = 'ORWPT SELECT';
     const rpcArgs = [rpcFormatter.buildLiteralParamString(patientId)];
     const rpc = rpcFormatter.buildRpcString(rpcName, rpcArgs);
-    return Client.sendRpc(rpc);
+    const callback = function callback(err, res, fulfill, reject) {
+        if (err) {
+            reject(err);
+        } else if (res !== undefined && res.length > 3) {
+
+            fulfill(res);
+        } else {
+            reject(new Error("Select patient error(ORWPT SELECT)"));
+        }
+    }
+    return Client.sendRpc(rpc, callback);
 };
 
 const createProblem = function createProblem() {
@@ -102,11 +113,110 @@ const createProblem = function createProblem() {
     const rpcArgs = [rpcFormatter.buildLiteralParamString('25^CARTER,DAVID^0113^'),
         rpcFormatter.buildReferenceParamString('62'),
         rpcFormatter.buildReferenceParamString('2957'),
-        rpcFormatter.buildListParamString(probParams),
-        rpcFormatter.buildLiteralParamString('stomach ulcer'),
+        rpcFormatter.buildListParamString([
+            { key: '1', value: 'GMPFLD(.01)="521774^R69."' },
+            { key: '2', value: 'GMPFLD(.03)="0^"' },
+            { key: '3', value: 'GMPFLD(.05)="^Diabetes mellitus"' },
+            { key: '4', value: 'GMPFLD(.08)="3170316"' },
+            { key: '5', value: 'GMPFLD(.12)="A^ACTIVE"' },
+            { key: '6', value: 'GMPFLD(.13)="^"' },
+            { key: '7', value: 'GMPFLD(1.01)="7130783^"' },
+            { key: '8', value: 'GMPFLD(1.02)="P"' },
+            { key: '9', value: 'GMPFLD(1.03)="62^Alexander,Robert"' },
+            { key: '10', value: 'GMPFLD(1.04)="62^Alexander,Robert"' },
+            { key: '11', value: 'GMPFLD(1.05)="62^Alexander,Robert"' },
+            { key: '12', value: 'GMPFLD(1.06)="^"' },
+            { key: '13', value: 'GMPFLD(1.07)="^"' },
+            { key: '14', value: 'GMPFLD(1.08)="8^Clinicd"' },
+            { key: '15', value: 'GMPFLD(1.09)="3170316"' },
+            { key: '16', value: 'GMPFLD(1.1)="^Unknown"' },
+            { key: '17', value: 'GMPFLD(1.11)="0^NO"' },
+            { key: '18', value: 'GMPFLD(1.12)="0^NO"' },
+            { key: '19', value: 'GMPFLD(1.13)="0^NO"' },
+            { key: '20', value: 'GMPFLD(1.14)="@^"' },
+            { key: '21', value: 'GMPFLD(1.15)="0^NO"' },
+            { key: '22', value: 'GMPFLD(1.16)="0^NO"' },
+            { key: '23', value: 'GMPFLD(1.17)="0^NO"' },
+            { key: '24', value: 'GMPFLD(1.18)="0^NO"' },
+            { key: '25', value: 'GMPFLD(80001)="73211009"' },
+            { key: '26', value: 'GMPFLD(80002)="121589010"' },
+            { key: '27', value: 'GMPFLD(80101)="^"' },
+            { key: '28', value: 'GMPFLD(80102)="^"' },
+            { key: '29', value: 'GMPFLD(80201)="3170316"' },
+            { key: '30', value: 'GMPFLD(80202)="10D^ICD-10-CM"' },
+            { key: '31', value: 'GMPFLD(10,0)="0"' }
+        ]),
+        rpcFormatter.buildLiteralParamString('Diabetes mellitus'),
     ];
     const rpc = rpcFormatter.buildRpcString(rpcName, rpcArgs);
-    return Client.sendRpc(rpc);
+    const callback = function callback(err, res, fulfill, reject) {
+        if (err) {
+            reject(err);
+        } else if (res !== undefined && res.length > 3) {
+
+            fulfill(res);
+        } else {
+            reject(new Error("Create problem error(ORQQPL ADD SAVE)"));
+        }
+    }
+
+    return Client.sendRpc(rpc, callback);
+};
+
+const updateProblem = function updateProblem() {
+    const rpcName = 'ORQQPL EDIT SAVE';
+    const rpcArgs = [rpcFormatter.buildLiteralParamString('1'),
+        rpcFormatter.buildReferenceParamString('62'),
+        rpcFormatter.buildReferenceParamString('2957'),
+        rpcFormatter.buildLiteralParamString('1'),
+        rpcFormatter.buildListParamString([
+            { key: '1', value: 'GMPFLD(.01)="521774^R69."' },
+            { key: '2', value: 'GMPFLD(.03)="0^"' },
+            { key: '3', value: 'GMPFLD(.05)="^Diabetes mellitus"' },
+            { key: '4', value: 'GMPFLD(.08)="3170316"' },
+            { key: '5', value: 'GMPFLD(.12)="A^ACTIVE"' },
+            { key: '6', value: 'GMPFLD(.13)="^"' },
+            { key: '7', value: 'GMPFLD(1.01)="7130783^"' },
+            { key: '8', value: 'GMPFLD(1.02)="P"' },
+            { key: '9', value: 'GMPFLD(1.03)="62^Alexander,Robert"' },
+            { key: '10', value: 'GMPFLD(1.04)="62^Alexander,Robert"' },
+            { key: '11', value: 'GMPFLD(1.05)="62^Alexander,Robert"' },
+            { key: '12', value: 'GMPFLD(1.06)="^"' },
+            { key: '13', value: 'GMPFLD(1.07)="^"' },
+            { key: '14', value: 'GMPFLD(1.08)="8^Clinicd"' },
+            { key: '15', value: 'GMPFLD(1.09)="3170316"' },
+            { key: '16', value: 'GMPFLD(1.1)="^Unknown"' },
+            { key: '17', value: 'GMPFLD(1.11)="0^NO"' },
+            { key: '18', value: 'GMPFLD(1.12)="0^NO"' },
+            { key: '19', value: 'GMPFLD(1.13)="0^NO"' },
+            { key: '20', value: 'GMPFLD(1.14)="@^"' },
+            { key: '21', value: 'GMPFLD(1.15)="0^NO"' },
+            { key: '22', value: 'GMPFLD(1.16)="0^NO"' },
+            { key: '23', value: 'GMPFLD(1.17)="0^NO"' },
+            { key: '24', value: 'GMPFLD(1.18)="0^NO"' },
+            { key: '25', value: 'GMPFLD(80001)="73211009"' },
+            { key: '26', value: 'GMPFLD(80002)="121589010"' },
+            { key: '27', value: 'GMPFLD(80101)="^"' },
+            { key: '28', value: 'GMPFLD(80102)="^"' },
+            { key: '29', value: 'GMPFLD(80201)="3170316"' },
+            { key: '30', value: 'GMPFLD(80202)="10D^ICD-10-CM"' },
+            { key: '31', value: 'GMPFLD(10,0)="0"' }
+        ]),
+        rpcFormatter.buildLiteralParamString('Diabetes mellitus'),
+    ];
+    const rpc = rpcFormatter.buildRpcString(rpcName, rpcArgs);
+    const callback = function callback(err, res, fulfill, reject) {
+        if (err) {
+            reject(err);
+        } else if (res !== undefined && res.length > 3) {
+
+            fulfill(res);
+        } else {
+            reject(new Error("Create problem error(ORQQPL EDIT SAVE)"));
+        }
+    }
+
+    return Client.sendRpc(rpc, callback);
 };
 
 const getProblemDetail = function getProblemDetail() {
@@ -117,68 +227,87 @@ const getProblemDetail = function getProblemDetail() {
         rpcFormatter.buildLiteralParamString('2'),
     ];
     const rpc = rpcFormatter.buildRpcString(rpcName, rpcArgs);
-    return Client.sendRpc(rpc);
+    const callback = function callback(err, res, fulfill, reject) {
+        if (err) {
+            reject(err);
+        } else if (res !== undefined && res.length > 3) {
+            fulfill(res);
+        } else {
+            reject(new Error("Get problem detail error(ORQQPL DETAIL)"));
+        }
+    }
+    return Client.sendRpc(rpc, callback);
+};
+
+const listProblems = function listProblems() {
+    const rpcName = 'ORQQPL PROBLEM LIST';
+    const rpcArgs = [
+        rpcFormatter.buildLiteralParamString('3'),
+        rpcFormatter.buildLiteralParamString('B'), //active problems
+        rpcFormatter.buildLiteralParamString('0')
+    ];
+    const rpc = rpcFormatter.buildRpcString(rpcName, rpcArgs);
+    const callback = function callback(err, res, fulfill, reject) {
+        if (err) {
+            reject(err);
+        } else if (res !== undefined) {
+            fulfill(res);
+        } else {
+            reject(new Error("Get problem list error(ORQQPL PROBLEM LIST)"));
+        }
+    }
+    return Client.sendRpc(rpc, callback);
 };
 
 const signOff = function signOff() {
-    return Client.sendRpc(rpcFormatter.buildRpcSignOffString());
+    const callback = function callback(err, res, fulfill, reject) {
+        if (err) {
+            reject(err);
+        } else if (res === rpcFormatter.encapsulate('#BYE#')) {
+            fulfill(res);
+        } else {
+            reject(new Error("Signoff error(BYE)"));
+        }
+    }
+    return Client.sendRpc(rpcFormatter.buildRpcSignOffString(), callback);
 };
 
 function CallRPCs() {
     rpcGreeting('hello').then((response) => {
-
-        console.log('TCPConnect OK, trying XUS SIGNON SETUP');
         return setupSignon();
-
     }).then((response) => {
-
-        console.log('XUS SIGNON SETUP OK, trying XWB CREATE CONTEXT DVBA CAPRI GUI');
         return authenticate();
-
     }).then((response) => {
-        const responseArray = rpcFormatter.stripMarkers(response).split(NEW_LINE);
-
-        if (response.match(/Good/)) {
-            console.log('XUS AV CODE OK: %j, trying XWB CREATE CONTEXT: %j', response, 'OR CPRS GUI CHART');
-            return createContext();
-        }
-        Client.throwError('XUS AV CODE', response);
+        return createContext();
     }).then((response) => {
         console.log(response);
         // select a patient
-        if (response === rpcFormatter.encapsulate('1')) {
-            return selectPatient();
-        }
-        Client.throwError('ORWPT SELECT', response);
+        return selectPatient();
     }).then((response) => {
         console.log(response);
         // create a problem
-        if (response !== undefined && response.length > 3) {
-            return createProblem();
-        }
-        Client.throwError('ORWPT SELECT', response);
+        return createProblem();
     }).then((response) => {
         console.log(response);
         // get patient problem data
-        if (response !== undefined && response.length > 3) {
-            return getProblemDetail();
-        }
-        Client.throwError('ORWPT SELECT', response);
+        return getProblemDetail();
     }).then((response) => {
         console.log(response);
-        if (response !== undefined && response.length > 3) {
-            endTime = new Date().getTime();
-            console.log('\n\nExecution time: %j ms\n\n', endTime - startTime);
-            console.log('OK: %j, trying #BYE#', response);
-            return signOff();
-        }
-        Client.throwError('ORWU DT', response);
+        //update problem
+        return updateProblem();
+    }).then((response) => {
+        // list problems
+        console.log(response);
+        return listProblems();
+    }).then((response) => {
+        console.log(response);
+        console.log('OK: %j, trying #BYE#', response);
+        return signOff();
     }).then((response) => {
         if (response === rpcFormatter.encapsulate('#BYE#')) {
             console.log('#BYE#');
             success('test1');
-            // reconnectClientForNewTest(client, test2);
-            Client.closeClient();
+            Client.closeClient(); //Need a function?
         } else Client.throwError('#BYE#', response);
     }).catch((error) => {
         console.log(error);
