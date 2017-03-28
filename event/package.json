@@ -1,0 +1,23 @@
+{
+  "name": "services",
+  "description": "Example Event Client",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/vistadataproject/nodeVISTAClients/event",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "es6-error": "^4.0.2",
+    "lodash": "^4.17.4",
+    "ws": "latest"
+  },
+  "devDependencies": {
+    "eslint": "^3.14.1",
+    "eslint-config-airbnb-base": "^11.0.1",
+    "eslint-plugin-import": "^2.2.0"
+  }
+}
