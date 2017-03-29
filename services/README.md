@@ -73,7 +73,7 @@ New problem successfully created!
     "label": "CARTER,DAVID"
   },
   "lastModifiedDate": {
-    "value": "2017-03-29T23:09:47Z",
+    "value": "2017-03-29T23:14:55Z",
     "type": "xsd:dateTime"
   },
   "providerNarrative": {
@@ -86,7 +86,7 @@ New problem successfully created!
     "label": "VISTA HEALTH CARE"
   },
   "enteredDate": {
-    "value": "2017-03-29T23:09:47Z",
+    "value": "2017-03-29T23:14:55Z",
     "type": "xsd:dateTime"
   },
   "problemStatus": "ACTIVE",
@@ -112,7 +112,7 @@ New problem successfully created!
   "snomedCTConceptCode": "73211009",
   "snomedCTDesignationCode": "121589010",
   "interestDate": {
-    "value": "2017-03-29T23:09:47Z",
+    "value": "2017-03-29T23:14:55Z",
     "type": "xsd:dateTime"
   },
   "codingSystem": "10D"
@@ -152,7 +152,7 @@ Describe problem success!
     "label": "CARTER,DAVID"
   },
   "lastModifiedDate": {
-    "value": "2017-03-29T23:09:47Z",
+    "value": "2017-03-29T23:14:55Z",
     "type": "xsd:dateTime"
   },
   "providerNarrative": {
@@ -165,7 +165,7 @@ Describe problem success!
     "label": "VISTA HEALTH CARE"
   },
   "enteredDate": {
-    "value": "2017-03-29T23:09:47Z",
+    "value": "2017-03-29T23:14:55Z",
     "type": "xsd:dateTime"
   },
   "problemStatus": "INACTIVE",
@@ -191,7 +191,7 @@ Describe problem success!
   "snomedCTConceptCode": "73211009",
   "snomedCTDesignationCode": "121589010",
   "interestDate": {
-    "value": "2017-03-29T23:09:47Z",
+    "value": "2017-03-29T23:14:55Z",
     "type": "xsd:dateTime"
   },
   "codingSystem": "10D",
@@ -204,7 +204,7 @@ Describe problem success!
       },
       "fieldNumber": 0.12,
       "dateModified": {
-        "value": "2017-03-29T23:09:47Z",
+        "value": "2017-03-29T23:14:55Z",
         "type": "xsd:dateTime"
       },
       "whoModified": {
@@ -244,7 +244,7 @@ List problems success!
       "label": "CARTER,DAVID"
     },
     "lastModifiedDate": {
-      "value": "2017-03-29T23:09:47Z",
+      "value": "2017-03-29T23:14:55Z",
       "type": "xsd:dateTime"
     },
     "providerNarrative": {
@@ -257,7 +257,7 @@ List problems success!
       "label": "VISTA HEALTH CARE"
     },
     "enteredDate": {
-      "value": "2017-03-29T23:09:47Z",
+      "value": "2017-03-29T23:14:55Z",
       "type": "xsd:dateTime"
     },
     "problemStatus": "INACTIVE",
@@ -283,7 +283,7 @@ List problems success!
     "snomedCTConceptCode": "73211009",
     "snomedCTDesignationCode": "121589010",
     "interestDate": {
-      "value": "2017-03-29T23:09:47Z",
+      "value": "2017-03-29T23:14:55Z",
       "type": "xsd:dateTime"
     },
     "codingSystem": "10D",
@@ -296,7 +296,7 @@ List problems success!
         },
         "fieldNumber": 0.12,
         "dateModified": {
-          "value": "2017-03-29T23:09:47Z",
+          "value": "2017-03-29T23:14:55Z",
           "type": "xsd:dateTime"
         },
         "whoModified": {
@@ -313,96 +313,4 @@ List problems success!
     ]
   }
 ]
-
-
-
-
-Describe problem success!
-
-
-{
-  "id": "9000011-1",
-  "type": "Problem",
-  "name": "Diabetes mellitus (SCT 73211009)",
-  "uniqueId": 1,
-  "diagnosis": {
-    "id": "80-521774",
-    "label": "R69.",
-    "sameAs": "icd9cm:r69."
-  },
-  "icdd": "ILLNESS, UNSPECIFIED",
-  "patient": {
-    "id": "2-25",
-    "label": "CARTER,DAVID"
-  },
-  "lastModifiedDate": {
-    "value": "2017-03-29T23:09:47Z",
-    "type": "xsd:dateTime"
-  },
-  "providerNarrative": {
-    "id": "9999999_27-1",
-    "label": "Diabetes mellitus",
-    "sameAs": "vuid:757-7065392"
-  },
-  "facility": {
-    "id": "4-2957",
-    "label": "VISTA HEALTH CARE"
-  },
-  "enteredDate": {
-    "value": "2017-03-29T23:09:47Z",
-    "type": "xsd:dateTime"
-  },
-  "problemStatus": "INACTIVE",
-  "problem": {
-    "id": "757_01-7130783",
-    "label": "Diabetes mellitus",
-    "sameAs": "vuid:757-7065392"
-  },
-  "condition": "PERMANENT",
-  "enteredBy": {
-    "id": "200-62",
-    "label": "ALEXANDER,ROBERT"
-  },
-  "responsibleProvider": {
-    "id": "200-62",
-    "label": "ALEXANDER,ROBERT"
-  },
-  "clinic": {
-    "id": "44-8",
-    "label": "CLInicB"
-  },
-  "snomedCTConceptValue": "Diabetes mellitus",
-  "snomedCTConceptCode": "73211009",
-  "snomedCTDesignationCode": "121589010",
-  "interestDate": {
-    "value": "2017-03-29T23:09:47Z",
-    "type": "xsd:dateTime"
-  },
-  "codingSystem": "10D",
-  "audits": [
-    {
-      "id": "125_8-1",
-      "problem": {
-        "id": "9000011-1",
-        "label": "R69."
-      },
-      "fieldNumber": 0.12,
-      "dateModified": {
-        "value": "2017-03-29T23:09:47Z",
-        "type": "xsd:dateTime"
-      },
-      "whoModified": {
-        "id": "200-62",
-        "label": "ALEXANDER,ROBERT"
-      },
-      "oldValue": "A",
-      "newValue": "I",
-      "requestingProvider": {
-        "id": "200-62",
-        "label": "ALEXANDER,ROBERT"
-      }
-    }
-  ]
-}
-
 ```
