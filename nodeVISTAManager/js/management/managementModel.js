@@ -2,12 +2,13 @@
 define([
     'jquery',
     'underscore',
-    'backbone'
-], function ($, _, Backbone) {
+    'backbone',
+    'config',
+], function ($, _, Backbone, config) {
     'use strict';
 
     var ManagementModel = Backbone.Model.extend({
-        urlRoot: '/management'
+        urlRoot: `${config.httpProtocol}/${config.host}:${config.port}/management`,
     });
 
     return ManagementModel;
