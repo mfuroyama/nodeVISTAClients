@@ -223,15 +223,18 @@ function runCalls() {
     let refreshToken;
     let patientToken;
     let problem;
+
+    const NEW_LINES = '\n\n\n';
+
     authenticate(config.userId, config.facilityId).then((res) => {
-        console.log('Authentication success! Received the access and refresh JWT tokens!\n\n');
+        console.log(`Authentication success! Received the access and refresh JWT tokens!${NEW_LINES}`);
 
         accessToken = res.accessToken;
         refreshToken = res.refreshToken;
 
         return patientSelect(accessToken, config.patientId);
     }).then((res) => {
-        console.log('Patient select success! Received a patient JWT token!\n\n');
+        console.log(`Patient select success! Received a patient JWT token!${NEW_LINES}`);
 
         patientToken = res.patientToken;
 
@@ -241,9 +244,9 @@ function runCalls() {
             args: createProbDiabetesArgs,
         });
     }).then((res) => {
-        console.log('New problem successfully created!\n\n');
+        console.log(`New problem successfully created!${NEW_LINES}`);
         problem = res.body.created;
-        console.log(`${JSON.stringify(problem, null, 2)}\n\n\n\n`);
+        console.log(`${JSON.stringify(problem, null, 2)}${NEW_LINES}`);
 
         const updateProbOptions = {
             accessToken,
@@ -256,9 +259,9 @@ function runCalls() {
 
         return updateProblem(updateProbOptions);
     }).then((res) => {
-        console.log('Problem successfully updated!\n\n');
+        console.log(`Problem successfully updated!${NEW_LINES}`);
         problem = res.body.updated;
-        console.log(`${JSON.stringify(problem, null, 2)}\n\n\n\n`);
+        console.log(`${JSON.stringify(problem, null, 2)}${NEW_LINES}`);
 
         return describeProblem({
             accessToken,
@@ -266,9 +269,9 @@ function runCalls() {
             problemId: problem.id,
         });
     }).then((res) => {
-        console.log('Describe problem success!\n\n');
+        console.log(`Describe problem success!${NEW_LINES}`);
         problem = JSON.parse(res.body).result;
-        console.log(`${JSON.stringify(problem, null, 2)}\n\n\n\n`);
+        console.log(`${JSON.stringify(problem, null, 2)}${NEW_LINES}`);
 
         return listProblems({
             accessToken,
@@ -276,9 +279,9 @@ function runCalls() {
             filter: 'inactive',
         });
     }).then((res) => {
-        console.log('List problems success!\n\n');
+        console.log(`List problems success!${NEW_LINES}`);
         const problems = JSON.parse(res.body).results;
-        console.log(`${JSON.stringify(problems, null, 2)}\n\n\n\n`);
+        console.log(`${JSON.stringify(problems, null, 2)}${NEW_LINES}`);
 
         return describeProblem({
             accessToken,
