@@ -145,6 +145,59 @@ Update Problem (ORQQPL EDIT SAVE) Success - setting problem to INACTIVE (I) mean
 	{"key":"29","value":"GMPFLD(80201)=\"3170316\""}
 	{"key":"30","value":"GMPFLD(80202)=\"10D^ICD-10-CM\""}
 	{"key":"31","value":"GMPFLD(10,0)=\"0\""}
+	{"key":"32","value":"GMPORIG(.01)=\"521774^R69.\""}
+	{"key":"33","value":"GMPORIG(.03)=\"0^\""}
+	{"key":"34","value":"GMPORIG(.05)=\"^Diabetes mellitus\""}
+	{"key":"35","value":"GMPORIG(.08)=\"3170316\""}
+	{"key":"36","value":"GMPORIG(.12)=\"A^ACTIVE\""}
+	{"key":"37","value":"GMPORIG(.13)=\"^\""}
+	{"key":"38","value":"GMPORIG(1.01)=\"7130783^\""}
+	{"key":"39","value":"GMPORIG(1.02)=\"P\""}
+	{"key":"40","value":"GMPORIG(1.03)=\"62^ALEXANDER,ROBERT\""}
+	{"key":"41","value":"GMPORIG(1.04)=\"62^ALEXANDER,ROBERT\""}
+	{"key":"42","value":"GMPORIG(1.05)=\"62^ALEXANDER,ROBERT\""}
+	{"key":"43","value":"GMPORIG(1.06)=\"^\""}
+	{"key":"44","value":"GMPORIG(1.07)=\"^\""}
+	{"key":"45","value":"GMPORIG(1.08)=\"3^VISTA HEALTH CARE\""}
+	{"key":"46","value":"GMPORIG(1.09)=\"3170316\""}
+	{"key":"47","value":"GMPORIG(1.1)=\"^Unknown\""}
+	{"key":"48","value":"GMPORIG(1.11)=\"0^NO\""}
+	{"key":"49","value":"GMPORIG(1.12)=\"0^NO\""}
+	{"key":"50","value":"GMPORIG(1.13)=\"0^NO\""}
+	{"key":"51","value":"GMPORIG(1.14)=\"@^\""}
+	{"key":"52","value":"GMPORIG(1.15)=\"0^NO\""}
+	{"key":"53","value":"GMPORIG(1.16)=\"0^NO\""}
+	{"key":"54","value":"GMPORIG(1.17)=\"0^NO\""}
+	{"key":"55","value":"GMPORIG(1.18)=\"0^NO\""}
+	{"key":"56","value":"GMPORIG(10,0)=\"0^\""}
+	{"key":"57","value":"GMPORIG(80001)=\"73211009\""}
+	{"key":"58","value":"GMPORIG(80002)=\"121589010\""}
+	{"key":"59","value":"GMPORIG(80101)=\"^\""}
+	{"key":"60","value":"GMPORIG(80102)=\"^\""}
+	{"key":"61","value":"GMPORIG(80201)=\"3170316\""}
+	{"key":"62","value":"GMPORIG(80202)=\"10D^ICD-10-CM\""}
+ 
+
+Get Problem Detail (ORQQPL DETAIL) Success. Notice that the update created an audit: 
+	Diabetes mellitus (SCT 73211009)
+	         SNOMED-CT: Diabetes mellitus
+	 Primary ICD-10-CM: R69.   [ILLNESS, UNSPECIFIED]
+	 
+	        Onset: 
+	       Status: INACTIVE
+	      SC Cond: UNKNOWN
+	     Exposure: None
+	 
+	     Provider: ALEXANDER,ROBERT
+	       Clinic: VISTA HEALTH CARE
+	 
+	     Recorded: 3/29/17, by ALEXANDER,ROBERT
+	      Entered: 3/29/17, by ALEXANDER,ROBERT
+	      Updated: 3/29/17
+	 
+	----------- Audit History -----------
+	3/29/17: STATUS changed by ALEXANDER,ROBERT from ACTIVE to INACTIVE
+	
  
 
 List Problems (ORQQPL PROBLEM LIST) Success - notice 'I' for INACTIVE due to UPDATE:
