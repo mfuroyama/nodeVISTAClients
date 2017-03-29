@@ -1,6 +1,6 @@
 # RPC Interface Clients
 
-Example clients that show how to use the nodeVISTA RPC interface.
+Example clients that show how to use the nodeVISTA RPC interface. Review equivalent clients in _services_ to see how much easier the services interface is.
 
 These clients run on your __host__ machine (__not__ the nodeVISTA VM) and use _ES6 Promises_.
 
@@ -31,41 +31,95 @@ $ node rpcProblemsClient.js
 The resulting response should be:
 
 ```text
-1
-ONE,PATIENT A^M^2591003^543236666^^^^^0^^0^0^^^57^0
-1
-Stomach ulcer (SCT 73211009)
-         SNOMED-CT: Diabetes mellitus
- Primary ICD-10-CM: R69.   [ILLNESS, UNSPECIFIED]
- 
-        Onset: 
-       Status: ACTIVE
-      SC Cond: UNKNOWN
-     Exposure: None
- 
-     Provider: ALEXANDER,ROBERT
-       Clinic: CLInicB
- 
-     Recorded: 3/20/17, by ALEXANDER,ROBERT
-      Entered: 3/20/17, by ALEXANDER,ROBERT
-      Updated: 3/20/17
- 
------------ Audit History -----------
-3/20/17: CLINIC changed by ALEXANDER,ROBERT from CLInicD to CLInicB
-3/20/17: RESPONSIBLE PROVIDER changed by ALEXANDER,ROBERT from ALEXANDER,ROBERT to ALEXANDER,ROBERT
-3/20/17: PROBLEM changed by ALEXANDER,ROBERT from PERMANENT to PERMANENT
-3/20/17: PROBLEM changed by ALEXANDER,ROBERT from Stomach ulcer to Diabetes mellitus
-3/20/17: STATUS changed by ALEXANDER,ROBERT from ACTIVE to ACTIVE
-3/20/17: DIAGNOSIS changed by ALEXANDER,ROBERT from (ICD-10-CM R69.) to (ICD-10-CM R69.)
-3/20/17: SNOMED CT CONCEPT changed by ALEXANDER,ROBERT from 397825006 to 73211009
+TCP Connect Success
 
-1
-0
+Setup Signon (XUS SIGNON SETUP) Success
 
-OK: "\u0000\u00000\r\n\u0004", trying #BYE#
+Authenticate 'User Robert' (XUS AV CODE) Success
+
+Get User Info (XUS GET USER INFO) Success - IEN of user with access/verify used to Authenticate is 62:
+	62
+	ALEXANDER,ROBERT
+	Robert Alexander
+	1^SOFTWARE SERVICE^050
+	
+	IRM
+	
+	300
+	
+	
+ 
+
+
+Create Context (XWB CREATE CONTEXT) <OR CPRS GUI CHART> Success
+
+Select Patient (ORWPT SELECT) Success - name of patient with IEN '25' is CARTER,DAVID:
+	CARTER,DAVID^M^2810302^000000113^^^^^0^^0^0^^^36^0
+ 
+
+
+Create Problem (ORQQPL ADD SAVE) Success - but see how complicated the arguments were:
+	{"key":"1","value":"GMPFLD(.01)=\"521774^R69.\""}
+	{"key":"2","value":"GMPFLD(.03)=\"0^\""}
+	{"key":"3","value":"GMPFLD(.05)=\"^Diabetes mellitus\""}
+	{"key":"4","value":"GMPFLD(.08)=\"3170316\""}
+	{"key":"5","value":"GMPFLD(.12)=\"A^ACTIVE\""}
+	{"key":"6","value":"GMPFLD(.13)=\"^\""}
+	{"key":"7","value":"GMPFLD(1.01)=\"7130783^\""}
+	{"key":"8","value":"GMPFLD(1.02)=\"P\""}
+	{"key":"9","value":"GMPFLD(1.03)=\"62^ALEXANDER,ROBERT\""}
+	{"key":"10","value":"GMPFLD(1.04)=\"62^ALEXANDER,ROBERT\""}
+	{"key":"11","value":"GMPFLD(1.05)=\"62^ALEXANDER,ROBERT\""}
+	{"key":"12","value":"GMPFLD(1.06)=\"^\""}
+	{"key":"13","value":"GMPFLD(1.07)=\"^\""}
+	{"key":"14","value":"GMPFLD(1.08)=\"3^VISTA HEALTH CARE\""}
+	{"key":"15","value":"GMPFLD(1.09)=\"3170316\""}
+	{"key":"16","value":"GMPFLD(1.1)=\"^Unknown\""}
+	{"key":"17","value":"GMPFLD(1.11)=\"0^NO\""}
+	{"key":"18","value":"GMPFLD(1.12)=\"0^NO\""}
+	{"key":"19","value":"GMPFLD(1.13)=\"0^NO\""}
+	{"key":"20","value":"GMPFLD(1.14)=\"@^\""}
+	{"key":"21","value":"GMPFLD(1.15)=\"0^NO\""}
+	{"key":"22","value":"GMPFLD(1.16)=\"0^NO\""}
+	{"key":"23","value":"GMPFLD(1.17)=\"0^NO\""}
+	{"key":"24","value":"GMPFLD(1.18)=\"0^NO\""}
+	{"key":"25","value":"GMPFLD(80001)=\"73211009\""}
+	{"key":"26","value":"GMPFLD(80002)=\"121589010\""}
+	{"key":"27","value":"GMPFLD(80101)=\"^\""}
+	{"key":"28","value":"GMPFLD(80102)=\"^\""}
+	{"key":"29","value":"GMPFLD(80201)=\"3170316\""}
+	{"key":"30","value":"GMPFLD(80202)=\"10D^ICD-10-CM\""}
+	{"key":"31","value":"GMPFLD(10,0)=\"0\""}
+ 
+
+Get Problem Detail (ORQQPL DETAIL) Success:
+	Diabetes mellitus (SCT 73211009)
+	         SNOMED-CT: Diabetes mellitus
+	 Primary ICD-10-CM: R69.   [ILLNESS, UNSPECIFIED]
+	 
+	        Onset: 
+	       Status: ACTIVE
+	      SC Cond: UNKNOWN
+	     Exposure: None
+	 
+	     Provider: ALEXANDER,ROBERT
+	       Clinic: VISTA HEALTH CARE
+	 
+	     Recorded: 3/29/17, by ALEXANDER,ROBERT
+	      Entered: 3/29/17, by ALEXANDER,ROBERT
+	      Updated: 3/29/17
+	 
+	 
+	
+ 
+
+Update Problem (ORQQPL EDIT SAVE) Success - set problem to INACTIVE (I)
+
+List Problems (ORQQPL PROBLEM LIST) Success - notice 'I' for INACTIVE due to UPDATE:
+	1
+	1^I^Diabetes mellitus (SCT 73211009)^R69.^^00329^^^P^3;VISTA HEALTH CARE^C^62;ALEXANDER,ROBERT^^^0^3170316^^^^10D
+	
+ 
+
 #BYE#
-
-
-test1 SUCCESS!!!
-
 ```

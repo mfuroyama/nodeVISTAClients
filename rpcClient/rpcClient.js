@@ -1,7 +1,6 @@
 'use strict';
 
 const net = require('net');
-const CONFIG = require('./cfg/testconfig.js');
 
 const Promise = require('promise');
 
@@ -23,18 +22,8 @@ function Client(port, host) {
         self.client.end();
     });
 
-    if (port !== undefined) {
-        this.serverPort = port;
-    } else {
-        this.serverPort = CONFIG.rpcServer.port;
-    }
-    if (host !== undefined) {
-        this.serverHost = host;
-    } else {
-        this.serverHost = CONFIG.rpcServer.host;
-    }
-
-    // this.sendRpc = this.sendRpc.bind(this);
+    this.serverPort = port;
+    this.serverHost = host;
 }
 
 
