@@ -229,16 +229,11 @@ function runCalls() {
         accessToken = res.accessToken;
         refreshToken = res.refreshToken;
 
-        console.log(`accessToken: ${accessToken}\n\n`);
-        console.log(`refreshToken: ${refreshToken}\n\n`);
-
         return patientSelect(accessToken, config.patientId);
     }).then((res) => {
         console.log('Patient select success! Received a patient JWT token!\n\n');
 
         patientToken = res.patientToken;
-
-        console.log(`patientToken: ${patientToken}\n\n`);
 
         return createProblem({
             accessToken,
@@ -248,7 +243,7 @@ function runCalls() {
     }).then((res) => {
         console.log('New problem successfully created!\n\n');
         problem = res.body.created;
-        console.log(`${JSON.stringify(problem, null, 2)}\n\n`);
+        console.log(`${JSON.stringify(problem, null, 2)}\n\n\n\n`);
 
         const updateProbOptions = {
             accessToken,
@@ -263,7 +258,17 @@ function runCalls() {
     }).then((res) => {
         console.log('Problem successfully updated!\n\n');
         problem = res.body.updated;
-        console.log(`${JSON.stringify(problem, null, 2)}\n\n`);
+        console.log(`${JSON.stringify(problem, null, 2)}\n\n\n\n`);
+
+        return describeProblem({
+            accessToken,
+            patientToken,
+            problemId: problem.id,
+        });
+    }).then((res) => {
+        console.log('Describe problem success!\n\n');
+        problem = JSON.parse(res.body).result;
+        console.log(`${JSON.stringify(problem, null, 2)}\n\n\n\n`);
 
         return listProblems({
             accessToken,
@@ -273,17 +278,13 @@ function runCalls() {
     }).then((res) => {
         console.log('List problems success!\n\n');
         const problems = JSON.parse(res.body).results;
-        console.log(`${JSON.stringify(problems, null, 2)}\n\n`);
+        console.log(`${JSON.stringify(problems, null, 2)}\n\n\n\n`);
 
         return describeProblem({
             accessToken,
             patientToken,
             problemId: problem.id,
         });
-    }).then((res) => {
-        console.log('Describe problem success!\n\n');
-        const problem = JSON.parse(res.body).result;
-        console.log(`${JSON.stringify(problem, null, 2)}\n\n`);
     }).catch((err) => {
         console.log(err);
     });
