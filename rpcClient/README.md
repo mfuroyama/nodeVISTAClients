@@ -113,7 +113,39 @@ Get Problem Detail (ORQQPL DETAIL) Success:
 	
  
 
-Update Problem (ORQQPL EDIT SAVE) Success - set problem to INACTIVE (I)
+Update Problem (ORQQPL EDIT SAVE) Success - setting problem to INACTIVE (I) means resetting every property in the problem!:
+	{"key":"1","value":"GMPFLD(.01)=\"521774^R69.\""}
+	{"key":"2","value":"GMPFLD(.03)=\"0^\""}
+	{"key":"3","value":"GMPFLD(.05)=\"^Diabetes mellitus\""}
+	{"key":"4","value":"GMPFLD(.08)=\"3170316\""}
+	{"key":"5","value":"GMPFLD(.12)=\"I^INACTIVE\""}
+	{"key":"6","value":"GMPFLD(.13)=\"^\""}
+	{"key":"7","value":"GMPFLD(1.01)=\"7130783^\""}
+	{"key":"8","value":"GMPFLD(1.02)=\"P\""}
+	{"key":"9","value":"GMPFLD(1.03)=\"62^ALEXANDER,ROBERT\""}
+	{"key":"10","value":"GMPFLD(1.04)=\"62^ALEXANDER,ROBERT\""}
+	{"key":"11","value":"GMPFLD(1.05)=\"62^ALEXANDER,ROBERT\""}
+	{"key":"12","value":"GMPFLD(1.06)=\"^\""}
+	{"key":"13","value":"GMPFLD(1.07)=\"^\""}
+	{"key":"14","value":"GMPFLD(1.08)=\"3^VISTA HEALTH CARE\""}
+	{"key":"15","value":"GMPFLD(1.09)=\"3170316\""}
+	{"key":"16","value":"GMPFLD(1.1)=\"^Unknown\""}
+	{"key":"17","value":"GMPFLD(1.11)=\"0^NO\""}
+	{"key":"18","value":"GMPFLD(1.12)=\"0^NO\""}
+	{"key":"19","value":"GMPFLD(1.13)=\"0^NO\""}
+	{"key":"20","value":"GMPFLD(1.14)=\"@^\""}
+	{"key":"21","value":"GMPFLD(1.15)=\"0^NO\""}
+	{"key":"22","value":"GMPFLD(1.16)=\"0^NO\""}
+	{"key":"23","value":"GMPFLD(1.17)=\"0^NO\""}
+	{"key":"24","value":"GMPFLD(1.18)=\"0^NO\""}
+	{"key":"25","value":"GMPFLD(80001)=\"73211009\""}
+	{"key":"26","value":"GMPFLD(80002)=\"121589010\""}
+	{"key":"27","value":"GMPFLD(80101)=\"^\""}
+	{"key":"28","value":"GMPFLD(80102)=\"^\""}
+	{"key":"29","value":"GMPFLD(80201)=\"3170316\""}
+	{"key":"30","value":"GMPFLD(80202)=\"10D^ICD-10-CM\""}
+	{"key":"31","value":"GMPFLD(10,0)=\"0\""}
+ 
 
 List Problems (ORQQPL PROBLEM LIST) Success - notice 'I' for INACTIVE due to UPDATE:
 	1

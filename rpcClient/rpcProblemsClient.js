@@ -247,8 +247,9 @@ let patientName; // will retrieve from select
 
 const locationIEN = "2957";
 
-let problemIEN; // will be fixed after create
-let createProblemParameters; // for reuse by update
+let problemIEN; 
+let createProblemParameters;
+let updateProblemParameters;
 
 /*
  * A series of Promise based calls that [a] login to VISTA, [b] create a problem,
@@ -362,7 +363,7 @@ function CallRPCs() {
          * in an update even those which aren't changing. Here we copy the create values and 
          * only update the status parameter (5) which is changed from ACTIVE to INACTIVE
          */
-        let updateProblemParameters = createProblemParameters;
+        updateProblemParameters = createProblemParameters;
         let statusAssertion = updateProblemParameters.find(x => (x.key === '5'));
         statusAssertion.value = 'GMPFLD(.12)="I^INACTIVE"';
 
@@ -372,7 +373,8 @@ function CallRPCs() {
 
         // Like Create, Update doesn't return any details about the updated problem. A separate details call
         // would be needed to cache the updated data (and 'chatty' CPRS makes such calls)
-        console.log("Update Problem (ORQQPL EDIT SAVE) Success - set problem to INACTIVE (I)\n");
+        console.log("Update Problem (ORQQPL EDIT SAVE) Success - setting problem to INACTIVE (I) means resetting every property in the problem!:");
+        console.log(shiftMultiLineString(updateProblemParameters.map(x => JSON.stringify(x)).join(NEW_LINE)), "\n");
 
         return listProblems(patientIEN, "B");
 
