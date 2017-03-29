@@ -358,14 +358,53 @@ function CallRPCs() {
         console.log("Get Problem Detail (ORQQPL DETAIL) Success:");
         console.log(shiftMultiLineString(response), "\n");
 
+        const createProviderNarrativeLabel = "Diabetes mellitus";
+
         /*
          * Update the problem marking it inactive. Note how you need to reset all parameters
-         * in an update even those which aren't changing. Here we copy the create values and 
+         * in an update even those which aren't changing. Here we copy the create values and
          * only update the status parameter (5) which is changed from ACTIVE to INACTIVE
          */
         updateProblemParameters = createProblemParameters;
-        let statusAssertion = updateProblemParameters.find(x => (x.key === '5'));
+        const statusAssertion = updateProblemParameters.find(x => (x.key === '5'));
         statusAssertion.value = 'GMPFLD(.12)="I^INACTIVE"';
+
+        // The the previous parameters must be included as well!!
+        const originalParams = [
+            { key: '32', value: 'GMPORIG(.01)="521774^R69."' }, // Diagnosis (file 80 reference)
+            { key: '33', value: 'GMPORIG(.03)="0^"' }, // Date last modified - 0 == NOW
+            { key: '34', value: `GMPORIG(.05)="^${createProviderNarrativeLabel}"` }, // Problem (Provider Narrative Label)
+            { key: '35', value: 'GMPORIG(.08)="3170316"' }, // Date entered (FileMan format of date)
+            { key: '36', value: 'GMPORIG(.12)="A^ACTIVE"' }, // Problem Status
+            { key: '37', value: 'GMPORIG(.13)="^"' }, // Date of onset
+            { key: '38', value: 'GMPORIG(1.01)="7130783^"' }, // Problem (Lexicon IEN)
+            { key: '39', value: 'GMPORIG(1.02)="P"' }, // Condition (Permanent)
+            { key: '40', value: `GMPORIG(1.03)="${userIEN}^${userName}"` }, // Entered By (Provider)
+            { key: '41', value: `GMPORIG(1.04)="${userIEN}^${userName}"`}, // Recording Provider
+            { key: '42', value: `GMPORIG(1.05)="${userIEN}^${userName}"`}, // Responsible Provider
+            { key: '43', value: 'GMPORIG(1.06)="^"' }, // Service (empty in CPRS calling)
+            { key: '44', value: 'GMPORIG(1.07)="^"' }, // Date Resolved (Not applicable here as ACTIVE)
+            { key: '45', value: 'GMPORIG(1.08)="3^VISTA HEALTH CARE"' }, // Clinic (Hospital Location)
+            { key: '46', value: 'GMPORIG(1.09)="3170316"' }, // Date Recorded
+            { key: '47', value: 'GMPORIG(1.1)="^Unknown"' }, // Service Connected
+            { key: '48', value: 'GMPORIG(1.11)="0^NO"' }, // Agent Orange Exposure
+            { key: '49', value: 'GMPORIG(1.12)="0^NO"' }, // Ionizing Radiation Exposure
+            { key: '50', value: 'GMPORIG(1.13)="0^NO"' }, // Persian Gulf Exposure
+            { key: '51', value: 'GMPORIG(1.14)="@^"' }, // Priority
+            { key: '52', value: 'GMPORIG(1.15)="0^NO"' }, // Head and/or Neck Cancer
+            { key: '53', value: 'GMPORIG(1.16)="0^NO"' }, // Military Sexual Trauma
+            { key: '54', value: 'GMPORIG(1.17)="0^NO"' }, // Combat Veteran
+            { key: '55', value: 'GMPORIG(1.18)="0^NO"' }, // Shipboard Habit and Defense
+            { key: '56', value: 'GMPORIG(10,0)="0^"' }, // New Problem Comment
+            { key: '57', value: 'GMPORIG(80001)="73211009"' }, // SNOMED Concept Code
+            { key: '58', value: 'GMPORIG(80002)="121589010"' }, // SNOMED Designation Code
+            { key: '59', value: 'GMPORIG(80101)="^"' }, // Unique New Term Requested
+            { key: '60', value: 'GMPORIG(80102)="^"' }, // Unique New Term comments
+            { key: '61', value: 'GMPORIG(80201)="3170316"' }, // Date of Interest
+            { key: '62', value: 'GMPORIG(80202)="10D^ICD-10-CM"' }, // Coding System
+        ];
+
+        updateProblemParameters = updateProblemParameters.concat(originalParams);
 
         return updateProblem(problemIEN, userIEN, locationIEN, updateProblemParameters);
 
@@ -376,8 +415,12 @@ function CallRPCs() {
         console.log("Update Problem (ORQQPL EDIT SAVE) Success - setting problem to INACTIVE (I) means resetting every property in the problem!:");
         console.log(shiftMultiLineString(updateProblemParameters.map(x => JSON.stringify(x)).join(NEW_LINE)), "\n");
 
-        return listProblems(patientIEN, "B");
+        return getProblemDetail(patientIEN, problemIEN);
+    }).then((response) => {
+        console.log("Get Problem Detail (ORQQPL DETAIL) Success. Notice that the update created an audit: ");
+        console.log(shiftMultiLineString(response), "\n");
 
+        return listProblems(patientIEN, "B");
     }).then((response) => {
 
         console.log("List Problems (ORQQPL PROBLEM LIST) Success - notice 'I' for INACTIVE due to UPDATE:");
