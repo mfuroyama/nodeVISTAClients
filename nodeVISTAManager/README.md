@@ -37,7 +37,7 @@ $ open /Applications/Google\ Chrome.app --args --allow-file-access-from-files
 
 Once the browser launches, navigate to File->Open File... and select nodeVISTAManager/index.html
 
-![](https://github.com/vistadataproject/nodeVISTA/blob/master/rpcServer/screenshots/mvdmEvents.jpeg)
+![](https://github.com/vistadataproject/nodeVISTA/blob/master/rpcServer/screenshots/singlePageApp.jpeg)
 
 
 
