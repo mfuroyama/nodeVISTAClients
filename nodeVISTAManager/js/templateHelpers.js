@@ -29,7 +29,6 @@ define([
     });
 
     Handlebars.registerHelper('show-runner', function(runner, lockerName) {
-        console.log(`runner: ${runner}, lockerName: ${lockerName}`);
         if (runner === 'rpcRunner') {
             return 'Pass Through';
         } else if (runner === 'rpcLocked') {
