@@ -1,5 +1,6 @@
 {
   "name": "nodeVISTAClient",
+  "version": "0.0.1",
   "description": "Example Node VISTA Clients",
   "license": "Apache-2.0",
   "homepage": "https://github.com/vistadataproject/nodeVISTAClients",
