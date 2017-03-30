@@ -100,8 +100,8 @@ require.config({
         backgridMomentCell: 'lib/backgrid-moment-cell.min',
         backgridSelectFilter: 'lib/backgrid-select-filter',
         backgridCustomCells: 'lib/backgrid-custom-cells',
-        rpcsCategorized: '../rpcsCategorized',
-        config: '../config'
+        rpcsCategorized: 'rpcsCategorized',
+        config: 'config',
     }
 });
 

@@ -3,14 +3,15 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'backbone.paginator'
+    'backbone.paginator',
+    'config',
 ], function ($, _, Backbone) {
     'use strict';
 
     var LockedRPCCollection = Backbone.PageableCollection.extend({
         model: Backbone.Model.extend(),
         mode: 'client',
-        url: '/lockedRPCList',
+        url: `${config.httpProtocol}://${config.host}:${config.port}/lockedRPCList`,
         // Initial pagination states
         state: {
             pageSize: 20,
