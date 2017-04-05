@@ -56,7 +56,7 @@ define([
                     {label: "All", value: null},
                     {label: "All No Polling", value: 'noPoller'},
                     {label: 'Pass Through', value: 'rpcRunner'},
-                    {label: 'Lockers', value: 'rpcLocked'},
+                    {label: 'Emulated', value: 'rpcLocked'},
                     {label: 'Server', value: 'server'}],
                 selectMatcher: function(value) {
                     return function(model) {
