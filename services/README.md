@@ -15,22 +15,6 @@ $ cd nodeVISTAClients/services
 $ npm install
 ```
 
-### Start  the clinicalService
-SSH into the __nodeVISTA__ guest virtual machine
-```text
-$ ssh vagrant@10.2.2.100
-$ password: vagrant
-$ su vdp -l
-$ Password: vdp
-$ cd nodevista
-$ git pull
-$ cd clinicalService
-$ npm install
-$ node index.js
-{"name":"clinicalService","hostname":"addgene-ubuntu-1604-vbox","pid":17213,"level":30,
-    "msg":"Clinical Service listening on port 9030","time":"2017-02-27T20:22:47.506Z","v":0}
-```
-
 ### Ensure the clinicalService is running 
 On the host terminal:
 ```text
