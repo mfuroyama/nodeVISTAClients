@@ -8,10 +8,10 @@ define([
 ], function ($, _, Backbone) {
     'use strict';
 
-    var LockedRPCCollection = Backbone.PageableCollection.extend({
+    var EmulatedRPCCollection = Backbone.PageableCollection.extend({
         model: Backbone.Model.extend(),
         mode: 'client',
-        url: `${config.httpProtocol}://${config.host}:${config.port}/lockedRPCList`,
+        url: `${config.httpProtocol}://${config.host}:${config.port}/emulatedRPCList`,
         // Initial pagination states
         state: {
             pageSize: 20,
@@ -20,7 +20,7 @@ define([
             sortKey: 'name'
         },
         consumeEvent: function(eventModel) {
-            if (eventModel.get('runner') !== 'rpcLocked') {
+            if (eventModel.get('runner') !== 'rpcEmulated') {
                 return;
             }
 
@@ -38,5 +38,5 @@ define([
         }
     });
 
-    return new LockedRPCCollection();
+    return new EmulatedRPCCollection();
 });

@@ -9,10 +9,10 @@ define([
     'mvdmEvents/eventCounterModel',
     'rpcEvents/eventCounterModel',
     'rpcCounts/rpcCountCollection',
-    'rpcCounts/lockedRPCCollection',
+    'rpcCounts/emulatedRPCCollection',
     'rpcCounts/rpcCategoryCollection',
     'config'
-], function ($, _, Backbone, EventModel, MVDMEventCollection, RPCEventCollection, MVDMEventCounter, RPCEventCounter, RPCCountCollection, LockedRPCCollection, RPCCategoryCollection) {
+], function ($, _, Backbone, EventModel, MVDMEventCollection, RPCEventCollection, MVDMEventCounter, RPCEventCounter, RPCCountCollection, EmulatedRPCCollection, RPCCategoryCollection) {
     'use strict';
 
     var EventBus = function() {
@@ -24,7 +24,7 @@ define([
         var mvdmCollection = new Backbone.Collection();
         var rpcEventCollection = new Backbone.Collection();
 
-        LockedRPCCollection.fetch();
+        EmulatedRPCCollection.fetch();
 
         this.getMvdmEventCollection = function() {
             return mvdmCollection;
@@ -58,7 +58,7 @@ define([
 
                 RPCEventCounter.consumeEvent(eventModel);
                 RPCCountCollection.consumeEvent(eventModel);
-                LockedRPCCollection.consumeEvent(eventModel);
+                EmulatedRPCCollection.consumeEvent(eventModel);
                 RPCCategoryCollection.consumeEvent(eventModel);
 
                 self.trigger('countEvent', RPCCountCollection);

@@ -35,13 +35,13 @@ define([
 
             this.management = new ManagementModel();
 
-            //update is mvdm locked icon
+            //update is mvdm emulated icon
             this.listenTo(this.management, 'change', function() {
 
                 this.$el.find('.glyphicon-ok-sign').addClass('hidden');
                 this.$el.find('.glyphicon-remove-sign').addClass('hidden');
 
-                if (this.management.get('isRPCLocked')) {
+                if (this.management.get('isRPCEmulated')) {
                     this.$el.find('.glyphicon-ok-sign').removeClass('hidden');
                 } else {
                     this.$el.find('.glyphicon-remove-sign').removeClass('hidden');
@@ -62,7 +62,7 @@ define([
                 }
             });
 
-            this.lockedGrid = new Backgrid.Grid({
+            this.emulatedGrid = new Backgrid.Grid({
                 row: row,
                 columns: options.columns,
                 collection: this.eventCollection
@@ -85,7 +85,7 @@ define([
 
             this.gridFilter = new Backgrid.Extension.SelectFilter(filterConfig);
 
-            this.lockedPaginator = new Backgrid.Extension.Paginator({
+            this.emulatedPaginator = new Backgrid.Extension.Paginator({
                 collection: this.eventCollection,
                 goBackFirstOnSort: false
             });
@@ -119,10 +119,10 @@ define([
                 this.renderEventCounter();
             }
 
-            this.$el.find('#events-table').append(this.lockedGrid.render().el);
+            this.$el.find('#events-table').append(this.emulatedGrid.render().el);
 
             //render paginator
-            this.$el.find('#events-table').append(this.lockedPaginator.render().el);
+            this.$el.find('#events-table').append(this.emulatedPaginator.render().el);
 
             //render filter
             if (this.gridFilter) {

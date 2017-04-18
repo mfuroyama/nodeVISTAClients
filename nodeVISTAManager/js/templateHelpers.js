@@ -5,22 +5,22 @@ define([
 ], function (Handlebars, jsBeautify) {
     'use strict';
 
-    Handlebars.registerHelper('rpc-lock-select', function(management) {
+    Handlebars.registerHelper('rpc-emulate-select', function(management) {
 
         if (!management) {
             return;
         }
 
         function setSelected(management, optionValue) {
-            if ((management.isRPCLocked && optionValue === 'on') ||
-                (!management.isRPCLocked && optionValue === 'off')) {
+            if ((management.isRPCEmulated && optionValue === 'on') ||
+                (!management.isRPCEmulated && optionValue === 'off')) {
                 return ' selected';
             }
 
             return '';
         }
 
-        var selectHtml = '<select class="form-control rpc-lock-select">';
+        var selectHtml = '<select class="form-control rpc-emulate-select">';
         selectHtml += '<option value="on"' + setSelected(management, 'on') + '>On</option>';
         selectHtml += '<option value="off"' + setSelected(management, 'off') + '>Off</option>';
         selectHtml += '</select>';
@@ -28,11 +28,11 @@ define([
         return new Handlebars.SafeString(selectHtml);
     });
 
-    Handlebars.registerHelper('show-runner', function(runner, lockerName) {
+    Handlebars.registerHelper('show-runner', function(runner, emulatorName) {
         if (runner === 'rpcRunner') {
             return 'Pass Through';
-        } else if (runner === 'rpcLocked') {
-            return lockerName || 'RPC Emulated';
+        } else if (runner === 'rpcEmulated') {
+            return emulatorName || 'RPC Emulated';
         } else if (runner === 'server') {
             return 'Server';
         } else return runner;

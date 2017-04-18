@@ -6,7 +6,7 @@ define([
     'handlebars',
     'backgrid',
     'rpcCounts/rpcCountCollection',
-    'rpcCounts/lockedRPCCollection',
+    'rpcCounts/emulatedRPCCollection',
     'rpcCounts/rpcCategoryCollection',
     'text!rpcCounts/rpcCounts.hbs',
     'text!rpcCounts/rpcReceived.hbs',
@@ -19,7 +19,7 @@ define([
     'backbone.paginator',
     'backgrid.paginator',
     'backgridCustomCells'
-], function ($, _, Backbone, Handlebars, Backgrid, RPCCountCollection, LockedRPCCollection, RPCCategoryCollection, rpcCountsTemplate, rpcReceivedTemplate, top20Template, EventBus, d3) {
+], function ($, _, Backbone, Handlebars, Backgrid, RPCCountCollection, EmulatedRPCCollection, RPCCategoryCollection, rpcCountsTemplate, rpcReceivedTemplate, top20Template, EventBus, d3) {
     'use strict';
     var RPCCounts = Backbone.View.extend({
 
@@ -34,18 +34,18 @@ define([
                 this.renderTop20();
 
                 this.isRenderDistinctChart = true;
-                this.isRenderLockedChart = true;
+                this.isRenderEmulatedChart = true;
             });
 
             this.listenTo(EventBus, 'rpcCategoryEvent', function(model) {
                 this.isRenderCategoryChart = true;
             });
 
-            this.listenToOnce(LockedRPCCollection, 'reset', function(model) {
-                this.$el.find('.locked-total').html(LockedRPCCollection.fullCollection.size());
+            this.listenToOnce(EmulatedRPCCollection, 'reset', function(model) {
+                this.$el.find('.emulated-total').html(EmulatedRPCCollection.fullCollection.size());
             });
 
-            this.lockedGrid = new Backgrid.Grid({
+            this.emulatedGrid = new Backgrid.Grid({
                 columns: [{
                     name: 'name',
                     label: 'RPC',
@@ -62,11 +62,11 @@ define([
                     editable: false,
                     cell: 'integer'
                 }],
-                collection: LockedRPCCollection
+                collection: EmulatedRPCCollection
             });
 
-            this.lockedPaginator = new Backgrid.Extension.Paginator({
-                collection: LockedRPCCollection,
+            this.emulatedPaginator = new Backgrid.Extension.Paginator({
+                collection: EmulatedRPCCollection,
                 goBackFirstOnSort: false
             });
 
@@ -75,19 +75,19 @@ define([
         render: function() {
 
             this.$el.html(this.template({
-                lockedRPCCount: LockedRPCCollection.fullCollection.size(),
+                emulatedRPCCount: EmulatedRPCCollection.fullCollection.size(),
                 total: Object.keys(rpcsCategorized).length
             }));
 
             this.renderRPCTotal();
             this.renderTop20();
-            this.renderLockedTable();
+            this.renderEmulatedTable();
 
             var self = this;
             _.delay(function() {
                 self.renderCategoryChart();
                 self.renderDistinctChart();
-                self.renderLockedChart();
+                self.renderEmulatedChart();
             }, 100);
 
             //check if chart needs to be redrawn every five seconds
@@ -104,10 +104,10 @@ define([
                     self.isRenderDistinctChart = false;
                 }
 
-                if (self.isRenderLockedChart) {
-                    self.renderLockedChart();
+                if (self.isRenderEmulatedChart) {
+                    self.renderEmulatedChart();
 
-                    self.isRenderLockedChart = false;
+                    self.isRenderEmulatedChart = false;
                 }
             }, 50);
 
@@ -158,7 +158,7 @@ define([
                         },
                         {
                             "LABEL": "Distinct Emulated",
-                            "COUNT": RPCCountCollection.distinctLockedTotal()
+                            "COUNT": RPCCountCollection.distinctEmulatedTotal()
                         }
                     ],
                     categoryTitle: 'LABEL',
@@ -211,17 +211,17 @@ define([
 
             renderChart();
         },
-        renderLockedChart: function() {
+        renderEmulatedChart: function() {
 
             var self = this;
             var renderChart = function() {
 
-                self.$el.find('#locked-svg').remove();
-                var container = self.$el.find('.locked-pie-chart-container');
-                container.append('<div id="locked-svg" class="pie-chart">');
+                self.$el.find('#emulated-svg').remove();
+                var container = self.$el.find('.emulated-pie-chart-container');
+                container.append('<div id="emulated-svg" class="pie-chart">');
 
                 IFG.displayPie({
-                    divId: 'locked-svg',
+                    divId: 'emulated-svg',
                     data: [
                         {
                             "LABEL": "Pass Through",
@@ -229,7 +229,7 @@ define([
                         },
                         {
                             "LABEL": "Emulated",
-                            "COUNT": RPCCountCollection.lockedTotal()
+                            "COUNT": RPCCountCollection.emulatedTotal()
                         }
                     ],
                     categoryTitle: 'LABEL',
@@ -242,11 +242,11 @@ define([
 
             renderChart();
         },
-        renderLockedTable: function() {
-            this.$el.find('#locked-rpc-table').append(this.lockedGrid.render().el);
+        renderEmulatedTable: function() {
+            this.$el.find('#emulated-rpc-table').append(this.emulatedGrid.render().el);
 
             //render paginator
-            this.$el.find('#locked-rpc-table').append(this.lockedPaginator.render().el);
+            this.$el.find('#emulated-rpc-table').append(this.emulatedPaginator.render().el);
 
             //apply bootstrap table styles to grid
             this.$el.find('.backgrid').addClass('table table-condensed table-striped table-bordered table-hover');

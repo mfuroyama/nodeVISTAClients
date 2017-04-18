@@ -11,7 +11,7 @@ define([
             total: 0,
             totalNoPoller: 0,
             rpcRunner: 0,
-            rpcLocked: 0,
+            rpcEmulated: 0,
             server: 0
         },
         consumeEvent: function(eventModel) {
