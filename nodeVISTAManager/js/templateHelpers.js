@@ -12,8 +12,8 @@ define([
         }
 
         function setSelected(management, optionValue) {
-            if ((management.isRPCLocked && optionValue === 'on') ||
-                (!management.isRPCLocked && optionValue === 'off')) {
+            if ((management.isRPCEmulated && optionValue === 'on') ||
+                (!management.isRPCEmulated && optionValue === 'off')) {
                 return ' selected';
             }
 
@@ -31,7 +31,7 @@ define([
     Handlebars.registerHelper('show-runner', function(runner, lockerName) {
         if (runner === 'rpcRunner') {
             return 'Pass Through';
-        } else if (runner === 'rpcLocked') {
+        } else if (runner === 'rpcEmulated') {
             return lockerName || 'RPC Emulated';
         } else if (runner === 'server') {
             return 'Server';

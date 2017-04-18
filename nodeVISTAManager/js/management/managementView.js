@@ -23,7 +23,7 @@ define([
         },
 
         events: {
-            "change .rpc-lock-select": "onRPCLockChange"
+            "change .rpc-lock-select": "onRPCEmulateChange"
         },
 
         render: function() {
@@ -33,26 +33,26 @@ define([
             return this;
         },
 
-        onRPCLockChange: function(event) {
+        onRPCEmulateChange: function(event) {
             if (!event.currentTarget || !event.currentTarget.value) {
                 return;
             }
 
-            var isRpcsLocked = undefined;
+            var isRpcsEmulated = undefined;
             if (event.currentTarget.value.toLowerCase() === 'on') {
-                isRpcsLocked = true;
+                isRpcsEmulated = true;
             } else if (event.currentTarget.value.toLowerCase() === 'off') {
-                isRpcsLocked = false;
+                isRpcsEmulated = false;
             } else {
                 return;
             }
 
             //no change
-            if (isRpcsLocked === this.management.get('isRPCLocked')) {
+            if (isRpcsEmulated === this.management.get('isRPCEmulated')) {
                 return;
             }
 
-            this.management.set('isRPCLocked', isRpcsLocked);
+            this.management.set('isRPCEmulated', isRpcsEmulated);
 
             this.management.sync('update', this.management);
         },

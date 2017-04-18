@@ -41,7 +41,7 @@ define([
                 this.$el.find('.glyphicon-ok-sign').addClass('hidden');
                 this.$el.find('.glyphicon-remove-sign').addClass('hidden');
 
-                if (this.management.get('isRPCLocked')) {
+                if (this.management.get('isRPCEmulated')) {
                     this.$el.find('.glyphicon-ok-sign').removeClass('hidden');
                 } else {
                     this.$el.find('.glyphicon-remove-sign').removeClass('hidden');

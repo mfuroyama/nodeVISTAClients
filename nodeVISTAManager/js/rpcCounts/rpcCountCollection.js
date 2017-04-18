@@ -67,23 +67,23 @@ define([
             return this.size();
         },
 
-        distinctLockedTotal: function() {
-            var distinctLocked = 0;
+        distinctEmulatedTotal: function() {
+            var distinctEmulated = 0;
 
             this.forEach(function(rpc) {
-                if (rpc.get('runner') === 'rpcLocked') {
-                    distinctLocked++;
+                if (rpc.get('runner') === 'rpcEmulated') {
+                    distinctEmulated++;
                 }
             });
 
-            return distinctLocked;
+            return distinctEmulated;
         },
 
         lockedTotal: function() {
             var locked = 0;
 
             this.forEach(function(rpc) {
-                if (rpc.get('runner') === 'rpcLocked') {
+                if (rpc.get('runner') === 'rpcEmulated') {
                     locked += rpc.get('count');
                 }
             });

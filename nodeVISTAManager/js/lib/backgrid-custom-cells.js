@@ -28,8 +28,8 @@
     //HtmlCell formatting utility
     Backgrid.HtmlCell.formatAsHtml = function (rawValue, model) {
 
-        //isRPCLocked runner events are displayed as bold
-        if (model.get('runner') === 'rpcLocked') {
+        //isRPCEmulated runner events are displayed as bold
+        if (model.get('runner') === 'rpcEmulated') {
             rawValue = '<strong>' + rawValue + '</strong>';
         }
 
