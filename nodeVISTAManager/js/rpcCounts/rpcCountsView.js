@@ -6,7 +6,7 @@ define([
     'handlebars',
     'backgrid',
     'rpcCounts/rpcCountCollection',
-    'rpcCounts/lockedRPCCollection',
+    'rpcCounts/emulatedRPCCollection',
     'rpcCounts/rpcCategoryCollection',
     'text!rpcCounts/rpcCounts.hbs',
     'text!rpcCounts/rpcReceived.hbs',
@@ -42,10 +42,10 @@ define([
             });
 
             this.listenToOnce(EmulatedRPCCollection, 'reset', function(model) {
-                this.$el.find('.locked-total').html(EmulatedRPCCollection.fullCollection.size());
+                this.$el.find('.emulated-total').html(EmulatedRPCCollection.fullCollection.size());
             });
 
-            this.lockedGrid = new Backgrid.Grid({
+            this.emulatedGrid = new Backgrid.Grid({
                 columns: [{
                     name: 'name',
                     label: 'RPC',
@@ -65,7 +65,7 @@ define([
                 collection: EmulatedRPCCollection
             });
 
-            this.lockedPaginator = new Backgrid.Extension.Paginator({
+            this.emulatedPaginator = new Backgrid.Extension.Paginator({
                 collection: EmulatedRPCCollection,
                 goBackFirstOnSort: false
             });
@@ -75,7 +75,7 @@ define([
         render: function() {
 
             this.$el.html(this.template({
-                lockedRPCCount: EmulatedRPCCollection.fullCollection.size(),
+                emulatedRPCCount: EmulatedRPCCollection.fullCollection.size(),
                 total: Object.keys(rpcsCategorized).length
             }));
 
@@ -216,12 +216,12 @@ define([
             var self = this;
             var renderChart = function() {
 
-                self.$el.find('#locked-svg').remove();
-                var container = self.$el.find('.locked-pie-chart-container');
-                container.append('<div id="locked-svg" class="pie-chart">');
+                self.$el.find('#emulated-svg').remove();
+                var container = self.$el.find('.emulated-pie-chart-container');
+                container.append('<div id="emulated-svg" class="pie-chart">');
 
                 IFG.displayPie({
-                    divId: 'locked-svg',
+                    divId: 'emulated-svg',
                     data: [
                         {
                             "LABEL": "Pass Through",
@@ -229,7 +229,7 @@ define([
                         },
                         {
                             "LABEL": "Emulated",
-                            "COUNT": RPCCountCollection.lockedTotal()
+                            "COUNT": RPCCountCollection.emulatedTotal()
                         }
                     ],
                     categoryTitle: 'LABEL',
@@ -243,10 +243,10 @@ define([
             renderChart();
         },
         renderEmulatedTable: function() {
-            this.$el.find('#locked-rpc-table').append(this.lockedGrid.render().el);
+            this.$el.find('#emulated-rpc-table').append(this.emulatedGrid.render().el);
 
             //render paginator
-            this.$el.find('#locked-rpc-table').append(this.lockedPaginator.render().el);
+            this.$el.find('#emulated-rpc-table').append(this.emulatedPaginator.render().el);
 
             //apply bootstrap table styles to grid
             this.$el.find('.backgrid').addClass('table table-condensed table-striped table-bordered table-hover');

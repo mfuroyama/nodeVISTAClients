@@ -34,7 +34,7 @@ define([
         consumeEvent: function(eventModel) {
             var rpcName = eventModel.get('rpcName');
             var runner = eventModel.get('runner');
-            var lockerName = eventModel.get('lockerName');
+            var emulatorName = eventModel.get('emulatorName');
 
             var rpc = this.find(function(model) {return model.get('name') === rpcName});
 
@@ -43,7 +43,7 @@ define([
                     name: rpcName,
                     count: 1,
                     runner: runner,
-                    lockerName: lockerName,
+                    emulatorName: emulatorName,
                 };
 
                 data = _.extend(data, rpcsCategorized[rpcName]);
@@ -79,16 +79,16 @@ define([
             return distinctEmulated;
         },
 
-        lockedTotal: function() {
-            var locked = 0;
+        emulatedTotal: function() {
+            var emulated = 0;
 
             this.forEach(function(rpc) {
                 if (rpc.get('runner') === 'rpcEmulated') {
-                    locked += rpc.get('count');
+                    emulated += rpc.get('count');
                 }
             });
 
-            return locked;
+            return emulated;
         },
 
         top: function(num) {

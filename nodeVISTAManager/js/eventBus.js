@@ -9,7 +9,7 @@ define([
     'mvdmEvents/eventCounterModel',
     'rpcEvents/eventCounterModel',
     'rpcCounts/rpcCountCollection',
-    'rpcCounts/lockedRPCCollection',
+    'rpcCounts/emulatedRPCCollection',
     'rpcCounts/rpcCategoryCollection',
     'config'
 ], function ($, _, Backbone, EventModel, MVDMEventCollection, RPCEventCollection, MVDMEventCounter, RPCEventCounter, RPCCountCollection, EmulatedRPCCollection, RPCCategoryCollection) {

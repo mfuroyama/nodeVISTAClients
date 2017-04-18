@@ -11,7 +11,7 @@ define([
     var EmulatedRPCCollection = Backbone.PageableCollection.extend({
         model: Backbone.Model.extend(),
         mode: 'client',
-        url: `${config.httpProtocol}://${config.host}:${config.port}/lockedRPCList`,
+        url: `${config.httpProtocol}://${config.host}:${config.port}/emulatedRPCList`,
         // Initial pagination states
         state: {
             pageSize: 20,

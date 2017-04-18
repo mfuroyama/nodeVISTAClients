@@ -23,7 +23,7 @@ define([
         },
 
         events: {
-            "change .rpc-lock-select": "onRPCEmulateChange"
+            "change .rpc-emulate-select": "onRPCEmulateChange"
         },
 
         render: function() {

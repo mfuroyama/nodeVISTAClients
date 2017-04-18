@@ -94,7 +94,7 @@ define([
                             if (rawValue === 'rpcRunner') {
                                 retVal = 'Pass Through';
                             } else if (rawValue === 'rpcEmulated') {
-                                retVal = model.get('lockerName') || 'RPC Emulated';
+                                retVal = model.get('emulatorName') || 'RPC Emulated';
                             } else if (rawValue === 'server') {
                                 retVal = 'Server';
                             }
@@ -160,7 +160,7 @@ define([
             this.$el.find('.event-count-total').html(EventCounter.get('total'));
             this.$el.find('.event-count-total-no-poller').html(EventCounter.get('totalNoPoller'));
             this.$el.find('.event-count-rpc-runner').html(EventCounter.get('rpcRunner'));
-            this.$el.find('.event-count-mvdm-locked').html(EventCounter.get('rpcEmulated'));
+            this.$el.find('.event-count-mvdm-emulated').html(EventCounter.get('rpcEmulated'));
             this.$el.find('.event-count-server').html(EventCounter.get('server'));
         },
         clearEventCounter: function() {
