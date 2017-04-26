@@ -1,4 +1,4 @@
-## Show listening for Events
+# Event Listener View
 
 ... taken from nodeVISTA Management Client
 
