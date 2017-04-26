@@ -2,10 +2,10 @@
 
 a series of clients that show how to use the different _nodeVISTA_ interfaces.
 
-* RPC Interface Client  [link](https://github.com/vistadataproject/nodeVISTAClients/tree/master/rpcClient)
-* nodeVISTA Manager Client [link](https://github.com/vistadataproject/nodeVISTAClients/tree/master/nodeVISTAManager)
-* Event Listener Client [link](https://github.com/vistadataproject/nodeVISTAClients/tree/master/event)
-* Services Interface [link](https://github.com/vistadataproject/nodeVISTAClients/tree/master/services)
+* [Services Interface](https://github.com/vistadataproject/nodeVISTAClients/tree/master/services)
+* [RPC Interface Client](https://github.com/vistadataproject/nodeVISTAClients/tree/master/rpcClient)
+* [nodeVISTA Manager Client](https://github.com/vistadataproject/nodeVISTAClients/tree/master/nodeVISTAManager)
+* [Event Listener Client](https://github.com/vistadataproject/nodeVISTAClients/tree/master/event)
 
 
 ```
