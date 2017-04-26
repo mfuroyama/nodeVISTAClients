@@ -1,4 +1,4 @@
-## nodeVISTA Manager Client
+# nodeVISTA Manager Client
 
 This client works in conjunction witht the [rpcServer](https://github.com/vistadataproject/nodeVISTA/tree/master/rpcServer).
 
