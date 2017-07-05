@@ -4,27 +4,29 @@ Example node.js clients that show how to use the nodeVISTA clinical REST service
 
 These clients run on your __host__ machine (__not__ the nodeVISTA VM) and use _ES6 Promises_.
 
-### Install Module Dependencies
-
 __Note__: We assume that both _node_ and _npm_ are installed on your Machine.
 
-Open a terminal on your host machine.
+Open a terminal on your host machine and run the following commands:
 
+### Install Module Dependencies
 ```text
 $ cd nodeVISTAClients/services
 $ npm install
 ```
-
+### Ensure the nodeVISTA server is running 
+```text
+$ cd nodeVISTA/setup; vagrant reload
+$ vagrant status
+```
 ### Ensure the clinicalService is running 
-On the host terminal:
 ```text
 $ cd nodeVISTAClients/services
 $ curl http://10.2.2.100:9030
-No authorization token was found  <-- This is the correct response and verifies service is available
+No authorization token was found         <-- This is the correct response and verifies service is available
+[         No response           ]        <-- Make sure nodeVISTA server and clinicalService are running.
 ```
 
 ### Execute the servicesProblems.js script
-On the host terminal:
 ```text
 $ cd nodeVISTAClients/services
 $ node servicesProblems.js
