@@ -183,8 +183,7 @@ define([
                 var categoryMap = {
                     "AUTHENTICATION": 0,
                     "CHANGE": 0,
-                    "READ STRUCTURED": 0,
-                    "READ UNSTRUCTURED": 0,
+                    "READ": 0,
                     "UTILITY": 0
                 };
 
