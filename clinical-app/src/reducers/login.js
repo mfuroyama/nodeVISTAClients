@@ -1,9 +1,8 @@
 const login = (state = [], action) => {
     switch (action.type) {
-        case 'SUBMIT_LOGIN':
+        case 'RECEIVE_SUBMIT_LOGIN':
             return Object.assign({}, state, {
-                userId: action.userId,
-                facilityId: action.facilityId
+                jwt: action.jwt
             });
         case 'VALIDATE':
             return Object.assign({}, state, {

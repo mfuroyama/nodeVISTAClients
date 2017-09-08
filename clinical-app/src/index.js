@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import 'babel-polyfill'; // needed by isomorphic-fetch library for es6-promise polyfill
+import axios from 'axios';
 import thunkMiddleware from 'redux-thunk'; // allows actions to return functions
 import { createLogger } from 'redux-logger'; // logger middleware
 import { createStore, applyMiddleware } from 'redux';
@@ -9,6 +9,8 @@ import config from './config';
 import Root from './Root';
 
 const loggerMiddleware = createLogger();
+
+axios.defaults.baseURL = config.serviceURL;
 
 let store = createStore(
     clinicalApp,

@@ -17,7 +17,7 @@ const mapStateToProps = state => {
 function doLogin() {
     return (dispatch, getState) => {
         let login = getState().login;
-        dispatch(submitLogin({ userId: login.userId, facilityId: login.facilityId }));
+        dispatch(submitLogin({ userId: login.user.id, facilityId: login.facility.id }));
     }
 }
 
