@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import { Router, Route} from 'react-router'
 import createHistory from 'history/createBrowserHistory'
 import App from './components/App'
-import Login from './containers/login';
+import Auth from './containers/auth';
 import {FocusStyleManager} from "@blueprintjs/core";
 import moment from 'moment-timezone';
 
@@ -21,7 +21,7 @@ const Root = ({ store }) => (
         <Router history={history}>
             <div>
                 <Route exact path="/" component={App} />
-                <Route path="/login" component={Login} />
+                <Route path="/auth" component={Auth} />
             </div>
         </Router>
     </Provider>

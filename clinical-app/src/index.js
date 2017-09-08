@@ -15,7 +15,7 @@ axios.defaults.baseURL = config.serviceURL;
 let store = createStore(
     clinicalApp,
     {
-        login: {
+        auth: {
             users: [ config.defaultUser ],
             facilities: [ config.defaultFacility ],
             user: config.defaultUser,

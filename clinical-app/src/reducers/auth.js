@@ -1,4 +1,4 @@
-const login = (state = [], action) => {
+const auth = (state = [], action) => {
     switch (action.type) {
         case 'RECEIVE_SUBMIT_LOGIN':
             return Object.assign({}, state, {
@@ -21,4 +21,4 @@ const login = (state = [], action) => {
     }
 };
 
-export default login;
+export default auth;

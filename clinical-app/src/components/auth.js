@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import 'font-awesome/css/font-awesome.css';
 import '@blueprintjs/core/dist/blueprint.css';
-import './login.css';
+import './auth.css';
 
 function renderOptions(vals) {
     let options = [];

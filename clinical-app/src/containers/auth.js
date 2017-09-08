@@ -1,23 +1,23 @@
 import { connect } from 'react-redux';
 import { submitLogin, changeUser, changeFacility } from '../actions';
-import LoginComp from '../components/login';
+import AuthComp from '../components/auth';
 
 const mapStateToProps = state => {
     return {
         errors: (errors) => {
             return state.errors
         },
-        users: state.login.users,
-        facilities: state.login.facilities,
-        selectedUser: state.login.user,
-        selectedFacility: state.login.facility,
+        users: state.auth.users,
+        facilities: state.auth.facilities,
+        selectedUser: state.auth.user,
+        selectedFacility: state.auth.facility,
     }
 };
 
 function doLogin() {
     return (dispatch, getState) => {
-        let login = getState().login;
-        dispatch(submitLogin({ userId: login.user.id, facilityId: login.facility.id }));
+        let auth = getState().auth;
+        dispatch(submitLogin({ userId: auth.user.id, facilityId: auth.facility.id }));
     }
 }
 
@@ -36,9 +36,9 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-const Login = connect(
+const Auth = connect(
     mapStateToProps,
     mapDispatchToProps
-)(LoginComp);
+)(AuthComp);
 
-export default Login
+export default Auth
