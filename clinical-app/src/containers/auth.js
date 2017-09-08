@@ -4,9 +4,7 @@ import AuthComp from '../components/auth';
 
 const mapStateToProps = state => {
     return {
-        errors: (errors) => {
-            return state.errors
-        },
+        errors: state.auth.errors,
         users: state.auth.users,
         facilities: state.auth.facilities,
         selectedUser: state.auth.user,
@@ -17,9 +15,10 @@ const mapStateToProps = state => {
 function doLogin() {
     return (dispatch, getState) => {
         let auth = getState().auth;
-        dispatch(submitLogin({ userId: auth.user.id, facilityId: auth.facility.id }));
+        return dispatch(submitLogin({ userId: auth.user.id, facilityId: auth.facility.id }));
     }
 }
+
 
 const mapDispatchToProps = dispatch => {
     return {

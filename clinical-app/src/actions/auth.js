@@ -1,19 +1,15 @@
 import axios from 'axios';
 
-export const REQUEST_SUBMIT_LOGIN = 'REQUEST_SUBMIT_LOGIN';
-
 function requestSubmitLogin(credentials) {
     return {
-        type: REQUEST_SUBMIT_LOGIN,
+        type: 'REQUEST_SUBMIT_LOGIN',
         credentials
     }
 }
 
-export const RECEIVE_SUBMIT_LOGIN = 'RECEIVE_SUBMIT_LOGIN';
-
 function receiveSubmitLogin(jwt) {
     return {
-        type: RECEIVE_SUBMIT_LOGIN,
+        type: 'RECEIVE_SUBMIT_LOGIN',
         jwt
     }
 }
@@ -24,8 +20,28 @@ function encodeParams(params) {
     }).join('&');
 }
 
+function validateInput(credentials) {
+    const errors = [];
+    if (!credentials.userId) {
+        errors.push('Missing user');
+    } else if (credentials.userId.length < 1) {
+        errors.push('User field needs to be at least 1 character long');
+    }
+
+    if (!credentials.facilityId) {
+        errors.push('Missing facility');
+    }
+
+    return errors;
+}
+
 export function submitLogin(credentials) {
     return dispatch => {
+        const validationErrs = validateInput(credentials);
+        if (validationErrs.length > 0) {
+            return dispatch(processErrors(validationErrs));
+        }
+
         dispatch(requestSubmitLogin(credentials));
         return axios.post('auth', encodeParams({
             userId: credentials.userId,
@@ -34,6 +50,14 @@ export function submitLogin(credentials) {
             headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' }
         }).then((res) => {
             dispatch(receiveSubmitLogin(res.headers['x-access-token']))
+        }).catch((err) => {
+            let errMsg;
+            if (err.response) {
+                errMsg = err.response.data;
+            } else {
+                errMsg = err.message;
+            }
+            dispatch(processErrors([errMsg]));
         });
     }
 }
@@ -51,3 +75,10 @@ export const changeFacility = facility => {
         facility
     }
 };
+
+export function processErrors(errors) {
+    return {
+        type: 'PROCESS_ERROR',
+        errors
+    }
+}

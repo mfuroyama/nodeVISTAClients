@@ -16,6 +16,10 @@ const auth = (state = [], action) => {
             return Object.assign({}, state, {
                 facility: action.facility
             });
+        case 'PROCESS_ERROR':
+            return Object.assign({}, state, {
+                errors: action.errors,
+            });
         default:
             return state
     }

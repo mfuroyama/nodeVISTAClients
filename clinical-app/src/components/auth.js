@@ -13,13 +13,31 @@ function renderOptions(vals) {
     return options;
 }
 
+function renderErrors(errors) {
+    if (!errors) {
+        return;
+    }
+    const errDisplay = [];
+    let i = 0;
+    errors.forEach((err) => {
+        errDisplay.push(<li key={i}>{err}</li>);
+        i += 1;
+    });
+
+    if (errDisplay.length > 0) {
+        return (<ul>{errDisplay}</ul>);
+    }
+}
+
 const Login = ({ users, facilities, selectedUser, selectedFacility, onSubmit, onChangeUser, onChangeFacility, errors }) => (
     <div className="login-page">
         <form id="login" onSubmit={onSubmit}>
             <div className="login-background">
                 <div className="login-form pt-form-group">
                     <h3>Welcome to the VDP Clinical Application</h3>
-                    <div className="errors">{errors}</div>
+                    <div className="errors">
+                        {renderErrors(errors)}
+                    </div>
                     <table>
                         <tbody>
                         <tr>

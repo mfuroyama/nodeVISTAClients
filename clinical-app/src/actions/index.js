@@ -1,1 +1,1 @@
-export { submitLogin, changeUser, changeFacility } from "./auth";
+export { submitLogin, changeUser, changeFacility, processErrors } from "./auth";
