@@ -210,7 +210,7 @@ const createPceHealthFactorArgs = {
         id: '9999999_64-489',
         label: 'ABD AORTIC ANEURYSM 3.0-3.9 CM'
     },
-    severity: 'MINIMAL',
+    levelSeverity: 'MINIMAL',
     visit: {
         id: '9000010-1'
     },
@@ -258,7 +258,16 @@ function runCalls() {
             patientToken,
             args: {
                 id: healthFactor.id,
-                healthFactorStatus: 'INACTIVE',
+                healthFactorId: {
+                    id: '9999999_64-489',
+                    label: 'ABD AORTIC ANEURYSM 3.0-3.9 CM'
+                },
+                levelSeverity: 'MODERATE',
+                visit: {
+                    id: '9000010-1'
+                },
+                comments: 'updated comments'
+
             },
         };
 

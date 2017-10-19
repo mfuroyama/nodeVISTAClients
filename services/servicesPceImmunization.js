@@ -259,7 +259,20 @@ function runCalls() {
             patientToken,
             args: {
                 id: immunization.id,
-                immunizationStatus: 'INACTIVE',
+                immunizationType: {
+                    id: '9999999_14-1020',
+                    label: 'DTAP'
+                },
+                series: 'SERIES 3',
+                contraindicated: 'NO (OK TO USE IN THE FUTURE)',
+                reaction: 'NONE',
+                visit: {
+                    id: '9000010-1'
+                },
+                //orderingProvider: { id: '200-63', label: 'ALEXANDER,ROBERT' },
+                //encounterProvider: { id: '200-63', label: 'ALEXANDER,ROBERT' },
+                comments: 'updated comments'
+
             },
         };
 

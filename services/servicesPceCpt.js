@@ -263,7 +263,21 @@ function runCalls() {
             patientToken,
             args: {
                 id: cpt.id,
-                cptStatus: 'INACTIVE',
+                cptType: {
+                    id: '81-1',
+                    laxbel: 'Splint'
+                },
+                quantity: 3,
+                visit: {
+                    id: '9000010-1'
+                },
+                providerNarrative: {
+                    id: '9999999_27-1',
+                    label: 'Splint'
+                },
+                comments: "updated comments"
+
+
             },
         };
 

@@ -122,7 +122,7 @@ const createPceSkin = function createPceSkin(options) {
  * @param {Object} options.args Update PCE skin test arguments.
  * @returns {Promise} A promise that handles the REST call response. Will include update PCE skin test MVDM response.
  */
-const updatePceskin = function updatePceskin(options) {
+const updatePceSkin = function updatePceSkin(options) {
     return new Promise((resolve, reject) => {
         request({
             method: 'PUT',
@@ -245,7 +245,7 @@ function runCalls() {
         return createPceSkin({
             accessToken,
             patientToken,
-            args: createPceskinArgs,
+            args: createPceSkinArgs,
         });
     }).then((res) => {
         console.log(`New PCE skin test successfully created!${NEW_LINES}`);
@@ -257,11 +257,22 @@ function runCalls() {
             patientToken,
             args: {
                 id: skin.id,
-                skinStatus: 'INACTIVE',
+                skinTestType: {
+                    id: '9999999_28-7',
+                    label: 'CANDIDA',
+                    sameAs: 'vuid:5198079'
+                },
+                results: 'NEGATIVE',
+                visit: {
+                    id: '9000010-1'
+                },
+                reading: 1,
+                comments: 'updated comments'
+
             },
         };
 
-        return updatePceSkin(updatSkinOptions);
+        return updatePceSkin(updateSkinOptions);
     }).then((res) => {
         console.log(`PCE skin test successfully updated!${NEW_LINES}`);
         skin = res.body.updated;
