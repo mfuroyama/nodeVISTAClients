@@ -106,6 +106,7 @@ const createPceExam = function createPceExam(options) {
             if (err) {
                 reject(err);
             } else if (res.statusCode !== HttpStatus.CREATED) {
+                console.log(res);
                 throw new Error(`There was issue with the create PCE exam request: ${res.body}`);
             } else {
                 resolve(res);
@@ -254,7 +255,8 @@ function runCalls() {
             patientToken,
             args: {
                 id: exam.id,
-                examStatus: 'INACTIVE',
+                visit: {id: '9000010-1'},
+                comments: 'updated comments' 
             },
         };
 
@@ -282,7 +284,7 @@ function runCalls() {
     }).then((res) => {
         console.log(`List PCE exams success!${NEW_LINES}`);
         const exams = JSON.parse(res.body).results;
-        console.log(`${JSON.stringify(exams, null, 2)}${NEW_LINES}`);
+        console.log(`${JSON.stringify(exams, null, 2)}${NEW_LINES}`, exam.id);
 
         return describePceExam({
             accessToken,

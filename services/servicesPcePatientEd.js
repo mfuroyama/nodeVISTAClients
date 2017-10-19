@@ -106,6 +106,8 @@ const createPcePatientEd = function createPcePatientEd(options) {
             if (err) {
                 reject(err);
             } else if (res.statusCode !== HttpStatus.CREATED) {
+                console.log(options.args, '<<>>', options.patientToken);
+ 
                 throw new Error(`There was issue with the create PCE patientEd request: ${res.body}`);
             } else {
                 resolve(res);
@@ -207,15 +209,13 @@ const describePcePatientEd = function describePcePatientEd(options) {
 const createPcePatientEdArgs = {
 
     topicType: {
-        id: '9999999_09-9',
-        label: 'VA-ADVANCE DIRECTIVES SCREENING'
+        id: '9999999_09-612027',
+        label: 'ALCOHOL USE AND MEDICAL PROBLEMS'
     },
     levelOfUnderstanding: 'POOR',
     visit: {
         id: '9000010-1'
     },
-    //orderingProvider: { id: '200-63', label: 'ALEXANDER,ROBERT' },
-    //encounterProvider: { id: '200-63', label: 'ALEXANDER,ROBERT' },
     comments: 'original comments'
 
 };
@@ -238,17 +238,19 @@ function runCalls() {
         refreshToken = res.refreshToken;
 
         return patientSelect(accessToken, config.patientId);
-    }).then((res) => {
-        console.log(`Patient select success! Received a patient JWT token!${NEW_LINES}`);
+    })
+     .then((res) => {
+         console.log(`Patient select success! Received a patient JWT token!${NEW_LINES}`);
 
-        patientToken = res.patientToken;
+         patientToken = res.patientToken;
 
         return createPcePatientEd({
             accessToken,
             patientToken,
-            args: createPcePatientEdArgs,
+            args: createPcePatientEdArgs
         });
-    }).then((res) => {
+    })
+    .then((res) => {
         console.log(`New PCE patientEd successfully created!${NEW_LINES}`);
         patientEd = res.body.created;
         console.log(`${JSON.stringify(patientEd, null, 2)}${NEW_LINES}`);
@@ -258,7 +260,12 @@ function runCalls() {
             patientToken,
             args: {
                 id: patientEd.id,
-                patientEdStatus: 'INACTIVE',
+                topicType: {
+                id: '9999999_09-9',
+                   label: 'VA-ADVANCE DIRECTIVES SCREENING'
+                },
+                visit: {id: '9000010-1'},
+                comments: 'updated comments',
             },
         };
 
@@ -273,7 +280,8 @@ function runCalls() {
             patientToken,
             patientEdId: patientEd.id,
         });
-    }).then((res) => {
+    })
+    .then((res) => {
         console.log(`Describe PCE patientEd success!${NEW_LINES}`);
         patientEd = JSON.parse(res.body).result;
         console.log(`${JSON.stringify(patientEd, null, 2)}${NEW_LINES}`);
@@ -283,15 +291,16 @@ function runCalls() {
             patientToken,
             filter: 'inactive',
         });
-    }).then((res) => {
-        console.log(`List PCE patientEds success!${NEW_LINES}`);
-        const patientEds = JSON.parse(res.body).results;
-        console.log(`${JSON.stringify(patientEds, null, 2)}${NEW_LINES}`);
+    })
+    .then((res) => {
+       console.log(`List PCE patientEds success!${NEW_LINES}`);
+       const patientEds = JSON.parse(res.body).results;
+       console.log(`${JSON.stringify(patientEds, null, 2)}${NEW_LINES}`);
 
         return describePcePatientEd({
             accessToken,
             patientToken,
-            patientEdId: patientEd.id,
+            patientEdId:  patientEd.id,
         });
     }).catch((err) => {
         console.log(err);

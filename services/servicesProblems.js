@@ -72,6 +72,7 @@ const patientSelect = function patientSelect(accessToken, patientId) {
             if (err) {
                 reject(err);
             } else if (res.statusCode !== HttpStatus.OK) {
+                console.log(res.statusCode, 'res status code!!', patientId, accessToken);
                 throw new Error(`There was issue with the patient select request: ${res.body}`);
             } else if (!res.headers['x-patient-token']) {
                 throw new Error('Something went wrong: patient select request did not return a patient token.');
@@ -230,6 +231,7 @@ function runCalls() {
         console.log(`Authentication success! Received the access and refresh JWT tokens!${NEW_LINES}`);
 
         accessToken = res.accessToken;
+        console.log(accessToken, 'access token');
         refreshToken = res.refreshToken;
 
         return patientSelect(accessToken, config.patientId);

@@ -106,6 +106,7 @@ const createPceDiagnosis = function createPceDiagnosis(options) {
             if (err) {
                 reject(err);
             } else if (res.statusCode !== HttpStatus.CREATED) {
+                console.log('error message!!!!!!', res.statusCode);
                 throw new Error(`There was issue with the create PCE diagnosis request: ${res.body}`);
             } else {
                 resolve(res);
@@ -204,21 +205,21 @@ const describePceDiagnosis = function describePceDiagnosis(options) {
 };
 
 // new diagnosis arguments
-const createPceDiagnosisArgs = {
+const createPcePovArgs = {
     povType: {
-        id: '80-571830',
-        label: 'Z98.890'
+        id: '80-521774',
+        label: 'R69.'
     },
     visit: {
         id: '9000010-1'
     },
     providerNarrative: {
-        id: '9999999_27-35708',
-        label: 'Other specified Postprocedural State'
+        id: '9999999_27-1',
+        label: 'Arthritis'
     },
     clicnicalTerm: {
-        id: '757_01-5063754',
-        label: 'Other specified Postprocedural States'
+        id: '757_01-7006401',
+        label: 'Arthritis'
     },
     primarySecondary: 'PRIMARY',
     //orderingProvider: { id: '200-63', label: 'ALEXANDER,ROBERT' },
@@ -237,7 +238,7 @@ function runCalls() {
     let accessToken;
     let refreshToken;
     let patientToken;
-    let skin;
+    let pov;
 
     const NEW_LINES = '\n\n\n';
 
@@ -259,8 +260,8 @@ function runCalls() {
             args: createPcePovArgs,
         });
     }).then((res) => {
-        console.log(`New PCE diagnosis successfully created!${NEW_LINES}`);
         pov = res.body.created;
+
         console.log(`${JSON.stringify(pov, null, 2)}${NEW_LINES}`);
 
         const updateDiagnosisOptions = {
@@ -268,11 +269,27 @@ function runCalls() {
             patientToken,
             args: {
                 id: pov.id,
-                povStatus: 'INACTIVE',
+                povType: {
+                    id: '80-521774',
+                    label: 'R69.'
+                },
+
+                visit: {
+                    id: '9000010-1'
+                },
+                providerNarrative: {
+                    id: '9999999_27-1',
+                    label: 'Arthritis'
+                },
+                clicnicalTerm: {
+                    id: '757_01-7006401',
+                    label: 'Arthritis'
+                },
+                primarySecondary: 'SECONDARY',
+
             },
         };
-
-        return updatePceDiagnosis(updatDiagnosisOptions);
+        return updatePcePov(updateDiagnosisOptions);
     }).then((res) => {
         console.log(`PCE diagnosis successfully updated!${NEW_LINES}`);
         pov = res.body.updated;
