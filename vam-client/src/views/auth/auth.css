@@ -1,0 +1,86 @@
+.authView {
+    height:100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.authView > .alignView {
+    display:flex;
+}
+
+.authView > label {
+    margin-bottom:8px;
+    color:#555;
+}
+
+.authView > .logo {
+    box-sizing: border-box;
+    font-size:52px;
+    color: #7e808c;
+    display:flex;
+    align-items: center;
+    flex-direction: row;
+    padding:0 15px 0 15px;
+    margin-top:20px;
+    margin-bottom:8px;
+    height:150px;
+    text-shadow: 0 1px #ffffff;
+}
+
+.authView > .logo img {
+    float:left;
+    margin-right:15px;
+}
+
+
+.authView .authForm {
+    display:block;
+    background-color: #fff;
+    box-sizing: border-box;
+    padding:16px;
+    border:1px solid #cdcdcd;
+    height:auto;
+    border-radius: 5px;
+}
+
+.authView .authForm .item {
+    margin:5px 5px 14px 5px;
+    width:360px;
+    font-size:14px;
+}
+
+.authView .authForm .item > .v-Select {
+    width:100%;
+}
+
+.authView .authForm .item > label {
+    margin-bottom:4px;
+    display:block;
+}
+
+.authView .authForm .loginBtn {
+    margin:4px 5px;
+    float:right;
+    width:120px;
+}
+
+.authView .bottom {
+    display: flex;
+    flex-direction: row;
+}
+
+.authView .loading {
+    display: flex;
+    flex-direction: row;
+    flex:1;
+    color:#686868;
+    align-items: center;
+    font-size:13px;
+}
+
+.authView .v-loader {
+    margin-right:8px;
+    margin-top:1px;
+}
