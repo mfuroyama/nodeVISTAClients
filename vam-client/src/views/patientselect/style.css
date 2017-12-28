@@ -1,0 +1,103 @@
+.patientSelectWindow .content {
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    height:100%;
+}
+
+
+.patientSelectWindow .confirmBtns {
+    position:absolute;
+    right:20px;
+    top:15px;
+    width:100px;
+
+}
+
+.patientSelectWindow .confirmBtns .v-Button {
+    width:100px;
+    margin-bottom:5px;
+}
+
+.patientSelectWindow .top {
+    width:500px;
+    height:250px;
+}
+
+.patientSelectWindow .top .patientSelect {
+    width:220px;
+    height:100%;
+    margin:15px 0 0 15px;
+    display:flex;
+    flex-direction: column;
+}
+
+.patientSelectWindow .patientSelect .patientList {
+    width:100%;
+    flex:1;
+    border:1px solid #ced3d7;
+    margin-top:5px;
+    background:#fff;
+
+}
+
+.patientSelectWindow .v-ProgressiveList {
+    width:100%;
+    height:100%;
+}
+
+.patientSelectWindow .demographics {
+    position:absolute;
+    left:240px;
+    top:0;
+    right:140px;
+    border:none;
+    box-sizing: border-box;
+    padding:0 12px;
+    font-size:13px;
+}
+
+.patientItem {
+    padding:7px 0 15px 8px;
+    border-bottom:1px solid #e5e5e5;
+    height:35px;
+    color:#505050;
+}
+
+.patientItem .label {
+    font-size:13px;
+}
+
+.patientSelectWindow .bottom {
+    position:relative;
+    flex:1;
+    display:flex;
+    flex-direction: column;
+}
+
+.patientSelectWindow .notificationsTable {
+    flex:1;
+    margin:0 15px 10px 15px;
+    border-color: #ced3d7;
+}
+
+.patientSelectWindow .bottom > .notificationsLabel {
+    font-weight: bold;
+    margin:25px 15px 8px 17px;
+    font-size:13px;
+}
+
+
+.patientSelectWindow .bottom > .bottomBtns
+{
+    width:100%;
+    margin:0 15px 15px 14px;
+}
+
+.patientSelectWindow .bottom > .bottomBtns > .v-Button {
+    min-width: 100px;
+    height:24px;
+    font-size:12px;
+    margin-right:5px;
+}
+
