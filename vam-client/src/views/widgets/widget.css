@@ -1,0 +1,75 @@
+
+.v-Widget {
+
+    display:flex;
+    flex-direction: column;
+    border-radius: 5px;
+    height:100%;
+    box-shadow: 0 2px 8px #8f8f8f;
+
+}
+
+.v-WidgetTitle {
+    height:32px;
+    background-color: #394f64;
+    border-radius: 5px 5px 0 0;
+    color:#fff;
+    padding:8px;
+    font-size:14px;
+    box-sizing: border-box;
+    cursor:move;
+}
+
+.v-WidgetContent {
+    background-color:#fff;
+    border:1px solid #aaa;
+    border-top:none;
+    flex:1;
+    border-radius:0 0 5px 5px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.v-WidgetTable {
+    flex:1;
+}
+
+.v-WidgetFooter {
+    height:36px;
+    background:#f0f0f0;
+    border-top:1px solid #e0e0e0;
+}
+
+
+
+.v-WidgetButtons {
+    position:absolute;
+    right:5px;
+    top:1px;
+}
+
+
+.v-WidgetTitle .v-Button.default {
+    border: 1px solid transparent;
+    border-radius: 3px;
+    height: 24px;
+    background-color: transparent;
+    color: #fff;
+    box-shadow: none;
+    text-shadow: none;
+    margin:3px 3px 0 0;
+    line-height: 16px;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.v-WidgetTitle .v-Button.default.is-hover {
+    background-color: rgba(138, 155, 168, 0.15);
+}
+
+.v-WidgetTitle .v-Button.default.is-active {
+    background-color: rgba(138, 155, 168, 0.3);
+    color: #f5f8fa;
+    box-shadow: none;
+}

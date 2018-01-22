@@ -3,6 +3,8 @@
     flex-direction: column;
     width:100%;
     height:100%;
+    padding:15px;
+    box-sizing: border-box;
 }
 
 
@@ -20,14 +22,16 @@
 }
 
 .patientSelectWindow .top {
-    width:500px;
-    height:250px;
+    width:400px;
+    flex:1;
+    display:flex;
+    flex-direction: row;
+
 }
 
 .patientSelectWindow .top .patientSelect {
-    width:220px;
+    min-width:250px;
     height:100%;
-    margin:15px 0 0 15px;
     display:flex;
     flex-direction: column;
 }
@@ -38,6 +42,7 @@
     border:1px solid #ced3d7;
     margin-top:5px;
     background:#fff;
+    box-sizing: border-box;
 
 }
 
@@ -47,14 +52,20 @@
 }
 
 .patientSelectWindow .demographics {
-    position:absolute;
-    left:240px;
-    top:0;
-    right:140px;
-    border:none;
+    border:1px solid #ced3d7;;
     box-sizing: border-box;
-    padding:0 12px;
-    font-size:13px;
+    margin-left:15px;
+    font-size:14px;
+    min-width:250px;
+    height:200px;
+    padding:10px;
+    border-radius: 5px;
+}
+
+
+.patientSelectWindow .demographics .heading {
+    font-weight:bold;
+    margin-bottom:8px;
 }
 
 .patientItem {
@@ -62,42 +73,16 @@
     border-bottom:1px solid #e5e5e5;
     height:35px;
     color:#505050;
+    white-space: nowrap;
+    width:100%;
 }
 
 .patientItem .label {
     font-size:13px;
 }
 
-.patientSelectWindow .bottom {
-    position:relative;
-    flex:1;
-    display:flex;
-    flex-direction: column;
-}
-
-.patientSelectWindow .notificationsTable {
-    flex:1;
-    margin:0 15px 10px 15px;
-    border-color: #ced3d7;
-}
-
-.patientSelectWindow .bottom > .notificationsLabel {
-    font-weight: bold;
-    margin:25px 15px 8px 17px;
-    font-size:13px;
-}
 
 
-.patientSelectWindow .bottom > .bottomBtns
-{
-    width:100%;
-    margin:0 15px 15px 14px;
-}
 
-.patientSelectWindow .bottom > .bottomBtns > .v-Button {
-    min-width: 100px;
-    height:24px;
-    font-size:12px;
-    margin-right:5px;
-}
+
 

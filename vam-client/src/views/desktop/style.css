@@ -2,14 +2,27 @@
     width:100%;
     height:100%;
     box-sizing:border-box;
+    overflow:auto;
+
 }
 
-.portals {
-    top:45px;
-    left:0;
-    right:0;
+
+
+.desktop > .content {
+    position:absolute;
+    top:44px;
     bottom:0;
-    position: absolute;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.content > .v-Portal {
+    width:100%;
+    overflow-y:auto;
+    overflow-x:hidden;
+    background:none;
+    flex:1;
 }
 
 .v-MenuItem {
@@ -20,3 +33,13 @@
     font-size:17px;
     left:10px;
 }
+
+.content > .patientInfo {
+    min-height:62px;
+    width:100%;
+    border-top:1px solid #232e3c;
+    border-bottom:1px solid #bfbfbf;
+    background-color:#fafafa;
+    box-shadow: 0 2px 8px #bbb;
+}
+

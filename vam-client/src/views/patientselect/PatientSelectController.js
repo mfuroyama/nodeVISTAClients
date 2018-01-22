@@ -1,34 +1,37 @@
 import React from 'react';
 import uniqueId from 'lodash/uniqueId';
+import format from 'date-fns/format';
 
-import View from '~/react-views/View';
 import WindowPanel from '~/react-views/WindowPanel';
 import ButtonView from '~/react-views/ButtonView';
 import SearchTextView from '~/react-views/SearchTextView';
 import ProgressiveListView from '~/react-views/ProgressiveListView';
 import RadioView from '~/react-views/RadioView';
-import TableView from "~/react-views/TableView";
+import TableView, {ColumnResizePolicy} from "~/react-views/TableView";
 
 import './style.css';
 
 
 
-
+//temp hardcoded patients
 let patientDb = [
 
     {
+        id: '2-25',
         firstName: "David",
         lastName: "Carter",
         ssn:"000-00-0113",
-        dob:"March 02, 1981",
+        dob:new Date(1981, 3, 2),
         gender:"Male"
     },
 
     {
+
+        id: '2-17',
         firstName: "Patient",
         lastName: "Eight",
         ssn:"655-44-7777",
-        dob:"April 01, 1933",
+        dob:new Date(1933, 4, 1),
         gender:"Male"
 
     }
@@ -78,13 +81,15 @@ class PatientSelectController extends React.Component {
         if(demographics){
 
             patientInfo = <div className="demographics">
-                <h5>Patient Demographics</h5>
+                <div className="heading">Patient Demographics</div>
                 <table>
-                    <tr><td colSpan={2}><b>{demographics.lastName}, {demographics.firstName}</b></td></tr>
-                    <tr><td>SSN:</td><td>{demographics.ssn}</td></tr>
-                    <tr><td>DOB:</td><td>{demographics.dob}</td></tr>
-                    <tr><td>{demographics.gender}</td></tr>
-                    <tr><td>Veteran</td></tr>
+                    <tbody>
+                        <tr><td colSpan={2}><b>{demographics.lastName}, {demographics.firstName}</b></td></tr>
+                        <tr><td>SSN:</td><td>{demographics.ssn}</td></tr>
+                        <tr><td>DOB:</td><td>{format(demographics.dob, 'MMMM DD, YYYY')}</td></tr>
+                        <tr><td>{demographics.gender}</td></tr>
+                        <tr><td>Veteran</td></tr>
+                    </tbody>
                 </table>
             </div>
         }
@@ -93,75 +98,27 @@ class PatientSelectController extends React.Component {
         return (
 
             <WindowPanel title="Patient Selection"
-                         width={760}
-                         minSize={{width:740, height:500}}
-                         height={580}
+                         width={670}
+                         height={460}
+                         minSize={{width:670, height:460}}
                          modal={true}
                          ref={(e)=> this._window = e}
                          className="patientSelectWindow">
 
-
                 <div className="content">
                     <div className="top">
                         <div className="patientSelect">
-                            <SearchTextView placeholder="Patient Search" />
+                            <SearchTextView placeholder="Patient Search" ref={e => this._patientSearch = e} />
                             <div className="patientList">
-                                <PatientListView onSelect={this.onPatientSelect.bind(this)}
+                                <PatientListView onSelect={this._onPatientSelect.bind(this)}
                                     ref={(e)=> this._patientList = e}/>
                             </div>
                         </div>
-
                         {patientInfo}
                     </div>
 
-                    <div className="bottom">
-                        <div className="notificationsLabel">Notifications</div>
-                        <TableView columns={[
-                            {
-                                name: 'Info',
-                                resizable:true,
-                                width:70
-                            },
-                            {
-                                name: 'Patient',
-                                resizable:true,
-                                width:130
-                            },
-                            {
-                                name: 'Location',
-                                resizable:true,
-                                width:130
-                            },
-                            {
-                                name: 'Alert Date/Time',
-                                resizable:true,
-                                width:185
-                            },
-                            {
-                                name: 'Message',
-                                resizable:true,
-                                width:210
-                            },
-
-
-
-                        ]}
-                        emptyText="No Notifications"
-                        className="notificationsTable"/>
-
-                        <div className="bottomBtns">
-                            <ButtonView text="Process Info"/>
-                            <ButtonView text="Process All"/>
-                            <ButtonView text="Process" disabled={true}/>
-                            <ButtonView text="Forward" disabled={true}/>
-                            <ButtonView text="Show Comments" disabled={true}/>
-                            <ButtonView text="Remove" disabled={true}/>
-                        </div>
-
-                    </div>
-
                     <div className="confirmBtns">
-                        <ButtonView text="OK" type="primary" />
+                        <ButtonView text="OK" type="primary" action={this.props.action} />
                         <ButtonView text="Cancel" action={this.orderOut.bind(this)}  />
                     </div>
                 </div>
@@ -169,6 +126,10 @@ class PatientSelectController extends React.Component {
             </WindowPanel>
 
         )
+    }
+
+    get selectedPatient() {
+        return this.state.selectedPatient;
     }
 
     orderFront() {
@@ -181,6 +142,7 @@ class PatientSelectController extends React.Component {
         });
 
         this._patientList.content = patientDb;
+        this._patientSearch.focused = true;
 
 
     }
@@ -191,7 +153,10 @@ class PatientSelectController extends React.Component {
         }
     }
 
-    onPatientSelect(sender) {
+
+
+    _onPatientSelect(sender) {
+
         this.setState({
             selectedPatient: sender.props.data
         });

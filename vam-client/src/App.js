@@ -8,10 +8,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom'
 import AuthController from './views/auth/AuthController';
 import AppController from './views/desktop/AppController';
 
-
 import './style.css';
-
-
 
 /** root view **/
 class App extends View {

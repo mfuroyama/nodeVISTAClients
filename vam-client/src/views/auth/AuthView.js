@@ -22,8 +22,8 @@ class AuthView extends View {
 
            <div className="authView">
                <div className="logo">
-                   <img align="middle" src={Logo} width={96} height={96} alt="VAM logo" />
-                   <label>VAM Client</label>
+                   <img align="middle" src={Logo} width={96} height={96} alt="VICS logo" />
+                   <label>VICS Client</label>
                </div>
 
                <label>Log In</label>
