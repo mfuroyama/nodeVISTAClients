@@ -9,34 +9,12 @@ import ProgressiveListView from '~/react-views/ProgressiveListView';
 import RadioView from '~/react-views/RadioView';
 import TableView, {ColumnResizePolicy} from "~/react-views/TableView";
 
+import {PatientsDb} from "~/FakeDb";
+
 import './style.css';
 
 
 
-//temp hardcoded patients
-let patientDb = [
-
-    {
-        id: '2-25',
-        firstName: "David",
-        lastName: "Carter",
-        ssn:"000-00-0113",
-        dob:new Date(1981, 3, 2),
-        gender:"Male"
-    },
-
-    {
-
-        id: '2-17',
-        firstName: "Patient",
-        lastName: "Eight",
-        ssn:"655-44-7777",
-        dob:new Date(1933, 4, 1),
-        gender:"Male"
-
-    }
-
-];
 
 
 class PatientListView extends ProgressiveListView {
@@ -141,10 +119,8 @@ class PatientSelectController extends React.Component {
             selectedPatient:null
         });
 
-        this._patientList.content = patientDb;
+        this._patientList.content = PatientsDb;
         this._patientSearch.focused = true;
-
-
     }
 
     orderOut() {

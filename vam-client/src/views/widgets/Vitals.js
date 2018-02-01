@@ -1,17 +1,20 @@
 import React from 'react';
 
-import Widget from './Widget';
-
-class Vitals extends Widget {
-
-    renderContent() {
+import TableWidget from './TableWidget';
 
 
+
+
+class Vitals extends TableWidget {
+
+    get tableColumns() {
+        return [];
     }
 }
 
 Vitals.defaultProps = {
-    title: 'Vitals'
+    title: 'Vitals',
+    emptyText: 'No data found'
 };
 
 

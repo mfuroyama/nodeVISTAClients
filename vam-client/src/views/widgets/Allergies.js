@@ -1,99 +1,123 @@
 import React from 'react';
-import axios from 'axios';
+
+import ButtonView from '~/react-views/ButtonView';
+
+import TableWidget from './TableWidget';
+import RecordsCollection from './RecordsCollection';
+
+import AllergyDetail from "./AllergyDetail";
+import WriteAllergyDialog from "./writeBack/WriteAllergyDialog";
 
 
-import PaginatedTableView from '~/react-views/PaginatedTableView';
-import {ColumnResizePolicy} from "~/react-views/TableView";
-import Pager from '~/react-views/Pager';
-
-import AllergyDetail from './AllergyDetail';
-import Widget from './Widget';
 
 
-class Allergies extends Widget {
 
-    constructor(props) {
-        super(props);
+// let fakeData = []
+//
+//
+// for(var i = 0; i <40; i++) {
+//     fakeData = fakeData.concat([{
+//         reactant: { label: 'Pencillin'}
+//     },
+//         {
+//             reactant: { label: 'Chocolate'}
+//         },
+//         {
+//             reactant: { label: 'Nuts'}
+//         },
+//         {
+//             reactant: { label: 'Butter'}
+//         }])
+// }
 
-        Object.assign(this.state, {
-            detail : null
-        });
+
+class Allergies extends TableWidget {
+
+
+    get tableColumns() {
+
+        return [
+            {
+                name: 'Allergy Name',
+                id: 'causativeAgent',
+                sortable:true,
+                width:225,
+                formatter: function(value, row) {
+                    return <ButtonView text={value}
+                                       type="link" action={this._allergyDetail.bind(this,row)}/>
+                }.bind(this)
+            },
+
+            {
+
+                name: 'Facility',
+                id: 'facility',
+                sortable:true
+
+            }
+        ];
     }
 
-    renderContent() {
 
-        let detail = this.state.detail;
+    renderWindows() {
+        return [
+            <AllergyDetail data={this.state.detail} ref={e => this._detailWindow = e} key={1} />,
+            <WriteAllergyDialog ref={e => this._writeDialog = e} key={2} />
+         ];
 
-        return (
-
-            <div className="v-WidgetContent">
-                <PaginatedTableView emptyText="No Allergy Assessment"
-                                    hasHeader={false}
-                                    fitColumns={true}
-                                    columnResizePolicy={ColumnResizePolicy.LAST_COLUMN}
-                                    columns={[
-
-                                        {
-                                            id: 'reactant',
-                                            formatter: function(value, row) {
-                                                return <a href="#" onClick={this._allergyDetail.bind(this, row)}>{value.label}</a>;
-                                            }.bind(this)
-                                        }
-
-
-                                    ]}
-                    ref={e => this._table = e} className="v-WidgetTable"/>
-                <div className="v-WidgetFooter">
-                    <Pager table={() => this._table } />
-
-                </div>
-
-                <AllergyDetail ref={e => this._detailWindow = e} data={this.state.detail}/>
-
-            </div>
-        )
     }
+
+    renderToolButtons() {
+        return [
+            <ButtonView className="v-WidgetWrite" tooltip="Enter New Allergy" key={1}
+                        iconOnly={true} icon="fa fa-pencil"
+                        action={this._showWriteAllergy.bind(this)}  />,
+
+            <ButtonView className="v-WidgetRefresh" tooltip="Refresh" key={2}
+            iconOnly={true} icon="fa fa-refresh"
+            action={this.loadData.bind(this)}  />
+        ];
+
+    }
+
+
+    _showWriteAllergy() {
+        this._writeDialog.orderFront();
+    }
+
 
     _allergyDetail(data) {
 
-        this.setupRequest();
-        axios.get('/allergy/'+data.id).then(function(response){
-
-            this.setState({
-                detail:response.data.result
-            });
-            console.log(this.state.detail);
-
-            setTimeout(function(){
-                this._detailWindow.orderFront();
-            }.bind(this), 0);
-
-
-        }.bind(this))
-
-
-
-
+        this.setState({
+            detail:data
+        });
+        setTimeout(function(){
+            this._detailWindow.orderFront();
+        }.bind(this), 0);
 
     }
-
-    didEnterDocument() {
-        //fetch the allergies list
-        this.setupRequest();
-        axios.get('/allergy').then(function(response){
-            let data = response.data;
-            if(data.results) {
-                console.log(data.results)
-                this._table.data = data.results;
-            }
-        }.bind(this));
-    }
-
 
 }
 
 Allergies.defaultProps = {
-    title: 'Allergies / Adverse Reactions'
+    title: 'Allergies / Adverse Reactions',
+    emptyText: 'No Allergy Assessment',
+    collection: new RecordsCollection({
+        url: '/allergy',
+        parse: function(data) {
+            if(data.reactant) {
+                data.causativeAgent = data.reactant.label.replace('_', '/');
+            }
+
+            data.hasComments = data.comments || data.removalDetails;
+
+            if(data.enteredAtFacility) {
+                data.facility = data.enteredAtFacility.id;
+            }
+
+            return data;
+        }
+    })
 };
 
 

@@ -4,27 +4,13 @@ import WindowPanel from '~/react-views/WindowPanel';
 import DeckView from '~/react-views/DeckView';
 import ButtonView from '~/react-views/ButtonView';
 import SearchTextView from '~/react-views/SearchTextView';
-import ProgressiveListView from '~/react-views/ProgressiveListView';
+import OutlineView from '~/react-views/OutlineView';
+import OutlineItemView from '~/react-views/OutlineItemView';
+
+import {AllergiesDb} from '~/FakeDb';
+
 
 import './writeAllergy.css';
-
-
-class AllergyListView extends ProgressiveListView {
-
-
-    renderItem(item) {
-
-    }
-
-
-    itemHeight() {
-        return 50;
-    }
-
-
-
-}
-
 
 
 
@@ -34,7 +20,6 @@ class WriteAllergyDialog extends React.Component {
     render() {
 
         return (
-
 
             <WindowPanel
                 className="writeAllergyDialog"
@@ -48,17 +33,28 @@ class WriteAllergyDialog extends React.Component {
                 <DeckView>
 
 
-                    <div className="findCausativeAgentView">
-
+                    <div className="search">
                         <div><b>Enter causative agent for Allergy or Adverse Drug Reaction:</b></div>
                         <p>
                             Enter the first few letters of the causative agent (minimum of 3) to allow
                             for a comprehensive search. Only one reactant maybe be entered at a time.
                         </p>
 
-                        <SearchTextView ref={e => this._searchBox = e}/>
-                        <AllergyListView />
+                        <SearchTextView ref={e => this._searchBox = e} textDidChange={this.searchTermChanged.bind(this)}/>
+                        <div className="results">
+                            <OutlineView>
+                                <OutlineItemView text="VA Allergies File" />
+                                <OutlineItemView text="National Drug File - Generic Drug Name" />
+                                <OutlineItemView text="National Drug File - Trade Name" />
+                                <OutlineItemView text="Local Drug File" />
+                                <OutlineItemView text="Drug Ingredients File" />
+                                <OutlineItemView text="VA Drug Class File" />
+                            </OutlineView>
+                        </div>
+
                     </div>
+
+
                 </DeckView>
 
                 <div className="buttonBar">
@@ -72,6 +68,12 @@ class WriteAllergyDialog extends React.Component {
             </WindowPanel>
 
         );
+    }
+
+    searchTermChanged(sender) {
+        let searchTerm = sender.value;
+
+
 
 
     }

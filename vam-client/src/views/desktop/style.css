@@ -21,8 +21,9 @@
     width:100%;
     overflow-y:auto;
     overflow-x:hidden;
-    background:none;
     flex:1;
+    background-color: #fdfcf8;
+
 }
 
 .v-MenuItem {
@@ -37,9 +38,10 @@
 .content > .patientInfo {
     min-height:62px;
     width:100%;
+    z-index:1;
     border-top:1px solid #232e3c;
     border-bottom:1px solid #bfbfbf;
-    background-color:#fafafa;
+    background-color: #efefef;
     box-shadow: 0 2px 8px #bbb;
 }
 

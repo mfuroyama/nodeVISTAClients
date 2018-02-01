@@ -4,8 +4,6 @@ import View from '~/react-views/View';
 import ButtonView from '~/react-views/ButtonView';
 
 import './widget.css';
-import axios from "axios/index";
-import Cookies from "js-cookie";
 
 class Widget extends View {
 
@@ -17,7 +15,7 @@ class Widget extends View {
                 <div className="v-WidgetTitle v-DragHandle">
                     {this.props.title}
                         <div className="v-WidgetButtons">
-                            <ButtonView className="v-WidgetWrite" tooltip="Write" iconOnly={true} icon="fa fa-pencil"  />
+                            {this.renderToolButtons()}
                             <ButtonView className="v-WidgetClose" iconOnly={true} icon="fa fa-close" action={this.props.closeAction} />
                         </div>
                     </div>
@@ -33,12 +31,13 @@ class Widget extends View {
     }
 
 
-    setupRequest() {
-        axios.defaults.headers.common['Authorization'] = 'Bearer ' + Cookies.get('x-access-token');
-        axios.defaults.headers.common['x-patient-token'] = Cookies.get('x-patient-token');
+    renderToolButtons() {
+        return null;
     }
 
+
 }
+
 
 
 export default Widget;

@@ -1,0 +1,1 @@
+A server that intermediates between VAM-client and nodeVISTA

@@ -8,9 +8,6 @@ import Control from '~/react-views/Control';
 import './demographics.css';
 
 class PatientDemographicsView extends Control {
-
-
-
     render() {
 
         let patient = this.props.patient;

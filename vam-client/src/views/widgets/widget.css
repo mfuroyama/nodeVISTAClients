@@ -1,6 +1,5 @@
 
 .v-Widget {
-
     display:flex;
     flex-direction: column;
     border-radius: 5px;
@@ -21,6 +20,8 @@
 }
 
 .v-WidgetContent {
+    padding:0;
+    margin:0;
     background-color:#fff;
     border:1px solid #aaa;
     border-top:none;
@@ -28,19 +29,40 @@
     border-radius:0 0 5px 5px;
     display: flex;
     flex-direction: column;
-
 }
 
 .v-WidgetTable {
     flex:1;
+    border:none;
+}
+
+.v-WidgetTable .v-Button.link {
+    margin-top:-3px;
 }
 
 .v-WidgetFooter {
-    height:36px;
+    height:40px;
+    padding:2px 4px;
     background:#f0f0f0;
     border-top:1px solid #e0e0e0;
+    box-sizing: border-box;
 }
 
+.v-WidgetFooter .v-Pager {
+    margin:8px;
+    display:inline-block;
+}
+
+.v-WidgetFooter .v-Pager .v-Button{
+    width:24px;
+    height:24px;
+}
+
+.v-WidgetFooter .displayInfo {
+    font-size:12px;
+    margin:10px 4px;
+    display:inline-block;
+}
 
 
 .v-WidgetButtons {

@@ -1,12 +1,36 @@
 import React from 'react';
 
-import Widget from './Widget';
+import ButtonView from '~/react-views/ButtonView';
 
-class ActiveProblems extends Widget {
+import TableWidget from './TableWidget';
+import RecordsCollection from "./RecordsCollection";
+
+class ActiveProblems extends TableWidget {
 
 
-    renderContent() {
+    get tableColumns() {
+        return [
 
+            {
+                id: 'name',
+                name: 'Problem',
+                sortable:true
+            },
+
+            {
+                id: 'enteredDateValue',
+                name: 'Entered Date'
+            }
+        ];
+    }
+
+
+    renderToolButtons() {
+        return [
+            <ButtonView className="v-WidgetRefresh" tooltip="Refresh" key={2}
+                        iconOnly={true} icon="fa fa-refresh"
+                        action={this.loadData.bind(this)}  />
+        ];
 
     }
 
@@ -15,7 +39,20 @@ class ActiveProblems extends Widget {
 }
 
 ActiveProblems.defaultProps = {
-    title: 'Active Problems'
+    title: 'Active Problems',
+    emptyText: 'No Problems Found',
+    collection: new RecordsCollection({
+        url: '/problem?filter=both',
+        parse: function(data) {
+            if(data.problem) {
+                data.name = data.problem.label;
+            }
+            if(data.enteredDate) {
+                data.enteredDateValue = data.enteredDate.value;
+            }
+            return data;
+        }
+    })
 };
 
 
