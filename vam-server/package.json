@@ -16,5 +16,10 @@
     "babel-register": "^6.11.6",
     "mocha": "^3.0.1",
     "nodemon": "^1.10.0"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "lodash": "^4.17.4",
+    "request": "^2.83.0"
   }
 }

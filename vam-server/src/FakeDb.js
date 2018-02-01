@@ -1,6 +1,3 @@
-
-
-
 export const PatientsDb = [
 
     {
@@ -27,7 +24,6 @@ export const PatientsDb = [
 
 
 export const AllergiesDb = [
-
     {
         fileName: 'VA Allergies File',
         reactants: ['ASPARAGUS', 'ASPIRIN', 'CAFFEINE', 'CHOCOLATE', 'MANGOS', 'SEAFOOD', 'RUBBER']

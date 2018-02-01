@@ -41,11 +41,12 @@ class AuthController extends React.Component {
         });
 
         //post to auth
-        axios.post('/auth/', 'userId=200-62&facilityId=4-2957')
-            .then(function(response){
+        axios.post('/auth', {
+            userId:'200-62',
+            facilityId: '4-2957'
+        }).then(function(response){
 
-                Cookies.set('x-refresh-token', response.headers['x-refresh-token']);
-                Cookies.set('x-access-token', response.headers['x-access-token']);
+                console.log(response);
 
                 this.setState({
                     loading:false,

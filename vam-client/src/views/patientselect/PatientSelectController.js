@@ -1,6 +1,7 @@
 import React from 'react';
 import uniqueId from 'lodash/uniqueId';
 import format from 'date-fns/format';
+import axios from 'axios';
 
 import WindowPanel from '~/react-views/WindowPanel';
 import ButtonView from '~/react-views/ButtonView';
@@ -9,13 +10,7 @@ import ProgressiveListView from '~/react-views/ProgressiveListView';
 import RadioView from '~/react-views/RadioView';
 import TableView, {ColumnResizePolicy} from "~/react-views/TableView";
 
-import {PatientsDb} from "~/FakeDb";
-
 import './style.css';
-
-
-
-
 
 class PatientListView extends ProgressiveListView {
 
@@ -86,7 +81,9 @@ class PatientSelectController extends React.Component {
                 <div className="content">
                     <div className="top">
                         <div className="patientSelect">
-                            <SearchTextView placeholder="Patient Search" ref={e => this._patientSearch = e} />
+                            <SearchTextView placeholder="Patient Search"
+                                            textDidChange={this.searchForPatients.bind(this)}
+                                            ref={e => this._patientSearch = e} />
                             <div className="patientList">
                                 <PatientListView onSelect={this._onPatientSelect.bind(this)}
                                     ref={(e)=> this._patientList = e}/>
@@ -106,6 +103,15 @@ class PatientSelectController extends React.Component {
         )
     }
 
+    searchForPatients(sender) {
+        let searchTerm = sender.value;
+
+        axios.get('/patient', 'lastName='+searchTerm).then(function(response){
+
+            console.log(response)
+        }.bind(this));
+    }
+
     get selectedPatient() {
         return this.state.selectedPatient;
     }
@@ -119,7 +125,8 @@ class PatientSelectController extends React.Component {
             selectedPatient:null
         });
 
-        this._patientList.content = PatientsDb;
+
+        this._patientList.content = [];
         this._patientSearch.focused = true;
     }
 

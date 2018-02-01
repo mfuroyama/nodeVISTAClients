@@ -7,8 +7,6 @@ import SearchTextView from '~/react-views/SearchTextView';
 import OutlineView from '~/react-views/OutlineView';
 import OutlineItemView from '~/react-views/OutlineItemView';
 
-import {AllergiesDb} from '~/FakeDb';
-
 
 import './writeAllergy.css';
 
