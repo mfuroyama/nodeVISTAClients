@@ -1,0 +1,30 @@
+
+.writeAllergyDialog {
+    font-size:14px;
+}
+
+
+.writeAllergyDialog .buttonBar {
+    position:absolute;
+    bottom:15px;
+    left:15px;
+    right:15px;
+    height:32px;
+    display:flex;
+    flex-direction: row;
+
+}
+
+.writeAllergyDialog .flex {
+    flex:1;
+}
+
+.writeAllergyDialog .buttonBar > .v-Button {
+    margin-left: 6px;
+    width:100px;
+
+}
+
+.writeAllergyDialog .findCausativeAgentView {
+    margin:15px;
+}
