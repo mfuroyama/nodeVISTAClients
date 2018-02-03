@@ -42,8 +42,12 @@ class PatientSelectController extends React.Component {
         super(props);
 
         this.state = {
-            selectedPatient:null
+            selectedPatient:null,
+            patients: []
         };
+
+
+        this.searchForPatients();
     }
 
     render() {
@@ -82,10 +86,10 @@ class PatientSelectController extends React.Component {
                     <div className="top">
                         <div className="patientSelect">
                             <SearchTextView placeholder="Patient Search"
-                                            textDidChange={this.searchForPatients.bind(this)}
                                             ref={e => this._patientSearch = e} />
                             <div className="patientList">
-                                <PatientListView onSelect={this._onPatientSelect.bind(this)}
+                                <PatientListView content={this.state.patients}
+                                    onSelect={this._onPatientSelect.bind(this)}
                                     ref={(e)=> this._patientList = e}/>
                             </div>
                         </div>
@@ -103,12 +107,25 @@ class PatientSelectController extends React.Component {
         )
     }
 
-    searchForPatients(sender) {
-        let searchTerm = sender.value;
+    searchForPatients() {
 
-        axios.get('/patient', 'lastName='+searchTerm).then(function(response){
+        if(this._patientList) {
+            this._patientList.setState({
+                loading:true
+            });
+        }
 
-            console.log(response)
+        axios.get('/patients').then(function(response){
+
+            if(this._patientList) {
+                this._patientList.setState({
+                    loading:false
+                });
+            }
+            this.setState({
+                patients: response.data
+            });
+
         }.bind(this));
     }
 
@@ -125,8 +142,6 @@ class PatientSelectController extends React.Component {
             selectedPatient:null
         });
 
-
-        this._patientList.content = [];
         this._patientSearch.focused = true;
     }
 

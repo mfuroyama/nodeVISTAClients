@@ -18,8 +18,10 @@
     "nodemon": "^1.10.0"
   },
   "dependencies": {
+    "date-fns": "^1.29.0",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
+    "handlebars": "^4.0.11",
     "lodash": "^4.17.4",
     "request": "^2.83.0"
   }

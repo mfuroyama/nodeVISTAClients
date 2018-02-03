@@ -25,7 +25,6 @@ class RecordsCollection  {
 
     fetch(callback) {
         if(this.props.url) {
-            this._setupRequest();
             axios.get(this.props.url).then(function(response){
                 let data = response.data;
                 if(isFunction(this.props.parse)){
@@ -41,12 +40,6 @@ class RecordsCollection  {
             }.bind(this));
         }
     }
-
-    _setupRequest() {
-        axios.defaults.headers.common['Authorization'] = 'Bearer ' + Cookies.get('x-access-token');
-        axios.defaults.headers.common['x-patient-token'] = Cookies.get('x-patient-token');
-    }
-
 
     set data(d) {
         this._data = d;

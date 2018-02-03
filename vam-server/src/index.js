@@ -30,6 +30,8 @@ app.post('/patient/select', PatientsController.selectPatient);
 
 //domains
 app.get('/allergy', AllergiesController.listAllergies);
+app.get('/allergyDetail/:allergyId', AllergiesController.allergyDetails);
+
 app.get('/problem', ProblemsController.listProblems);
 app.get('/vitals', VitalsController.listVitals);
 

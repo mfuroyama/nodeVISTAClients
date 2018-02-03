@@ -1,8 +1,6 @@
 import request from "request";
 import {CONSTANTS} from '../config';
 
-
-
 exports.login = function(req, res) {
 
     let userId = req.body.userId,

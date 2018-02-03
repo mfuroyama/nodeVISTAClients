@@ -1,7 +1,7 @@
 import React from 'react';
-import Cookies from 'js-cookie';
 import axios from 'axios';
 
+import EventResponder from "~/react-views/EventResponder";
 import PatientState from '~/PatientState';
 
 import PatientSelectController from "../patientselect/PatientSelectController";
@@ -10,12 +10,13 @@ import Portal from './portal/Portal';
 
 import ActiveProblems from "../widgets/ActiveProblems";
 
+
 import Allergies from "../widgets/Allergies";
 import Vitals from "../widgets/Vitals";
 import PatientDemographicsView from "./PatientDemographicsView";
 
 import './style.css';
-import EventResponder from "../../react-views/src/EventResponder";
+
 
 class AppController extends React.Component {
 
@@ -25,6 +26,20 @@ class AppController extends React.Component {
         this.state = {
             selectedPatient: null
         };
+
+
+        axios.interceptors.response.use(function(response){
+                return response;
+        }, function(error){
+
+            if(401 === error.response.status){
+                window.location = '/auth';
+            }
+
+        });
+
+
+
     }
 
 
@@ -47,7 +62,7 @@ class AppController extends React.Component {
 
     componentDidMount() {
 
-        PatientState.set(null);
+        PatientState.clear();
 
         setTimeout(function(){
            this.showPatientSelectWindow();
@@ -57,6 +72,12 @@ class AppController extends React.Component {
         // this.addAllergies();
 
 
+    }
+
+    logout() {
+        axios.get('/logout').then(function(){
+            window.location = '/auth';
+        }.bind(this));
     }
 
     addActiveProblems() {
@@ -74,19 +95,23 @@ class AppController extends React.Component {
     }
 
 
+    refreshPatientInformation() {
+        EventResponder.postNotification('load');
+    }
+
     selectPatient() {
 
         let patient = this._psController.selectedPatient;
-        axios.defaults.headers.common['Authorization'] = 'Bearer ' + Cookies.get('x-access-token');
-        axios.post('/patient/select', 'patientId='+patient.id).then(function(response){
-            this.patient = {
-                token: response.headers['x-patient-token'],
-                patient: patient
-            }
+
+        PatientState.select(patient, function(){
+            this.setState({
+                selectedPatient: PatientState.patient
+            });
+
+            this._psController.orderOut();
+            EventResponder.postNotification('load');
 
         }.bind(this));
-
-        this._psController.orderOut();
     }
 
 
@@ -94,14 +119,6 @@ class AppController extends React.Component {
         this._psController.orderFront();
     }
 
-    set patient(p) {
-        PatientState.set(p);
-        this.setState({
-            selectedPatient: PatientState.patient
-        });
-
-        EventResponder.postNotification('load');
-    }
 
     get patient() {
         return this.state.selectedPatient;

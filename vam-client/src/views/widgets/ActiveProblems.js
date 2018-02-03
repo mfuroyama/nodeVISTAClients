@@ -42,7 +42,7 @@ ActiveProblems.defaultProps = {
     title: 'Active Problems',
     emptyText: 'No Problems Found',
     collection: new RecordsCollection({
-        url: '/problem?filter=both',
+        url: '/problem',
         parse: function(data) {
             if(data.problem) {
                 data.name = data.problem.label;

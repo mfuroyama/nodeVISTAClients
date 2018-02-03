@@ -1,5 +1,6 @@
-import Cookies from 'js-cookie';
 import isNull from 'lodash/isNull';
+import isFunction from 'lodash/isFunction';
+import axios from 'axios'
 
 /**
  *  This singleton class contains the current selected patient.
@@ -8,7 +9,6 @@ import isNull from 'lodash/isNull';
 class PatientState {
 
     constructor(){
-        this.token = null;
         this.patient = null;
     }
 
@@ -17,24 +17,8 @@ class PatientState {
         return isNull(this.patient);
     }
 
-    set(config) {
-
-        if(config) {
-           this.token = config.token;
-           this.patient = config.patient;
-        }
-        else {
-            this.token = null;
-            this.patient = null;
-        }
-    }
-
-    get token() {
-        return Cookies.get('x-patient-token');
-    }
-
-    set token(tkn) {
-        Cookies.set('x-patient-token', tkn);
+    clear() {
+        this.patient = null;
     }
 
     get patient() {
@@ -43,6 +27,25 @@ class PatientState {
 
     set patient(p) {
         this._patient = p;
+    }
+
+    select(patient, callback) {
+
+        axios.post('/patient/select', {
+            patientId : patient.id
+        }).then(function(response){
+            console.log(response)
+            this.patient = patient;
+            if(isFunction(callback)) {
+                callback.call(this, patient);
+            }
+        }.bind(this))
+            .catch(function(error){
+                if(isFunction(callback)) {
+                    callback.call(this, null, error);
+                }
+            }.bind(this));
+
     }
 
 }

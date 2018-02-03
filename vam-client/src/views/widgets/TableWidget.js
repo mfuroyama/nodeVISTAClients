@@ -95,9 +95,11 @@ class TableWidget extends Widget {
                     callback.call(this, data);
                 }
 
-                this._table.setState({
-                    loading:false
-                });
+                setTimeout(function(){
+                    this._table.setState({
+                        loading:false
+                    });
+                }.bind(this), 0);
 
             }.bind(this));
         }

@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 import ButtonView from '~/react-views/ButtonView';
 
@@ -10,29 +11,7 @@ import WriteAllergyDialog from "./writeBack/WriteAllergyDialog";
 
 
 
-
-
-// let fakeData = []
-//
-//
-// for(var i = 0; i <40; i++) {
-//     fakeData = fakeData.concat([{
-//         reactant: { label: 'Pencillin'}
-//     },
-//         {
-//             reactant: { label: 'Chocolate'}
-//         },
-//         {
-//             reactant: { label: 'Nuts'}
-//         },
-//         {
-//             reactant: { label: 'Butter'}
-//         }])
-// }
-
-
 class Allergies extends TableWidget {
-
 
     get tableColumns() {
 
@@ -89,10 +68,18 @@ class Allergies extends TableWidget {
     _allergyDetail(data) {
 
         this.setState({
-            detail:data
+            detail:null
         });
+
+        this._detailWindow.orderFront();
+
         setTimeout(function(){
-            this._detailWindow.orderFront();
+            axios.get('/allergyDetail/'+data.id).then(function(response){
+                this.setState({
+                    detail:response.data
+                });
+            }.bind(this));
+
         }.bind(this), 0);
 
     }
