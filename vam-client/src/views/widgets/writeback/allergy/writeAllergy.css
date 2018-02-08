@@ -1,0 +1,118 @@
+
+.writeAllergyDialog {
+    font-size:14px;
+}
+
+
+.writeAllergyDialog .buttonBar {
+    position:absolute;
+    bottom:15px;
+    left:15px;
+    right:15px;
+    height:32px;
+    display:flex;
+    flex-direction: row;
+
+}
+
+.writeAllergyDialog .buttonBar > .flex {
+    flex:1;
+}
+
+.writeAllergyDialog .buttonBar > .v-Button {
+    width:100px;
+
+}
+
+.writeAllergyDialog .buttonBar > .v-Button.primary {
+    width:125px;
+    margin-left: 6px;
+
+}
+
+.writeAllergyDialog .search {
+    position: absolute;
+    top:15px;
+    left:15px;
+    right:15px;
+    bottom:65px;
+    display:flex;
+    flex-direction: column;
+}
+
+.writeAllergyDialog .results {
+    flex:1;
+    margin:10px 0;
+    border:1px solid #ccc;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+
+}
+
+
+.writeAllergyDialog .results > .v-OutlineView {
+    width:100%;
+    height:100%;
+    overflow:auto;
+}
+
+.writeAllergyDialog .allergyOptions {
+    margin:20px 10px;
+    font-size:14px;
+}
+
+.writeAllergyDialog .allergyOption {
+    margin:5px 5px 10px 5px;
+}
+
+
+.writeAllergyDialog .allergyOption.signsSymptoms {
+    margin-top:0;
+}
+
+.writeAllergyDialog .allergyOption .causativeAgent {
+    width:200px;
+}
+
+.writeAllergyDialog .allergyOption .v-Select {
+    margin:6px 0 0 -2px;
+    width:205px;
+}
+
+.writeAllergyDialog .allergyOption .v-Text {
+    margin:6px 0 0 -2px;
+    width:205px;
+}
+
+.writeAllergyDialog .allergyOption .v-td {
+    padding:0 25px 0 0px;
+}
+
+.writeAllergyDialog .allergyOption .causativeAgent > div {
+    margin-top:6px;
+}
+
+.writeAllergyDialog .allergyOptions .signSymptomsList {
+    height:215px;
+    width:200px;
+    background-color:#fff;
+    border:1px solid #ccc;
+    margin-top:6px;
+}
+
+.writeAllergyDialog .allergyOption .v-Text.comments {
+    width:300px;
+    height:217px;
+}
+
+.signSymptomsItem {
+    width:100%;
+    padding:8px 4px 4px 8px;
+    height:32px;
+    box-sizing: border-box;
+
+}
+

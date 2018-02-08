@@ -67,21 +67,32 @@ class Portal extends View {
         })
     }
 
+    setup(config) {
+        this.setState({
+            items: config,
+            newCounter: 4*config.length
+        });
+    }
+
     addWidget(w) {
+
+
+        this.state.items.unshift({
+            i: "n" + this.state.newCounter,
+            x: 0,
+            y: 0,
+            w: 4,
+            h: 6,
+            minW: 3,
+            minH: 5,
+            widget: w
+
+        });
+
 
         this.setState({
             // Add a new item. It must have a unique key!
-            items: this.state.items.concat({
-                i: "n" + this.state.newCounter,
-                x: 0,
-                y: 0,
-                w: 4,
-                h: 6,
-                minW: 3,
-                minH: 5,
-                widget: w
-
-            }),
+            items: this.state.items,
             // Increment the counter to ensure key is always unique.
             newCounter: this.state.newCounter + 4
         });

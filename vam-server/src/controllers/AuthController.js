@@ -21,12 +21,14 @@ exports.login = function(req, res) {
             res.sendStatus(500);
         }
 
-        let headers = response.headers;
-        session.auth = true;
-        session.accessToken = headers['x-access-token'];
-        session.refreshToken = headers['x-refresh-token'];
+        if(response) {
+            let headers = response.headers;
+            session.auth = true;
+            session.accessToken = headers['x-access-token'];
+            session.refreshToken = headers['x-refresh-token'];
 
-        res.sendStatus(response.statusCode);
+            res.sendStatus(response.statusCode);
+        }
 
     });
 

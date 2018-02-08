@@ -64,14 +64,37 @@ class AppController extends React.Component {
 
         PatientState.clear();
 
+        this._portal.setup([
+
+            {
+                i: "n0",
+                x: 0,
+                y: 0,
+                w: 4,
+                h: 6,
+                minW: 3,
+                minH: 5,
+                widget: <Allergies/>
+            },
+            {
+
+                i: "n1",
+                x: 4,
+                y: 0,
+                w: 4,
+                h: 6,
+                minW: 3,
+                minH: 5,
+                widget: <ActiveProblems/>
+
+            }
+
+        ]);
+
+
         setTimeout(function(){
            this.showPatientSelectWindow();
         }.bind(this), 250);
-
-        // this.addActiveProblems();
-        // this.addAllergies();
-
-
     }
 
     logout() {

@@ -1,8 +1,51 @@
 import request from "request";
 import {CONSTANTS} from '../config';
+import filter from 'lodash/filter';
+import startsWith from 'lodash/startsWith';
 
 import Handlebars from 'handlebars';
 import format from 'date-fns/format';
+
+import {AllergiesDb, SignSymptoms} from "../FakeDb";
+
+
+exports.createAllergy = function(req, res) {
+
+    let session = req.session;
+
+    if(session.auth) {
+        let url = '/allergy';
+        if(session.patToken) {
+            request.post({
+                headers: {
+                    'Authorization' : 'Bearer '+ session.accessToken,
+                    'x-patient-token' : session.patToken,
+                    'Content-Type': 'application/json'
+                },
+                url: CONSTANTS.REST_BASE_URL+url,
+                json : Object.assign(req.body, {
+                    "allergySeverity": 'MODERATE'
+                })
+            }, function(err, response, body){
+                if(err) {
+                    res.sendStatus(500);
+                }
+
+                console.log(body);
+
+                if(body) {
+                    res.send(body);
+                }
+            });
+
+            return;
+        }
+    }
+
+    res.sendStatus(401);
+
+};
+
 
 
 exports.listAllergies = function(req, res) {
@@ -24,7 +67,10 @@ exports.listAllergies = function(req, res) {
                     res.sendStatus(500);
                 }
 
-                res.send(body);
+                if(body) {
+                    res.send(body);
+                }
+
 
             });
 
@@ -36,6 +82,44 @@ exports.listAllergies = function(req, res) {
     res.sendStatus(401);
 };
 
+exports.allergenSearch = function(req, res) {
+
+    if(req.session.auth) {
+        let searchTerm = req.query.query;
+        if(searchTerm) {
+
+            let results = {};
+
+            for(var idx in AllergiesDb) {
+
+                let cat = AllergiesDb[idx];
+                results[cat.fileName] = filter(cat.reactants, function(item){
+                    return startsWith(item.label.toUpperCase(), searchTerm.toUpperCase());
+                });
+            }
+
+
+            res.send(results);
+        }
+        else {
+            res.send({});
+        }
+        return;
+    }
+
+    res.sendStatus(401);
+};
+
+
+exports.allergenSignsSymptoms = function(req, res) {
+
+    if(req.session.auth) {
+        res.send(SignSymptoms);
+        return;
+    }
+
+    res.sendStatus(401)
+};
 
 exports.allergyDetails = function(req, res) {
 
@@ -55,9 +139,9 @@ exports.allergyDetails = function(req, res) {
                 if(err) {
                     res.sendStatus(500);
                 }
-
-                res.send(AllergyDetails.returnValue(JSON.parse(body).result))
-
+                if(body) {
+                    res.send(AllergyDetails.returnValue(JSON.parse(body).result))
+                }
             });
 
             return;

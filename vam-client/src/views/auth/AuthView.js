@@ -31,12 +31,12 @@ class AuthView extends View {
                    <div className="authForm">
                        <div className="item">
                            <label>User ID:</label>
-                           <TextView readOnly={true} value="62"/>
+                           <TextView readOnly={true} value="ALEXANDER,ROBERT"/>
                        </div>
                        <div className="item">
                            <label>Facility ID:</label>
                            <SelectView>
-                               <option>2957</option>
+                               <option value="VISTA HEALTH CARE"/>
                            </SelectView>
                        </div>
 

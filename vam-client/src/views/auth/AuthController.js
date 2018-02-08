@@ -45,9 +45,6 @@ class AuthController extends React.Component {
             userId:'200-62',
             facilityId: '4-2957'
         }).then(function(response){
-
-                console.log(response);
-
                 this.setState({
                     loading:false,
                     success: true

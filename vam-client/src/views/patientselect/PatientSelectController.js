@@ -25,7 +25,7 @@ class PatientListView extends ProgressiveListView {
         return  (
             <div className="patientItem">
                 <RadioView name={PatientListView.radioName}
-                    action={this.props.onSelect} data={data}
+                    action={this.props.onSelect.bind(this, data)}
                            text={data.lastName +", " + data.firstName} />
             </div>
         )
@@ -122,9 +122,13 @@ class PatientSelectController extends React.Component {
                     loading:false
                 });
             }
-            this.setState({
-                patients: response.data
-            });
+            if(response) {
+                this.setState({
+                    patients: response.data
+                });
+            }
+
+
 
         }.bind(this));
     }
@@ -141,8 +145,6 @@ class PatientSelectController extends React.Component {
         this.setState({
             selectedPatient:null
         });
-
-        this._patientSearch.focused = true;
     }
 
     orderOut() {
@@ -153,12 +155,10 @@ class PatientSelectController extends React.Component {
 
 
 
-    _onPatientSelect(sender) {
-
+    _onPatientSelect(data) {
         this.setState({
-            selectedPatient: sender.props.data
+            selectedPatient: data
         });
-
     }
 
 }

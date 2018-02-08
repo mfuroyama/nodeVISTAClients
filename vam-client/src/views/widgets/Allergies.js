@@ -7,7 +7,8 @@ import TableWidget from './TableWidget';
 import RecordsCollection from './RecordsCollection';
 
 import AllergyDetail from "./AllergyDetail";
-import WriteAllergyDialog from "./writeBack/WriteAllergyDialog";
+import WriteAllergyDialog from "./writeback/allergy/WriteAllergyDialog";
+import EventResponder from "../../react-views/src/EventResponder";
 
 
 
@@ -20,7 +21,7 @@ class Allergies extends TableWidget {
                 name: 'Allergy Name',
                 id: 'causativeAgent',
                 sortable:true,
-                width:225,
+                width:180,
                 formatter: function(value, row) {
                     return <ButtonView text={value}
                                        type="link" action={this._allergyDetail.bind(this,row)}/>
@@ -31,7 +32,10 @@ class Allergies extends TableWidget {
 
                 name: 'Facility',
                 id: 'facility',
-                sortable:true
+                sortable:true,
+                formatter: function(value, row) {
+                    return 'VISTA HEALTH CARE';
+                }
 
             }
         ];
@@ -84,6 +88,16 @@ class Allergies extends TableWidget {
 
     }
 
+    didEnterDocument() {
+        EventResponder.listenFor('loadAllergy', this, this.loadData);
+        super.didEnterDocument();
+    }
+
+    didLeaveDocument() {
+        EventResponder.removeListener('loadAllergy', this);
+        super.didLeaveDocument();
+    }
+
 }
 
 Allergies.defaultProps = {
@@ -92,6 +106,7 @@ Allergies.defaultProps = {
     collection: new RecordsCollection({
         url: '/allergy',
         parse: function(data) {
+            console.log(data);
             if(data.reactant) {
                 data.causativeAgent = data.reactant.label.replace('_', '/');
             }

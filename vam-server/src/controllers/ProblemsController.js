@@ -20,9 +20,9 @@ exports.listProblems = function (req, res) {
                 if(err) {
                     res.sendStatus(500);
                 }
-
-                res.send(body);
-
+                if(body) {
+                    res.send(body);
+                }
             });
 
             return;

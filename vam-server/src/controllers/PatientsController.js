@@ -15,7 +15,7 @@ exports.listPatients = function(req, res) {
         let searchTerm = req.query.lastName;
         if(searchTerm) {
             let results = filter(PatientsDb, function(item){
-                return startsWith(item.lastName, searchTerm);
+                return startsWith(item.lastName ? item.lastName.toUpperCase() : '', searchTerm.toUpperCase());
             });
 
             res.send(results);
@@ -53,9 +53,13 @@ exports.selectPatient = function(req, res) {
                     res.sendStatus(500);
                 }
 
-                let headers = response.headers;
-                session.patToken = headers['x-patient-token'];
-                res.sendStatus(response.statusCode);
+                if(response) {
+                    let headers = response.headers;
+                    session.patToken = headers['x-patient-token'];
+                    res.sendStatus(response.statusCode);
+                }
+
+
             });
 
             return;

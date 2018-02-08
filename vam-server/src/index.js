@@ -1,8 +1,6 @@
 import express from 'express';
 import session from 'express-session';
 
-
-
 import AuthController from './controllers/AuthController';
 import PatientsController from './controllers/PatientsController';
 import AllergiesController from "./controllers/AllergiesController";
@@ -30,7 +28,10 @@ app.post('/patient/select', PatientsController.selectPatient);
 
 //domains
 app.get('/allergy', AllergiesController.listAllergies);
+app.post('/allergy', AllergiesController.createAllergy);
 app.get('/allergyDetail/:allergyId', AllergiesController.allergyDetails);
+app.get('/allergens', AllergiesController.allergenSearch);
+app.get('/signsSymptoms', AllergiesController.allergenSignsSymptoms);
 
 app.get('/problem', ProblemsController.listProblems);
 app.get('/vitals', VitalsController.listVitals);
