@@ -20,8 +20,6 @@ exports.listVitals = function(req, res) {
                     res.sendStatus(500);
                 }
 
-                console.log(body);
-
                 if(body) {
                     res.send(body);
                 }

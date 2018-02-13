@@ -6,7 +6,6 @@ exports.loginCheck = function(req, res) {
 
     let session = req.session;
 
-    console.log('login check')
     if(session.auth) {
         res.redirect('/app');
         return;
