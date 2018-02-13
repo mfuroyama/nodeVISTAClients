@@ -1,6 +1,22 @@
 import request from "request";
 import {CONSTANTS} from '../config';
 
+
+exports.loginCheck = function(req, res) {
+
+    let session = req.session;
+
+    console.log('login check')
+    if(session.auth) {
+        res.redirect('/app');
+        return;
+    }
+
+    res.redirect('/auth');
+
+};
+
+
 exports.login = function(req, res) {
 
     let userId = req.body.userId,

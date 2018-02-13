@@ -16,8 +16,18 @@ app.use(session({
     saveUninitialized: true
 }));
 
+app.use(express.static('public', {index:false}));
+
+app.get('/', AuthController.loginCheck);
+
+app.get('/app', function(req,res) {
+    res.sendfile('public/index.html');
+});
 
 //auth
+app.get('/auth', function(req,res) {
+    res.sendfile('public/index.html');
+});
 app.post('/auth', AuthController.login);
 app.get('/logout', AuthController.logout);
 
