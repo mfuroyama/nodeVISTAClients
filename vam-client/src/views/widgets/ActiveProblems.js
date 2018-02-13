@@ -5,6 +5,8 @@ import ButtonView from '~/react-views/ButtonView';
 import TableWidget from './TableWidget';
 import RecordsCollection from "./RecordsCollection";
 
+import PatientState from '~/PatientState';
+
 class ActiveProblems extends TableWidget {
 
 
@@ -28,7 +30,7 @@ class ActiveProblems extends TableWidget {
     renderToolButtons() {
         return [
             <ButtonView className="v-WidgetRefresh" tooltip="Refresh" key={2}
-                        iconOnly={true} icon="fa fa-refresh"
+                        iconOnly={true} icon="fa fa-refresh" disabled={PatientState.isNull()}
                         action={this.loadData.bind(this)}  />
         ];
 
@@ -43,7 +45,10 @@ ActiveProblems.defaultProps = {
     emptyText: 'No Problems Found',
     collection: new RecordsCollection({
         url: '/problem',
-        parse: function(data) {
+        parse: function(response){
+            return response.result
+        },
+        record: function(data) {
             if(data.problem) {
                 data.name = data.problem.label;
             }

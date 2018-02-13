@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import Cookies from 'js-cookie';
+
 import {Redirect} from 'react-router-dom'
 
 import AuthView from './AuthView';

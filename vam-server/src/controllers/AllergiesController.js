@@ -31,6 +31,42 @@ exports.createAllergy = function(req, res) {
                     res.sendStatus(500);
                 }
 
+                if(body) {
+                    res.send(body);
+                }
+            });
+
+            return;
+        }
+    }
+
+    res.sendStatus(401);
+
+};
+
+exports.removeAllergy = function(req, res) {
+
+    let session = req.session;
+
+    if(session.auth) {
+        let url = '/allergy/remove';
+        if(session.patToken) {
+            request.put({
+                headers: {
+                    'Authorization' : 'Bearer '+ session.accessToken,
+                    'x-patient-token' : session.patToken,
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                url: CONSTANTS.REST_BASE_URL+url,
+                form: {
+                    id: req.body.id,
+                    comment: req.body.comment
+                }
+            }, function(err, response, body){
+                if(err) {
+                    res.sendStatus(500);
+                }
+
                 console.log(body);
 
                 if(body) {
@@ -45,7 +81,6 @@ exports.createAllergy = function(req, res) {
     res.sendStatus(401);
 
 };
-
 
 
 exports.listAllergies = function(req, res) {
@@ -140,7 +175,12 @@ exports.allergyDetails = function(req, res) {
                     res.sendStatus(500);
                 }
                 if(body) {
-                    res.send(AllergyDetails.returnValue(JSON.parse(body).result))
+                    let allergy = JSON.parse(body).result;
+                    res.send({
+                        allergy:allergy,
+                        detail: AllergyDetails.returnValue(allergy)
+                    });
+
                 }
             });
 

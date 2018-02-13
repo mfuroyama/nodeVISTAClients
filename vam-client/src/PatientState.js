@@ -31,20 +31,28 @@ class PatientState {
 
     select(patient, callback) {
 
-        axios.post('/patient/select', {
-            patientId : patient.id
-        }).then(function(response){
-            console.log(response)
-            this.patient = patient;
-            if(isFunction(callback)) {
-                callback.call(this, patient);
-            }
-        }.bind(this))
-            .catch(function(error){
+        if(patient && patient.id) {
+            axios.post('/patient/select', {
+                patientId : patient.id
+            }).then(function(response){
+                this.patient = patient;
                 if(isFunction(callback)) {
-                    callback.call(this, null, error);
+                    callback.call(this, patient);
                 }
-            }.bind(this));
+            }.bind(this))
+                .catch(function(error){
+                    if(isFunction(callback)) {
+                        callback.call(this, null, error);
+                    }
+                }.bind(this));
+        }
+        else {
+            this.clear();
+            if(isFunction(callback)) {
+                callback.call(this, null);
+            }
+        }
+
 
     }
 

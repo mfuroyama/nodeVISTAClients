@@ -82,7 +82,7 @@ class Portal extends View {
             x: 0,
             y: 0,
             w: 4,
-            h: 6,
+            h: 7,
             minW: 3,
             minH: 5,
             widget: w

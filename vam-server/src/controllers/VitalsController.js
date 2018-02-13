@@ -7,7 +7,7 @@ exports.listVitals = function(req, res) {
     let session = req.session;
 
     if(session.auth) {
-        let url = '/vitals';
+        let url = '/vitals/mostRecent';
         if(session.patToken) {
             request.get({
                 headers: {
@@ -19,6 +19,9 @@ exports.listVitals = function(req, res) {
                 if(err) {
                     res.sendStatus(500);
                 }
+
+                console.log(body);
+
                 if(body) {
                     res.send(body);
                 }

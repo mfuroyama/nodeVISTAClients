@@ -1,12 +1,14 @@
 import React from 'react';
 import isFunction from 'lodash/isFunction';
 
+import EventResponder from "~/react-views/src/EventResponder";
 import PaginatedTableView from '~/react-views/PaginatedTableView';
 import {ColumnResizePolicy} from "~/react-views/TableView";
 import Pager from '~/react-views/Pager';
 import Widget from './Widget';
+
 import PatientState from '~/PatientState';
-import EventResponder from "../../react-views/src/EventResponder";
+
 
 /**
  *  A widget that contains a Table as the central component
@@ -87,6 +89,7 @@ class TableWidget extends Widget {
             });
 
             this.state.collection.fetch(function(data){
+
                 this._table.data = data;
 
                 this._updateDisplayInfo(0);

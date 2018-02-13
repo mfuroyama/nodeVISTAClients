@@ -7,6 +7,8 @@ import MenuItemView from '~/react-views/MenuItemView';
 import MenuButtonView from '~/react-views/MenuButtonView';
 import MenuItemSeparator from '~/react-views/MenuItemSeparator';
 
+import PatientState from '~/PatientState';
+
 class AppToolbar extends React.Component {
 
     render() {
@@ -22,6 +24,7 @@ class AppToolbar extends React.Component {
                             <MenuItemView action={target.showPatientSelectWindow.bind(target)}
                                           icon="fa fa-user" text="Select New Patient"/>
                             <MenuItemView icon="fa fa-refresh"
+                                          disabled={PatientState.isNull()}
                                           action={target.refreshPatientInformation.bind(target)}
                                           text="Refresh Patient Information"/>
                             {/*<MenuItemView icon="fa fa-user-md" text="Update Provider/Location"/>*/}

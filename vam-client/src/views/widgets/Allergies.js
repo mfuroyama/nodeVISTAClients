@@ -8,7 +8,9 @@ import RecordsCollection from './RecordsCollection';
 
 import AllergyDetail from "./AllergyDetail";
 import WriteAllergyDialog from "./writeback/allergy/WriteAllergyDialog";
-import EventResponder from "../../react-views/src/EventResponder";
+import EventResponder from "~/react-views/src/EventResponder";
+
+import PatientState from '~/PatientState';
 
 
 
@@ -54,10 +56,11 @@ class Allergies extends TableWidget {
         return [
             <ButtonView className="v-WidgetWrite" tooltip="Enter New Allergy" key={1}
                         iconOnly={true} icon="fa fa-pencil"
+                        disabled={PatientState.isNull()}
                         action={this._showWriteAllergy.bind(this)}  />,
 
             <ButtonView className="v-WidgetRefresh" tooltip="Refresh" key={2}
-            iconOnly={true} icon="fa fa-refresh"
+            iconOnly={true} icon="fa fa-refresh" disabled={PatientState.isNull()}
             action={this.loadData.bind(this)}  />
         ];
 
@@ -79,9 +82,11 @@ class Allergies extends TableWidget {
 
         setTimeout(function(){
             axios.get('/allergyDetail/'+data.id).then(function(response){
-                this.setState({
-                    detail:response.data
-                });
+                if(response) {
+                    this.setState({
+                        detail:response.data
+                    });
+                }
             }.bind(this));
 
         }.bind(this), 0);
@@ -105,8 +110,10 @@ Allergies.defaultProps = {
     emptyText: 'No Allergy Assessment',
     collection: new RecordsCollection({
         url: '/allergy',
-        parse: function(data) {
-            console.log(data);
+        parse: function(response) {
+            return response.results;
+        },
+        record: function(data) {
             if(data.reactant) {
                 data.causativeAgent = data.reactant.label.replace('_', '/');
             }
@@ -119,6 +126,8 @@ Allergies.defaultProps = {
 
             return data;
         }
+
+
     })
 };
 

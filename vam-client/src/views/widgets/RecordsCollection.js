@@ -2,8 +2,6 @@ import axios from "axios/index";
 import isFunction from 'lodash/isFunction';
 import map from 'lodash/map';
 
-import Cookies from "js-cookie";
-
 
 /**
  *
@@ -28,11 +26,18 @@ class RecordsCollection  {
             axios.get(this.props.url).then(function(response){
                 let data = response.data;
                 if(isFunction(this.props.parse)){
-                    this.data = map(data.results, this.props.parse);
+                    data = this.props.parse(data);
                 }
-                else {
-                    this.data = data.results;
-                }
+
+                this.data = map(data, function(attr){
+                    if(isFunction(this.props.record)) {
+                        return this.props.record(attr);
+                    }
+
+                    return attr;
+
+                }.bind(this));
+
                 if(isFunction(callback)) {
                     callback.call(this, this.data);
                 }
@@ -48,6 +53,8 @@ class RecordsCollection  {
     get data() {
         return this._data;
     }
+
+
 
 }
 

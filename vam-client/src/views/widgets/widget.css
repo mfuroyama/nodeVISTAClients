@@ -90,6 +90,10 @@
     background-color: rgba(138, 155, 168, 0.15);
 }
 
+.v-WidgetTitle .v-Button.default.is-disabled.is-hover {
+    background-color: transparent;
+}
+
 .v-WidgetTitle .v-Button.default.is-active {
     background-color: rgba(138, 155, 168, 0.3);
     color: #f5f8fa;

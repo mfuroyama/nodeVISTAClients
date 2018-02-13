@@ -71,7 +71,7 @@ class AppController extends React.Component {
                 x: 0,
                 y: 0,
                 w: 4,
-                h: 6,
+                h: 7,
                 minW: 3,
                 minH: 5,
                 widget: <Allergies/>
@@ -82,13 +82,12 @@ class AppController extends React.Component {
                 x: 4,
                 y: 0,
                 w: 4,
-                h: 6,
+                h: 7,
                 minW: 3,
                 minH: 5,
                 widget: <ActiveProblems/>
 
             }
-
         ]);
 
 
