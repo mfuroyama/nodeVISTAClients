@@ -22,6 +22,11 @@ class ActiveProblems extends TableWidget {
             {
                 id: 'enteredDateValue',
                 name: 'Entered Date'
+            },
+
+            {
+                id: 'problemStatus',
+                name: 'Status'
             }
         ];
     }
