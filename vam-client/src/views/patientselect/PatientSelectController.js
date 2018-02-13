@@ -1,5 +1,8 @@
 import React from 'react';
 import uniqueId from 'lodash/uniqueId';
+import filter from 'lodash/filter';
+import startsWith from 'lodash/startsWith';
+
 import format from 'date-fns/format';
 import axios from 'axios';
 
@@ -43,6 +46,7 @@ class PatientSelectController extends React.Component {
 
         this.state = {
             selectedPatient:null,
+            checkedRadio:null,
             patients: []
         };
 
@@ -86,9 +90,12 @@ class PatientSelectController extends React.Component {
                     <div className="top">
                         <div className="patientSelect">
                             <SearchTextView placeholder="Patient Search"
+                                            textDidChange={this.onLiveSearch.bind(this)}
                                             ref={e => this._patientSearch = e} />
                             <div className="patientList">
-                                <PatientListView content={this.state.patients}
+                                <PatientListView
+                                    contentDidChange={this.patientListContentChanged.bind(this)}
+                                    content={this.state.visiblePatients}
                                     onSelect={this._onPatientSelect.bind(this)}
                                     ref={(e)=> this._patientList = e}/>
                             </div>
@@ -107,6 +114,35 @@ class PatientSelectController extends React.Component {
         )
     }
 
+
+    onLiveSearch(sender) {
+
+        let value = sender.value;
+
+        this.setState({
+            visiblePatients: filter(this.state.patients, function(patient){
+                return startsWith(patient.lastName.toUpperCase(), value.toUpperCase());
+            })
+        });
+
+    }
+
+    patientListContentChanged() {
+
+        var el = document.getElementsByName(PatientListView.radioName),
+            len = el.length,
+            i = 0;
+        for(; i < len; i++) {
+            el[i].checked = false;
+        }
+
+        this.setState({
+            selectedPatient:null
+        });
+
+    }
+
+
     searchForPatients() {
 
         if(this._patientList) {
@@ -124,7 +160,8 @@ class PatientSelectController extends React.Component {
             }
             if(response) {
                 this.setState({
-                    patients: response.data
+                    patients: response.data,
+                    visiblePatients: response.data
                 });
             }
 
@@ -155,7 +192,8 @@ class PatientSelectController extends React.Component {
 
 
 
-    _onPatientSelect(data) {
+    _onPatientSelect(data, sender) {
+
         this.setState({
             selectedPatient: data
         });

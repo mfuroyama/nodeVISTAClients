@@ -59,13 +59,13 @@ class AllergyDetail extends React.Component {
 
     onEnteredInError() {
 
-
         let allergy = this.props.data.allergy;
 
-        MessageBox.prompt({
-            title: 'Entered In Error',
-            message:<div style={{fontSize:'14px'}}>Clicking OK will mark {allergy.reactant.label} as 'Entered in Error'. <br/><br/>Comments (optional)</div>
-        }, function(ret) {
+        if(allergy) {
+            MessageBox.prompt({
+                title: 'Entered In Error',
+                message:<div style={{fontSize:'14px'}}>Clicking OK will mark {allergy.reactant.label} as 'Entered in Error'. <br/><br/>Comments (optional)</div>
+            }, function(ret) {
 
                 if(ret !== false) {
                     axios.put('/allergy/remove', {
@@ -76,19 +76,13 @@ class AllergyDetail extends React.Component {
                     }).then(function(response){
 
                         EventResponder.postNotification('loadAllergy');
-
                         this.orderOut();
 
                     }.bind(this));
-
-
-
-
                 }
 
-        }.bind(this));
-
-
+            }.bind(this));
+        }
 
     }
 
