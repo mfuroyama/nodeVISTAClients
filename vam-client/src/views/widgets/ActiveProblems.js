@@ -46,7 +46,7 @@ ActiveProblems.defaultProps = {
     collection: new RecordsCollection({
         url: '/problem',
         parse: function(response){
-            return response.result
+            return response.results;
         },
         record: function(data) {
             if(data.problem) {

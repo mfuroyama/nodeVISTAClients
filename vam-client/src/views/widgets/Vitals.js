@@ -48,7 +48,7 @@ Vitals.defaultProps = {
     collection: new RecordsCollection({
         url: '/vitals',
         parse: function(response){
-            return response.results
+            return response.results;
         },
         record: function(data) {
             if(data.vitalType) {
