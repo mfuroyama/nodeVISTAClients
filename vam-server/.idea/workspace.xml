@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c3d6a2c1-14bc-4ddc-9a80-183038a86ddd" name="Default" comment="package-lock.json">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/FakeDb.js" />
-      <change beforePath="$PROJECT_DIR$/../vam-client/package.json" afterPath="$PROJECT_DIR$/../vam-client/package.json" />
-      <change beforePath="$PROJECT_DIR$/../vam-client/src/FakeDb.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../vam-client/src/views/auth/AuthController.js" afterPath="$PROJECT_DIR$/../vam-client/src/views/auth/AuthController.js" />
-      <change beforePath="$PROJECT_DIR$/../vam-client/src/views/patientselect/PatientSelectController.js" afterPath="$PROJECT_DIR$/../vam-client/src/views/patientselect/PatientSelectController.js" />
-      <change beforePath="$PROJECT_DIR$/../vam-client/src/views/widgets/writeBack/WriteAllergyDialog.js" afterPath="$PROJECT_DIR$/../vam-client/src/views/widgets/writeBack/WriteAllergyDialog.js" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/vam-server.iml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
-      <change beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" afterPath="$PROJECT_DIR$/src/index.js" />
+    <list default="true" id="c3d6a2c1-14bc-4ddc-9a80-183038a86ddd" name="Default" comment="latest">
+      <change beforePath="$PROJECT_DIR$/../vam-client/src/views/auth/AuthView.js" afterPath="$PROJECT_DIR$/../vam-client/src/views/auth/AuthView.js" />
+      <change beforePath="$PROJECT_DIR$/../vam-client/src/views/widgets/Vitals.js" afterPath="$PROJECT_DIR$/../vam-client/src/views/widgets/Vitals.js" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/public/asset-manifest.json" afterPath="$PROJECT_DIR$/public/asset-manifest.json" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
+      <change beforePath="$PROJECT_DIR$/public/service-worker.js" afterPath="$PROJECT_DIR$/public/service-worker.js" />
+      <change beforePath="$PROJECT_DIR$/public/static/js/main.793085a6.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/static/js/main.793085a6.js.map" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -24,12 +20,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package.json">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="17" column="15" lean-forward="false" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
-              <folding />
+            <state relative-caret-position="988">
+              <caret line="52" column="15" lean-forward="false" selection-start-line="52" selection-start-column="15" selection-end-line="52" selection-end-column="15" />
+              <folding>
+                <marker date="1518631292000" expanded="true" signature="7:395" ph="..." />
+                <marker date="1518631292000" expanded="true" signature="462:544" ph="{&quot;secret&quot;: '4zkmWtXxOxJc5wuy'...}" />
+                <marker date="1518631292000" expanded="true" signature="676:718" ph="{...}" />
+                <marker date="1518631292000" expanded="true" signature="764:806" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -37,18 +38,78 @@
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="16" column="14" lean-forward="false" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+            <state relative-caret-position="323">
+              <caret line="17" column="14" lean-forward="false" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/index.js">
+      <file leaf-file-name="AuthController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controllers/AuthController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
-              <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state relative-caret-position="133">
+              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding>
+                <marker date="1518554292000" expanded="true" signature="7:67" ph="..." />
+                <marker date="1518554292000" expanded="true" signature="110:250" ph="{...}" />
+                <marker date="1518554292000" expanded="true" signature="166:219" ph="{...}" />
+                <marker date="1518554292000" expanded="true" signature="289:983" ph="{...}" />
+                <marker date="1518554292000" expanded="true" signature="441:580" ph="{...}" />
+                <marker date="1518554292000" expanded="true" signature="499:574" ph="{&quot;userId&quot;: userId...}" />
+                <marker date="1518554292000" expanded="true" signature="611:965" ph="{...}" />
+                <marker date="1518554292000" expanded="true" signature="629:673" ph="{...}" />
+                <marker date="1518554292000" expanded="true" signature="696:958" ph="{...}" />
+                <marker date="1518554292000" expanded="true" signature="1023:1108" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PatientsController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controllers/PatientsController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1102">
+              <caret line="58" column="56" lean-forward="false" selection-start-line="58" selection-start-column="56" selection-end-line="58" selection-end-column="56" />
+              <folding>
+                <marker date="1517987961000" expanded="true" signature="7:189" ph="..." />
+                <marker date="1517987961000" expanded="true" signature="234:674" ph="{...}" />
+                <marker date="1517987961000" expanded="true" signature="262:645" ph="{...}" />
+                <marker date="1517987961000" expanded="true" signature="332:563" ph="{...}" />
+                <marker date="1517987961000" expanded="true" signature="393:519" ph="{...}" />
+                <marker date="1517987961000" expanded="true" signature="577:622" ph="{...}" />
+                <marker date="1517987961000" expanded="true" signature="721:1652" ph="{...}" />
+                <marker date="1517987961000" expanded="true" signature="776:1624" ph="{...}" />
+                <marker date="1517987961000" expanded="true" signature="881:1559" ph="{...}" />
+                <marker date="1517987961000" expanded="true" signature="908:1172" ph="{...}" />
+                <marker date="1517987961000" expanded="true" signature="935:1023" ph="{...}" />
+                <marker date="1517987961000" expanded="true" signature="1097:1158" ph="{&quot;patientId&quot;: patientId...}" />
+                <marker date="1517987961000" expanded="true" signature="1197:1526" ph="{...}" />
+                <marker date="1517987961000" expanded="true" signature="1224:1284" ph="{...}" />
+                <marker date="1517987961000" expanded="true" signature="1315:1510" ph="{...}" />
+                <marker date="1517987961000" expanded="true" signature="1573:1617" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="76">
+              <caret line="4" column="2" lean-forward="false" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
+              <folding>
+                <marker date="1517645774000" expanded="true" signature="22:70" ph="{&quot;REST_BASE_URL&quot;: 'http://10.2.2.100:9030'...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AllergiesController.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/controllers/AllergiesController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="353">
+              <caret line="26" column="48" lean-forward="false" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="48" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
               </folding>
@@ -56,35 +117,73 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FakeDb.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="17" column="15" lean-forward="false" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProblemsController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controllers/ProblemsController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="456">
+              <caret line="24" column="17" lean-forward="false" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
+              <folding>
+                <marker date="1518029701000" expanded="true" signature="7:67" ph="..." />
+                <marker date="1518029701000" expanded="true" signature="113:789" ph="{...}" />
+                <marker date="1518029701000" expanded="true" signature="169:759" ph="{...}" />
+                <marker date="1518029701000" expanded="true" signature="242:753" ph="{...}" />
+                <marker date="1518029701000" expanded="true" signature="269:507" ph="{...}" />
+                <marker date="1518029701000" expanded="true" signature="296:442" ph="{&quot;x-patient-token&quot;: session.patToken...}" />
+                <marker date="1518029701000" expanded="true" signature="538:719" ph="{...}" />
+                <marker date="1518029701000" expanded="true" signature="564:624" ph="{...}" />
+                <marker date="1518029701000" expanded="true" signature="650:705" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VitalsController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controllers/VitalsController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="380">
+              <caret line="20" column="17" lean-forward="false" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
+              <folding>
+                <marker date="1518554277000" expanded="true" signature="7:67" ph="..." />
+                <marker date="1518554277000" expanded="true" signature="110:784" ph="{...}" />
+                <marker date="1518554277000" expanded="true" signature="166:754" ph="{...}" />
+                <marker date="1518554277000" expanded="true" signature="237:748" ph="{...}" />
+                <marker date="1518554277000" expanded="true" signature="263:501" ph="{...}" />
+                <marker date="1518554277000" expanded="true" signature="290:436" ph="{&quot;x-patient-token&quot;: session.patToken...}" />
+                <marker date="1518554277000" expanded="true" signature="532:714" ph="{...}" />
+                <marker date="1518554277000" expanded="true" signature="558:618" ph="{...}" />
+                <marker date="1518554277000" expanded="true" signature="645:700" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FakeDb.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/FakeDb.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="25" column="28" lean-forward="false" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".babelrc" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.babelrc">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
-              <caret line="3" column="1" lean-forward="false" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="0">
-                <caret line="0" column="25" lean-forward="false" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
-                <folding />
-              </first_editor>
-              <second_editor />
+            <state relative-caret-position="133">
+              <caret line="7" column="33" lean-forward="false" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+              <folding>
+                <marker date="1518089042000" expanded="true" signature="26:380" ph="[...]" />
+                <marker date="1518089042000" expanded="true" signature="33:199" ph="{&quot;id&quot;: '2-25'...}" />
+                <marker date="1518089042000" expanded="true" signature="206:377" ph="{&quot;id&quot;: '2-17'...}" />
+                <marker date="1518089042000" expanded="true" signature="411:1009" ph="[...]" />
+                <marker date="1518089042000" expanded="true" signature="417:565" ph="{&quot;fileName&quot;: 'VA Allergies File'...}" />
+                <marker date="1518089042000" expanded="true" signature="571:734" ph="{&quot;fileName&quot;: 'National Drug File - Generic Drug Name'...}" />
+                <marker date="1518089042000" expanded="true" signature="740:897" ph="{&quot;fileName&quot;: 'National Drug File - Trade Name'...}" />
+                <marker date="1518089042000" expanded="true" signature="903:953" ph="{&quot;fileName&quot;: 'Drug Ingredients File'...}" />
+                <marker date="1518089042000" expanded="true" signature="959:1006" ph="{&quot;fileName&quot;: 'VA Drug Class File'...}" />
+                <marker date="1518089042000" expanded="true" signature="1041:1249" ph="[...]" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -94,7 +193,13 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>params</find>
+      <find>status</find>
+      <find>con</find>
+      <find>console.log</find>
     </findStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/src</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -109,11 +214,24 @@
       <list>
         <option value="$PROJECT_DIR$/.babelrc" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/auth.js" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/src/index.js" />
+        <option value="$PROJECT_DIR$/src/domains/Allergies.js" />
+        <option value="$PROJECT_DIR$/src/domains/Problems.js" />
+        <option value="$PROJECT_DIR$/src/domains/Vitals.js" />
+        <option value="$PROJECT_DIR$/src/config.js" />
+        <option value="$PROJECT_DIR$/src/domains/AllergiesController.js" />
+        <option value="$PROJECT_DIR$/src/domains/ProblemsController.js" />
+        <option value="$PROJECT_DIR$/src/domains/VitalsController.js" />
+        <option value="$PROJECT_DIR$/src/domains/PatientsController.js" />
+        <option value="$PROJECT_DIR$/src/controllers/PatientsController.js" />
+        <option value="$PROJECT_DIR$/src/controllers/ProblemsController.js" />
         <option value="$PROJECT_DIR$/src/FakeDb.js" />
+        <option value="$PROJECT_DIR$/src/controllers/VitalsController.js" />
+        <option value="$PROJECT_DIR$/src/controllers/AuthController.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/index.js" />
+        <option value="$PROJECT_DIR$/src/controllers/AllergiesController.js" />
       </list>
     </option>
   </component>
@@ -123,14 +241,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="NodeModulesDirectoryManager">
-    <handled-path value="$PROJECT_DIR$/node_modules" />
-  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="107" />
-    <option name="y" value="85" />
-    <option name="width" value="1517" />
-    <option name="height" value="877" />
+    <option name="x" value="180" />
+    <option name="y" value="106" />
+    <option name="width" value="1516" />
+    <option name="height" value="869" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -153,20 +268,25 @@
           <expand>
             <path>
               <item name="vam-server" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vam-server" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vam-server" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vam-server" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <expand>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -175,6 +295,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="jdk.selected.JAVA_MODULE" value="1.8" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -241,6 +362,17 @@
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+    </configuration>
     <configuration name="&lt;template&gt;" type="TestNG" default="true" selected="false">
       <option name="MAIN_CLASS_NAME" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -277,7 +409,16 @@
       <option name="presentableId" value="Default" />
       <updated>1517448146558</updated>
       <workItem from="1517448147681" duration="299000" />
-      <workItem from="1517448596380" duration="9736000" />
+      <workItem from="1517448596380" duration="9898000" />
+      <workItem from="1517595237677" duration="15000" />
+      <workItem from="1517595277048" duration="10000" />
+      <workItem from="1517595307526" duration="24211000" />
+      <workItem from="1517892107050" duration="2498000" />
+      <workItem from="1517987757404" duration="10317000" />
+      <workItem from="1518224782981" duration="1331000" />
+      <workItem from="1518462950708" duration="7691000" />
+      <workItem from="1518556375832" duration="5382000" />
+      <workItem from="1518641053388" duration="1114000" />
     </task>
     <task id="LOCAL-00001" summary="gitignore">
       <created>1517448704539</created>
@@ -293,26 +434,103 @@
       <option name="project" value="LOCAL" />
       <updated>1517448833401</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="package-lock.json">
+      <created>1517519170251</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1517519170251</updated>
+    </task>
+    <task id="LOCAL-00004" summary="session">
+      <created>1517604521436</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1517604521436</updated>
+    </task>
+    <task id="LOCAL-00005" summary="session">
+      <created>1517604528673</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1517604528673</updated>
+    </task>
+    <task id="LOCAL-00006" summary="controllers">
+      <created>1517646230334</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1517646230334</updated>
+    </task>
+    <task id="LOCAL-00007" summary="latest">
+      <created>1517695162370</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1517695162370</updated>
+    </task>
+    <task id="LOCAL-00008" summary="latest">
+      <created>1518118001572</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1518118001572</updated>
+    </task>
+    <task id="LOCAL-00009" summary="latest">
+      <created>1518554194220</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1518554194220</updated>
+    </task>
+    <task id="LOCAL-00010" summary="latest">
+      <created>1518554300652</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1518554300652</updated>
+    </task>
+    <task id="LOCAL-00011" summary="latest">
+      <created>1518557162237</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1518557162237</updated>
+    </task>
+    <task id="LOCAL-00012" summary="latest">
+      <created>1518557250111</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1518557250111</updated>
+    </task>
+    <task id="LOCAL-00013" summary="latest">
+      <created>1518639973409</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1518639973409</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10035000" />
+    <option name="totallyTimeSpent" value="62766000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="107" y="85" width="1517" height="877" extended-state="0" />
+    <frame x="180" y="106" width="1516" height="869" extended-state="0" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27404478" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3195739" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25288135" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27001357" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24898235" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -335,13 +553,35 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="gitignore" />
     <MESSAGE value="package-lock.json" />
-    <option name="LAST_COMMIT_MESSAGE" value="package-lock.json" />
+    <MESSAGE value="session" />
+    <MESSAGE value="controllers" />
+    <MESSAGE value="latest" />
+    <option name="LAST_COMMIT_MESSAGE" value="latest" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/FakeDb.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="684">
+          <caret line="36" column="94" lean-forward="false" selection-start-line="36" selection-start-column="94" selection-end-line="36" selection-end-column="94" />
+          <folding>
+            <marker date="1518089042000" expanded="true" signature="26:380" ph="[...]" />
+            <marker date="1518089042000" expanded="true" signature="33:199" ph="{&quot;id&quot;: '2-25'...}" />
+            <marker date="1518089042000" expanded="true" signature="206:377" ph="{&quot;id&quot;: '2-17'...}" />
+            <marker date="1518089042000" expanded="true" signature="411:1009" ph="[...]" />
+            <marker date="1518089042000" expanded="true" signature="417:565" ph="{&quot;fileName&quot;: 'VA Allergies File'...}" />
+            <marker date="1518089042000" expanded="true" signature="571:734" ph="{&quot;fileName&quot;: 'National Drug File - Generic Drug Name'...}" />
+            <marker date="1518089042000" expanded="true" signature="740:897" ph="{&quot;fileName&quot;: 'National Drug File - Trade Name'...}" />
+            <marker date="1518089042000" expanded="true" signature="903:953" ph="{&quot;fileName&quot;: 'Drug Ingredients File'...}" />
+            <marker date="1518089042000" expanded="true" signature="959:1006" ph="{&quot;fileName&quot;: 'VA Drug Class File'...}" />
+            <marker date="1518089042000" expanded="true" signature="1041:1249" ph="[...]" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -352,71 +592,139 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="437">
+          <caret line="30" column="56" lean-forward="false" selection-start-line="30" selection-start-column="56" selection-end-line="30" selection-end-column="56" />
+          <folding>
+            <marker date="1518631292000" expanded="true" signature="7:395" ph="..." />
+            <marker date="1518631292000" expanded="true" signature="462:544" ph="{&quot;secret&quot;: '4zkmWtXxOxJc5wuy'...}" />
+            <marker date="1518631292000" expanded="true" signature="676:718" ph="{...}" />
+            <marker date="1518631292000" expanded="true" signature="764:806" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/AuthController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="20" column="32" lean-forward="true" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
+          <folding>
+            <marker date="1518554292000" expanded="true" signature="7:67" ph="..." />
+            <marker date="1518554292000" expanded="true" signature="110:250" ph="{...}" />
+            <marker date="1518554292000" expanded="true" signature="166:219" ph="{...}" />
+            <marker date="1518554292000" expanded="true" signature="289:983" ph="{...}" />
+            <marker date="1518554292000" expanded="true" signature="441:580" ph="{...}" />
+            <marker date="1518554292000" expanded="true" signature="499:574" ph="{&quot;userId&quot;: userId...}" />
+            <marker date="1518554292000" expanded="true" signature="611:965" ph="{...}" />
+            <marker date="1518554292000" expanded="true" signature="629:673" ph="{...}" />
+            <marker date="1518554292000" expanded="true" signature="696:958" ph="{...}" />
+            <marker date="1518554292000" expanded="true" signature="1023:1108" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/PatientsController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="950">
+          <caret line="58" column="56" lean-forward="false" selection-start-line="58" selection-start-column="56" selection-end-line="58" selection-end-column="56" />
+          <folding>
+            <marker date="1517987961000" expanded="true" signature="7:189" ph="..." />
+            <marker date="1517987961000" expanded="true" signature="234:674" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="262:645" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="332:563" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="393:519" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="577:622" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="721:1652" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="776:1624" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="881:1559" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="908:1172" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="935:1023" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="1097:1158" ph="{&quot;patientId&quot;: patientId...}" />
+            <marker date="1517987961000" expanded="true" signature="1197:1526" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="1224:1284" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="1315:1510" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="1573:1617" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="2" lean-forward="false" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
+          <folding>
+            <marker date="1517645774000" expanded="true" signature="22:70" ph="{&quot;REST_BASE_URL&quot;: 'http://10.2.2.100:9030'...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/AllergiesController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.babelrc">
+    <entry file="file://$PROJECT_DIR$/src/controllers/ProblemsController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="1" lean-forward="false" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
-          <folding />
+        <state relative-caret-position="437">
+          <caret line="24" column="17" lean-forward="false" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
+          <folding>
+            <marker date="1518029701000" expanded="true" signature="7:67" ph="..." />
+            <marker date="1518029701000" expanded="true" signature="113:789" ph="{...}" />
+            <marker date="1518029701000" expanded="true" signature="169:759" ph="{...}" />
+            <marker date="1518029701000" expanded="true" signature="242:753" ph="{...}" />
+            <marker date="1518029701000" expanded="true" signature="269:507" ph="{...}" />
+            <marker date="1518029701000" expanded="true" signature="296:442" ph="{&quot;x-patient-token&quot;: session.patToken...}" />
+            <marker date="1518029701000" expanded="true" signature="538:719" ph="{...}" />
+            <marker date="1518029701000" expanded="true" signature="564:624" ph="{...}" />
+            <marker date="1518029701000" expanded="true" signature="650:705" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="25" lean-forward="false" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.babelrc">
+    <entry file="file://$PROJECT_DIR$/src/controllers/VitalsController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="1" lean-forward="false" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
-          <folding />
+        <state relative-caret-position="399">
+          <caret line="22" column="35" lean-forward="true" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
+          <folding>
+            <marker date="1518554277000" expanded="true" signature="7:67" ph="..." />
+            <marker date="1518554277000" expanded="true" signature="110:784" ph="{...}" />
+            <marker date="1518554277000" expanded="true" signature="166:754" ph="{...}" />
+            <marker date="1518554277000" expanded="true" signature="237:748" ph="{...}" />
+            <marker date="1518554277000" expanded="true" signature="263:501" ph="{...}" />
+            <marker date="1518554277000" expanded="true" signature="290:436" ph="{&quot;x-patient-token&quot;: session.patToken...}" />
+            <marker date="1518554277000" expanded="true" signature="532:714" ph="{...}" />
+            <marker date="1518554277000" expanded="true" signature="558:618" ph="{...}" />
+            <marker date="1518554277000" expanded="true" signature="645:700" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="25" lean-forward="false" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/src/FakeDb.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" column="14" lean-forward="false" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/auth.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="684">
+          <caret line="36" column="94" lean-forward="false" selection-start-line="36" selection-start-column="94" selection-end-line="36" selection-end-column="94" />
+          <folding>
+            <marker date="1518089042000" expanded="true" signature="26:380" ph="[...]" />
+            <marker date="1518089042000" expanded="true" signature="33:199" ph="{&quot;id&quot;: '2-25'...}" />
+            <marker date="1518089042000" expanded="true" signature="206:377" ph="{&quot;id&quot;: '2-17'...}" />
+            <marker date="1518089042000" expanded="true" signature="411:1009" ph="[...]" />
+            <marker date="1518089042000" expanded="true" signature="417:565" ph="{&quot;fileName&quot;: 'VA Allergies File'...}" />
+            <marker date="1518089042000" expanded="true" signature="571:734" ph="{&quot;fileName&quot;: 'National Drug File - Generic Drug Name'...}" />
+            <marker date="1518089042000" expanded="true" signature="740:897" ph="{&quot;fileName&quot;: 'National Drug File - Trade Name'...}" />
+            <marker date="1518089042000" expanded="true" signature="903:953" ph="{&quot;fileName&quot;: 'Drug Ingredients File'...}" />
+            <marker date="1518089042000" expanded="true" signature="959:1006" ph="{&quot;fileName&quot;: 'VA Drug Class File'...}" />
+            <marker date="1518089042000" expanded="true" signature="1041:1249" ph="[...]" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
+        <state relative-caret-position="323">
           <caret line="17" column="15" lean-forward="false" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
           <folding />
         </state>
@@ -424,19 +732,517 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        <state relative-caret-position="247">
+          <caret line="20" column="40" lean-forward="false" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
+          <folding>
+            <marker date="1518631292000" expanded="true" signature="7:395" ph="..." />
+            <marker date="1518631292000" expanded="true" signature="462:544" ph="{&quot;secret&quot;: '4zkmWtXxOxJc5wuy'...}" />
+            <marker date="1518631292000" expanded="true" signature="676:718" ph="{...}" />
+            <marker date="1518631292000" expanded="true" signature="764:806" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/AuthController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="21" column="9" lean-forward="true" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
+          <folding>
+            <marker date="1518554292000" expanded="true" signature="7:67" ph="..." />
+            <marker date="1518554292000" expanded="true" signature="110:250" ph="{...}" />
+            <marker date="1518554292000" expanded="true" signature="166:219" ph="{...}" />
+            <marker date="1518554292000" expanded="true" signature="289:983" ph="{...}" />
+            <marker date="1518554292000" expanded="true" signature="441:580" ph="{...}" />
+            <marker date="1518554292000" expanded="true" signature="499:574" ph="{&quot;userId&quot;: userId...}" />
+            <marker date="1518554292000" expanded="true" signature="611:965" ph="{...}" />
+            <marker date="1518554292000" expanded="true" signature="629:673" ph="{...}" />
+            <marker date="1518554292000" expanded="true" signature="696:958" ph="{...}" />
+            <marker date="1518554292000" expanded="true" signature="1023:1108" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="2" lean-forward="false" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
+          <folding>
+            <marker date="1517645774000" expanded="true" signature="22:70" ph="{&quot;REST_BASE_URL&quot;: 'http://10.2.2.100:9030'...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/AllergiesController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1216">
+          <caret line="72" column="0" lean-forward="true" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/ProblemsController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="19" column="25" lean-forward="true" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+          <folding>
+            <marker date="1518029701000" expanded="true" signature="7:67" ph="..." />
+            <marker date="1518029701000" expanded="true" signature="113:789" ph="{...}" />
+            <marker date="1518029701000" expanded="true" signature="169:759" ph="{...}" />
+            <marker date="1518029701000" expanded="true" signature="242:753" ph="{...}" />
+            <marker date="1518029701000" expanded="true" signature="269:507" ph="{...}" />
+            <marker date="1518029701000" expanded="true" signature="296:442" ph="{&quot;x-patient-token&quot;: session.patToken...}" />
+            <marker date="1518029701000" expanded="true" signature="538:719" ph="{...}" />
+            <marker date="1518029701000" expanded="true" signature="564:624" ph="{...}" />
+            <marker date="1518029701000" expanded="true" signature="650:705" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/VitalsController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="10" column="30" lean-forward="false" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+          <folding>
+            <marker date="1518554277000" expanded="true" signature="7:67" ph="..." />
+            <marker date="1518554277000" expanded="true" signature="110:784" ph="{...}" />
+            <marker date="1518554277000" expanded="true" signature="166:754" ph="{...}" />
+            <marker date="1518554277000" expanded="true" signature="237:748" ph="{...}" />
+            <marker date="1518554277000" expanded="true" signature="263:501" ph="{...}" />
+            <marker date="1518554277000" expanded="true" signature="290:436" ph="{&quot;x-patient-token&quot;: session.patToken...}" />
+            <marker date="1518554277000" expanded="true" signature="532:714" ph="{...}" />
+            <marker date="1518554277000" expanded="true" signature="558:618" ph="{...}" />
+            <marker date="1518554277000" expanded="true" signature="645:700" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/FakeDb.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="25" column="28" lean-forward="false" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
+        <state relative-caret-position="855">
+          <caret line="45" column="2" lean-forward="true" selection-start-line="45" selection-start-column="2" selection-end-line="45" selection-end-column="2" />
+          <folding>
+            <marker date="1518089042000" expanded="true" signature="26:380" ph="[...]" />
+            <marker date="1518089042000" expanded="true" signature="33:199" ph="{&quot;id&quot;: '2-25'...}" />
+            <marker date="1518089042000" expanded="true" signature="206:377" ph="{&quot;id&quot;: '2-17'...}" />
+            <marker date="1518089042000" expanded="true" signature="411:1009" ph="[...]" />
+            <marker date="1518089042000" expanded="true" signature="417:565" ph="{&quot;fileName&quot;: 'VA Allergies File'...}" />
+            <marker date="1518089042000" expanded="true" signature="571:734" ph="{&quot;fileName&quot;: 'National Drug File - Generic Drug Name'...}" />
+            <marker date="1518089042000" expanded="true" signature="740:897" ph="{&quot;fileName&quot;: 'National Drug File - Trade Name'...}" />
+            <marker date="1518089042000" expanded="true" signature="903:953" ph="{&quot;fileName&quot;: 'Drug Ingredients File'...}" />
+            <marker date="1518089042000" expanded="true" signature="959:1006" ph="{&quot;fileName&quot;: 'VA Drug Class File'...}" />
+            <marker date="1518089042000" expanded="true" signature="1041:1249" ph="[...]" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/PatientsController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <marker date="1517987961000" expanded="true" signature="7:189" ph="..." />
+            <marker date="1517987961000" expanded="true" signature="234:674" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="262:645" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="332:563" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="393:519" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="577:622" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="721:1652" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="776:1624" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="881:1559" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="908:1172" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="935:1023" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="1097:1158" ph="{&quot;patientId&quot;: patientId...}" />
+            <marker date="1517987961000" expanded="true" signature="1197:1526" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="1224:1284" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="1315:1510" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="1573:1617" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="17" column="15" lean-forward="false" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="20" column="40" lean-forward="true" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
+          <folding>
+            <marker date="1518631292000" expanded="true" signature="7:395" ph="..." />
+            <marker date="1518631292000" expanded="true" signature="462:544" ph="{&quot;secret&quot;: '4zkmWtXxOxJc5wuy'...}" />
+            <marker date="1518631292000" expanded="true" signature="676:718" ph="{...}" />
+            <marker date="1518631292000" expanded="true" signature="764:806" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/AuthController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="21" column="9" lean-forward="true" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
+          <folding>
+            <marker date="1518554292000" expanded="true" signature="7:67" ph="..." />
+            <marker date="1518554292000" expanded="true" signature="110:250" ph="{...}" />
+            <marker date="1518554292000" expanded="true" signature="166:219" ph="{...}" />
+            <marker date="1518554292000" expanded="true" signature="289:983" ph="{...}" />
+            <marker date="1518554292000" expanded="true" signature="441:580" ph="{...}" />
+            <marker date="1518554292000" expanded="true" signature="499:574" ph="{&quot;userId&quot;: userId...}" />
+            <marker date="1518554292000" expanded="true" signature="611:965" ph="{...}" />
+            <marker date="1518554292000" expanded="true" signature="629:673" ph="{...}" />
+            <marker date="1518554292000" expanded="true" signature="696:958" ph="{...}" />
+            <marker date="1518554292000" expanded="true" signature="1023:1108" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="2" lean-forward="false" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
+          <folding>
+            <marker date="1517645774000" expanded="true" signature="22:70" ph="{&quot;REST_BASE_URL&quot;: 'http://10.2.2.100:9030'...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/ProblemsController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="19" column="25" lean-forward="true" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+          <folding>
+            <marker date="1518029701000" expanded="true" signature="7:67" ph="..." />
+            <marker date="1518029701000" expanded="true" signature="113:789" ph="{...}" />
+            <marker date="1518029701000" expanded="true" signature="169:759" ph="{...}" />
+            <marker date="1518029701000" expanded="true" signature="242:753" ph="{...}" />
+            <marker date="1518029701000" expanded="true" signature="269:507" ph="{...}" />
+            <marker date="1518029701000" expanded="true" signature="296:442" ph="{&quot;x-patient-token&quot;: session.patToken...}" />
+            <marker date="1518029701000" expanded="true" signature="538:719" ph="{...}" />
+            <marker date="1518029701000" expanded="true" signature="564:624" ph="{...}" />
+            <marker date="1518029701000" expanded="true" signature="650:705" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/VitalsController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="30" lean-forward="false" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+          <folding>
+            <marker date="1518554277000" expanded="true" signature="7:67" ph="..." />
+            <marker date="1518554277000" expanded="true" signature="110:784" ph="{...}" />
+            <marker date="1518554277000" expanded="true" signature="166:754" ph="{...}" />
+            <marker date="1518554277000" expanded="true" signature="237:748" ph="{...}" />
+            <marker date="1518554277000" expanded="true" signature="263:501" ph="{...}" />
+            <marker date="1518554277000" expanded="true" signature="290:436" ph="{&quot;x-patient-token&quot;: session.patToken...}" />
+            <marker date="1518554277000" expanded="true" signature="532:714" ph="{...}" />
+            <marker date="1518554277000" expanded="true" signature="558:618" ph="{...}" />
+            <marker date="1518554277000" expanded="true" signature="645:700" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FakeDb.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding>
+            <marker date="1518089042000" expanded="true" signature="26:380" ph="[...]" />
+            <marker date="1518089042000" expanded="true" signature="33:199" ph="{&quot;id&quot;: '2-25'...}" />
+            <marker date="1518089042000" expanded="true" signature="206:377" ph="{&quot;id&quot;: '2-17'...}" />
+            <marker date="1518089042000" expanded="true" signature="411:1009" ph="[...]" />
+            <marker date="1518089042000" expanded="true" signature="417:565" ph="{&quot;fileName&quot;: 'VA Allergies File'...}" />
+            <marker date="1518089042000" expanded="true" signature="571:734" ph="{&quot;fileName&quot;: 'National Drug File - Generic Drug Name'...}" />
+            <marker date="1518089042000" expanded="true" signature="740:897" ph="{&quot;fileName&quot;: 'National Drug File - Trade Name'...}" />
+            <marker date="1518089042000" expanded="true" signature="903:953" ph="{&quot;fileName&quot;: 'Drug Ingredients File'...}" />
+            <marker date="1518089042000" expanded="true" signature="959:1006" ph="{&quot;fileName&quot;: 'VA Drug Class File'...}" />
+            <marker date="1518089042000" expanded="true" signature="1041:1249" ph="[...]" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/AllergiesController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1007">
+          <caret line="53" column="52" lean-forward="false" selection-start-line="53" selection-start-column="52" selection-end-line="53" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="17" column="15" lean-forward="false" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" column="14" lean-forward="false" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding>
+            <marker date="1518631292000" expanded="true" signature="7:395" ph="..." />
+            <marker date="1518631292000" expanded="true" signature="462:544" ph="{&quot;secret&quot;: '4zkmWtXxOxJc5wuy'...}" />
+            <marker date="1518631292000" expanded="true" signature="676:718" ph="{...}" />
+            <marker date="1518631292000" expanded="true" signature="764:806" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.babelrc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="1" lean-forward="false" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FakeDb.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="25" column="28" lean-forward="false" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
+          <folding>
+            <marker date="1518089042000" expanded="true" signature="26:380" ph="[...]" />
+            <marker date="1518089042000" expanded="true" signature="33:199" ph="{&quot;id&quot;: '2-25'...}" />
+            <marker date="1518089042000" expanded="true" signature="206:377" ph="{&quot;id&quot;: '2-17'...}" />
+            <marker date="1518089042000" expanded="true" signature="411:1009" ph="[...]" />
+            <marker date="1518089042000" expanded="true" signature="417:565" ph="{&quot;fileName&quot;: 'VA Allergies File'...}" />
+            <marker date="1518089042000" expanded="true" signature="571:734" ph="{&quot;fileName&quot;: 'National Drug File - Generic Drug Name'...}" />
+            <marker date="1518089042000" expanded="true" signature="740:897" ph="{&quot;fileName&quot;: 'National Drug File - Trade Name'...}" />
+            <marker date="1518089042000" expanded="true" signature="903:953" ph="{&quot;fileName&quot;: 'Drug Ingredients File'...}" />
+            <marker date="1518089042000" expanded="true" signature="959:1006" ph="{&quot;fileName&quot;: 'VA Drug Class File'...}" />
+            <marker date="1518089042000" expanded="true" signature="1041:1249" ph="[...]" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="25" lean-forward="false" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1518631292000" expanded="true" signature="7:395" ph="..." />
+            <marker date="1518631292000" expanded="true" signature="462:544" ph="{&quot;secret&quot;: '4zkmWtXxOxJc5wuy'...}" />
+            <marker date="1518631292000" expanded="true" signature="676:718" ph="{...}" />
+            <marker date="1518631292000" expanded="true" signature="764:806" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.babelrc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="1" lean-forward="false" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="25" lean-forward="false" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.babelrc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="1" lean-forward="false" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="25" lean-forward="false" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/auth.js" />
+    <entry file="file://$PROJECT_DIR$/src/controllers/ProblemsController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="24" column="17" lean-forward="false" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
+          <folding>
+            <marker date="1518029701000" expanded="true" signature="7:67" ph="..." />
+            <marker date="1518029701000" expanded="true" signature="113:789" ph="{...}" />
+            <marker date="1518029701000" expanded="true" signature="169:759" ph="{...}" />
+            <marker date="1518029701000" expanded="true" signature="242:753" ph="{...}" />
+            <marker date="1518029701000" expanded="true" signature="269:507" ph="{...}" />
+            <marker date="1518029701000" expanded="true" signature="296:442" ph="{&quot;x-patient-token&quot;: session.patToken...}" />
+            <marker date="1518029701000" expanded="true" signature="538:719" ph="{...}" />
+            <marker date="1518029701000" expanded="true" signature="564:624" ph="{...}" />
+            <marker date="1518029701000" expanded="true" signature="650:705" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="2" lean-forward="false" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
+          <folding>
+            <marker date="1517645774000" expanded="true" signature="22:70" ph="{&quot;REST_BASE_URL&quot;: 'http://10.2.2.100:9030'...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FakeDb.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="33" lean-forward="false" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+          <folding>
+            <marker date="1518089042000" expanded="true" signature="26:380" ph="[...]" />
+            <marker date="1518089042000" expanded="true" signature="33:199" ph="{&quot;id&quot;: '2-25'...}" />
+            <marker date="1518089042000" expanded="true" signature="206:377" ph="{&quot;id&quot;: '2-17'...}" />
+            <marker date="1518089042000" expanded="true" signature="411:1009" ph="[...]" />
+            <marker date="1518089042000" expanded="true" signature="417:565" ph="{&quot;fileName&quot;: 'VA Allergies File'...}" />
+            <marker date="1518089042000" expanded="true" signature="571:734" ph="{&quot;fileName&quot;: 'National Drug File - Generic Drug Name'...}" />
+            <marker date="1518089042000" expanded="true" signature="740:897" ph="{&quot;fileName&quot;: 'National Drug File - Trade Name'...}" />
+            <marker date="1518089042000" expanded="true" signature="903:953" ph="{&quot;fileName&quot;: 'Drug Ingredients File'...}" />
+            <marker date="1518089042000" expanded="true" signature="959:1006" ph="{&quot;fileName&quot;: 'VA Drug Class File'...}" />
+            <marker date="1518089042000" expanded="true" signature="1041:1249" ph="[...]" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/PatientsController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1102">
+          <caret line="58" column="56" lean-forward="false" selection-start-line="58" selection-start-column="56" selection-end-line="58" selection-end-column="56" />
+          <folding>
+            <marker date="1517987961000" expanded="true" signature="7:189" ph="..." />
+            <marker date="1517987961000" expanded="true" signature="234:674" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="262:645" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="332:563" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="393:519" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="577:622" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="721:1652" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="776:1624" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="881:1559" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="908:1172" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="935:1023" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="1097:1158" ph="{&quot;patientId&quot;: patientId...}" />
+            <marker date="1517987961000" expanded="true" signature="1197:1526" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="1224:1284" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="1315:1510" ph="{...}" />
+            <marker date="1517987961000" expanded="true" signature="1573:1617" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/public/index.html" />
+    <entry file="file://$PROJECT_DIR$/src/controllers/VitalsController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="20" column="17" lean-forward="false" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
+          <folding>
+            <marker date="1518554277000" expanded="true" signature="7:67" ph="..." />
+            <marker date="1518554277000" expanded="true" signature="110:784" ph="{...}" />
+            <marker date="1518554277000" expanded="true" signature="166:754" ph="{...}" />
+            <marker date="1518554277000" expanded="true" signature="237:748" ph="{...}" />
+            <marker date="1518554277000" expanded="true" signature="263:501" ph="{...}" />
+            <marker date="1518554277000" expanded="true" signature="290:436" ph="{&quot;x-patient-token&quot;: session.patToken...}" />
+            <marker date="1518554277000" expanded="true" signature="532:714" ph="{...}" />
+            <marker date="1518554277000" expanded="true" signature="558:618" ph="{...}" />
+            <marker date="1518554277000" expanded="true" signature="645:700" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/AuthController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <marker date="1518554292000" expanded="true" signature="7:67" ph="..." />
+            <marker date="1518554292000" expanded="true" signature="110:250" ph="{...}" />
+            <marker date="1518554292000" expanded="true" signature="166:219" ph="{...}" />
+            <marker date="1518554292000" expanded="true" signature="289:983" ph="{...}" />
+            <marker date="1518554292000" expanded="true" signature="441:580" ph="{...}" />
+            <marker date="1518554292000" expanded="true" signature="499:574" ph="{&quot;userId&quot;: userId...}" />
+            <marker date="1518554292000" expanded="true" signature="611:965" ph="{...}" />
+            <marker date="1518554292000" expanded="true" signature="629:673" ph="{...}" />
+            <marker date="1518554292000" expanded="true" signature="696:958" ph="{...}" />
+            <marker date="1518554292000" expanded="true" signature="1023:1108" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="17" column="14" lean-forward="false" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="17" column="15" lean-forward="false" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="988">
+          <caret line="52" column="15" lean-forward="false" selection-start-line="52" selection-start-column="15" selection-end-line="52" selection-end-column="15" />
+          <folding>
+            <marker date="1518631292000" expanded="true" signature="7:395" ph="..." />
+            <marker date="1518631292000" expanded="true" signature="462:544" ph="{&quot;secret&quot;: '4zkmWtXxOxJc5wuy'...}" />
+            <marker date="1518631292000" expanded="true" signature="676:718" ph="{...}" />
+            <marker date="1518631292000" expanded="true" signature="764:806" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/AllergiesController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="26" column="48" lean-forward="false" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

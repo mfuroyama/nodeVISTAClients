@@ -96,6 +96,9 @@ Vitals.defaultProps = {
                 case 'PULSE OXIMETRY': {
                     data.abbr = 'PO2'
                 }break;
+                case 'PAIN': {
+                    data.abbr = 'PN'
+                }break;
                 default: {
                     break;
                 }

@@ -26,7 +26,7 @@ class AuthView extends View {
                    <label>VICS Client</label>
                </div>
 
-               <label>Log In</label>
+               <label>Select User</label>
                <div className="alignView">
                    <div className="authForm">
                        <div className="item">
