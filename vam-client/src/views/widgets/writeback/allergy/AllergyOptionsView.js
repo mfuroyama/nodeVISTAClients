@@ -94,7 +94,7 @@ class AllergyOptionsView extends View {
                                 <b>Nature of Reaction:</b>
                                 <SelectView ref={e=>this._mechanismCtrl=e}>
                                     <option value="Allergy"/>
-                                    <option value="Pharmacological"/>
+                                    {/*<option value="Pharmacological"/>*/}
                                     <option value="Unknown"/>
                                 </SelectView>
                             </div>

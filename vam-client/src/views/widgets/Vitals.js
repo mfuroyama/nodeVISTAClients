@@ -6,6 +6,7 @@ import TableWidget from './TableWidget';
 import RecordsCollection from "./RecordsCollection";
 
 import PatientState from '~/PatientState';
+import format from "date-fns/format";
 
 class Vitals extends TableWidget {
 
@@ -20,12 +21,18 @@ class Vitals extends TableWidget {
             {
                 id: 'value',
                 name: 'Value',
-                sortable:true
+                sortable:true,
+                formatter: function(value, row ) {
+                    return value + (row.units ? ' ' + row.units : '');
+                }
             },
             {
-                id: 'units',
-                name: 'Units',
-                sortable:true
+                id: 'dateTaken',
+                name: 'Date Taken',
+                sortable:true,
+                formatter: function(value, row) {
+                    return format(value, 'MM/DD/YYYY HH:mm')
+                }
             }
         ];
     }
@@ -51,6 +58,12 @@ Vitals.defaultProps = {
             return response.results;
         },
         record: function(data) {
+
+            console.log(data);
+            if(data.vitalsTakenDateTime) {
+                data.dateTaken = data.vitalsTakenDateTime.value;
+            }
+
             if(data.vitalType) {
                 data.name = data.vitalType.label;
             }

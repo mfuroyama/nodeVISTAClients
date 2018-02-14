@@ -13,6 +13,7 @@ exports.createAllergy = function(req, res) {
 
     let session = req.session;
 
+    console.log(req.body);
     if(session.auth) {
         let url = '/allergy';
         if(session.patToken) {
@@ -30,6 +31,8 @@ exports.createAllergy = function(req, res) {
                 if(err) {
                     res.sendStatus(500);
                 }
+
+                console.log(body);
 
                 if(body) {
                     res.send(body);

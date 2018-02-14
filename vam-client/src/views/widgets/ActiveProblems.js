@@ -1,4 +1,6 @@
 import React from 'react';
+import format from 'date-fns/format';
+import filter from 'lodash/filter';
 
 import ButtonView from '~/react-views/ButtonView';
 
@@ -21,12 +23,11 @@ class ActiveProblems extends TableWidget {
 
             {
                 id: 'enteredDateValue',
-                name: 'Entered Date'
-            },
-
-            {
-                id: 'problemStatus',
-                name: 'Status'
+                name: 'Entered Date',
+                sortable:true,
+                formatter: function(value, row) {
+                    return format(value, 'MM/DD/YYYY')
+                }
             }
         ];
     }
@@ -51,7 +52,9 @@ ActiveProblems.defaultProps = {
     collection: new RecordsCollection({
         url: '/problem',
         parse: function(response){
-            return response.results;
+            return filter(response.results, function(result){
+                return result.problemStatus !== 'INACTIVE';
+            });
         },
         record: function(data) {
             if(data.problem) {
