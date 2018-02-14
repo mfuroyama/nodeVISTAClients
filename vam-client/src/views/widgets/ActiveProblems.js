@@ -26,7 +26,7 @@ class ActiveProblems extends TableWidget {
                 name: 'Entered Date',
                 sortable:true,
                 formatter: function(value, row) {
-                    return format(value, 'MM/DD/YYYY')
+                    return format(value, 'MM/DD/YYYY HH:mm')
                 }
             }
         ];

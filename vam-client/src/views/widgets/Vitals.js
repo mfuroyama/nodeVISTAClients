@@ -14,9 +14,10 @@ class Vitals extends TableWidget {
         return [
 
             {
-                id: 'name',
+                id: 'abbr',
                 name: 'Vital',
-                sortable:true
+                sortable:true,
+                width:40
             },
             {
                 id: 'value',
@@ -59,13 +60,45 @@ Vitals.defaultProps = {
         },
         record: function(data) {
 
-            console.log(data);
             if(data.vitalsTakenDateTime) {
                 data.dateTaken = data.vitalsTakenDateTime.value;
             }
 
             if(data.vitalType) {
                 data.name = data.vitalType.label;
+            }
+
+            switch (data.name) {
+                case 'BLOOD PRESSURE': {
+                    data.abbr = 'BP';
+                }break;
+                case 'TEMPERATURE': {
+                    data.abbr = 'T'
+                }break;
+                case 'RESPIRATION': {
+                    data.abbr = 'R'
+                }break;
+                case 'PULSE': {
+                    data.abbr = 'P'
+                }break;
+                case 'HEIGHT': {
+                    data.abbr = 'HT'
+                }break;
+                case 'WEIGHT': {
+                    data.abbr = 'WT'
+                }break;
+                case 'CENTRAL VENOUS PRESSURE': {
+                    data.abbr = 'CVP'
+                }break;
+                case 'CIRCUMFERENCE_GIRTH': {
+                    data.abbr = 'CG'
+                }break;
+                case 'PULSE OXIMETRY': {
+                    data.abbr = 'PO2'
+                }break;
+                default: {
+                    break;
+                }
             }
 
             return data;
