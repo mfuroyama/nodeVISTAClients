@@ -81,7 +81,7 @@ class Allergies extends TableWidget {
         this._detailWindow.orderFront();
 
         setTimeout(function(){
-            axios.get('/allergyDetail/'+data.id).then(function(response){
+            axios.get('/allergyDetail/'+data.id, {headers: { Pragma: 'no-cache'}}).then(function(response){
                 if(response) {
                     this.setState({
                         detail:response.data

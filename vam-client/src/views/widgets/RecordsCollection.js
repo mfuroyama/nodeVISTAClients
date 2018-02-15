@@ -23,7 +23,7 @@ class RecordsCollection  {
 
     fetch(callback) {
         if(this.props.url) {
-            axios.get(this.props.url).then(function(response){
+            axios.get(this.props.url, {headers: { Pragma: 'no-cache'}}).then(function(response){
                 let data = response.data;
                 if(isFunction(this.props.parse)){
                     data = this.props.parse(data);

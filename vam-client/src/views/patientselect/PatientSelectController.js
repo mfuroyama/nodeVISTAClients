@@ -151,7 +151,7 @@ class PatientSelectController extends React.Component {
             });
         }
 
-        axios.get('/patients').then(function(response){
+        axios.get('/patients', {headers: { Pragma: 'no-cache'}}).then(function(response){
 
             if(this._patientList) {
                 this._patientList.setState({

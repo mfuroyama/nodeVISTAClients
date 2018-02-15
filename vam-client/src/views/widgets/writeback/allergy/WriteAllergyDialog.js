@@ -96,7 +96,7 @@ class WriteAllergyDialog extends React.Component {
                 signsSymptoms: [],
             });
 
-            axios.get('/allergens?query=' + searchTerm).then(function (response) {
+            axios.get('/allergens?query=' + searchTerm, {headers: { Pragma: 'no-cache'}}).then(function (response) {
 
                 let searchResults = [];
 

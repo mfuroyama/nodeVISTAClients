@@ -40,7 +40,7 @@ class AllergyOptionsView extends View {
 
     didEnterDocument() {
         if(!SignsSymptoms) {
-            axios.get('/signsSymptoms').then(function (response) {
+            axios.get('/signsSymptoms', {headers: { Pragma: 'no-cache'}}).then(function (response) {
                 SignsSymptoms = response.data;
                 this.forceUpdate();
             }.bind(this));
