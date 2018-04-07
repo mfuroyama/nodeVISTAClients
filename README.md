@@ -1,5 +1,7 @@
 # nodeVISTA Clients
 
+__Note__: deprecated and will, along with nodeVISTA' clinical interface, be archived by September 2018 in favor of VICS Server clients
+
 a series of clients that show how to use the different _nodeVISTA_ interfaces.
 
 * [Services Interface](https://github.com/vistadataproject/nodeVISTAClients/tree/master/services#service-interface-clients
